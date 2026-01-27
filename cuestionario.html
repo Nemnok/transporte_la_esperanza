@@ -37,9 +37,9 @@
     <main>
         <section class="questionnaire">
             <div class="container">
-                <h2>Encuesta de Satisfacción</h2>
-                <p class="subtitle">Transporte Ecológico La Esperanza - Carnaval de Tenerife</p>
-                <p class="intro-text">Tu opinión es muy importante para seguir mejorando el transporte sostenible durante el Carnaval.</p>
+                <h2 data-i18n="questionnaire_title">Encuesta de Satisfacción</h2>
+                <p class="subtitle" data-i18n="questionnaire_subtitle">Transporte Ecológico La Esperanza - Carnaval de Tenerife</p>
+                <p class="intro-text" data-i18n="questionnaire_intro">Tu opinión es muy importante para seguir mejorando el transporte sostenible durante el Carnaval.</p>
 
                 <form id="questionnaireForm" class="form-container">
                     <div class="form-section">
@@ -259,11 +259,13 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Transporte La Esperanza. Todos los derechos reservados.</p>
-            <p>Conectando comunidades, construyendo futuro.</p>
+            <p>&copy; 2026 Transporte La Esperanza. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
+            <p data-i18n="footer_slogan">Conectando comunidades, construyendo futuro.</p>
         </div>
     </footer>
 
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

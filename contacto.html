@@ -37,39 +37,39 @@
     <main>
         <section class="contact">
             <div class="container">
-                <h2>Contáctenos</h2>
-                <p class="subtitle">Estamos aquí para ayudarle. No dude en comunicarse con nosotros.</p>
+                <h2 data-i18n="contact_title">Contáctenos</h2>
+                <p class="subtitle" data-i18n="contact_subtitle">Estamos aquí para ayudarle. No dude en comunicarse con nosotros.</p>
 
                 <div class="contact-content">
                     <div class="contact-info">
-                        <h3>Información de Contacto</h3>
+                        <h3 data-i18n="contact_info_title">Información de Contacto</h3>
                         
                         <div class="contact-item">
-                            <h4>📍 Dirección</h4>
+                            <h4 data-i18n="contact_address_title">📍 Dirección</h4>
                             <p>Avenida Principal #123<br>
                             Zona Centro, Isla La Esperanza<br>
                             CP 12345</p>
                         </div>
 
                         <div class="contact-item">
-                            <h4>📞 Teléfonos</h4>
+                            <h4 data-i18n="contact_phone_title">📞 Teléfonos</h4>
                             <p>Oficina Principal: +123 456-7890<br>
                             Atención al Cliente: +123 456-7891<br>
                             Emergencias: +123 456-7892</p>
                         </div>
 
                         <div class="contact-item">
-                            <h4>📧 Correo Electrónico</h4>
+                            <h4 data-i18n="contact_email_title">📧 Correo Electrónico</h4>
                             <p>info@transportelaesperanza.com<br>
                             atencioncliente@transportelaesperanza.com<br>
                             quejas@transportelaesperanza.com</p>
                         </div>
 
                         <div class="contact-item">
-                            <h4>🕐 Horario de Atención</h4>
-                            <p>Lunes a Viernes: 6:00 AM - 8:00 PM<br>
-                            Sábados: 7:00 AM - 6:00 PM<br>
-                            Domingos: 8:00 AM - 2:00 PM</p>
+                            <h4 data-i18n="contact_hours_title">🕐 Horario de Atención</h4>
+                            <p data-i18n="contact_hours_weekdays">Lunes a Viernes: 6:00 AM - 8:00 PM</p>
+                            <p data-i18n="contact_hours_saturday">Sábados: 7:00 AM - 6:00 PM</p>
+                            <p data-i18n="contact_hours_sunday">Domingos: 8:00 AM - 2:00 PM</p>
                         </div>
 
                         <div class="contact-item">
@@ -83,25 +83,25 @@
                     </div>
 
                     <div class="contact-form-section">
-                        <h3>Envíenos un Mensaje</h3>
+                        <h3 data-i18n="contact_form_title">Envíenos un Mensaje</h3>
                         <form id="contactForm" class="contact-form">
                             <div class="form-group">
-                                <label for="nombre">Nombre Completo:</label>
+                                <label for="nombre" data-i18n="contact_form_name">Nombre Completo:</label>
                                 <input type="text" id="nombre" name="nombre" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="email">Correo Electrónico:</label>
+                                <label for="email" data-i18n="contact_form_email">Correo Electrónico:</label>
                                 <input type="email" id="email" name="email" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="telefono">Teléfono:</label>
+                                <label for="telefono" data-i18n="contact_form_phone">Teléfono:</label>
                                 <input type="tel" id="telefono" name="telefono">
                             </div>
 
                             <div class="form-group">
-                                <label for="asunto">Asunto:</label>
+                                <label for="asunto" data-i18n="contact_form_subject">Asunto:</label>
                                 <select id="asunto" name="asunto" required>
                                     <option value="">Seleccione un asunto</option>
                                     <option value="informacion">Solicitud de Información</option>
@@ -113,19 +113,19 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="mensaje">Mensaje:</label>
+                                <label for="mensaje" data-i18n="contact_form_message">Mensaje:</label>
                                 <textarea id="mensaje" name="mensaje" rows="6" required placeholder="Escriba su mensaje aquí..."></textarea>
                             </div>
 
                             <div class="form-actions">
-                                <button type="submit" class="btn-primary"><span>Enviar Mensaje</span></button>
+                                <button type="submit" class="btn-primary"><span data-i18n="contact_form_submit">Enviar Mensaje</span></button>
                                 <button type="reset" class="btn-secondary">Limpiar</button>
                             </div>
                         </form>
 
                         <div id="contactSuccessMessage" class="success-message" style="display: none;">
-                            <h3>¡Mensaje Enviado!</h3>
-                            <p>Gracias por contactarnos. Le responderemos a la brevedad posible.</p>
+                            <h3 data-i18n="contact_success_title">¡Mensaje Enviado!</h3>
+                            <p data-i18n="contact_success_text">Gracias por contactarnos. Le responderemos a la brevedad posible.</p>
                         </div>
                     </div>
                 </div>
@@ -135,11 +135,13 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Transporte La Esperanza. Todos los derechos reservados.</p>
-            <p>Conectando comunidades, construyendo futuro.</p>
+            <p>&copy; 2026 Transporte La Esperanza. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
+            <p data-i18n="footer_slogan">Conectando comunidades, construyendo futuro.</p>
         </div>
     </footer>
 
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
