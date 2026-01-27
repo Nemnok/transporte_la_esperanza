@@ -8,6 +8,7 @@ class LanguageSwitcher {
     init() {
         this.createLanguageSwitcher();
         this.applyTranslations(this.currentLanguage);
+        this.toggleWorkTab(this.currentLanguage);
         this.setupEventListeners();
     }
 
