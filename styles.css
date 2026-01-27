@@ -38,12 +38,59 @@ body {
 header {
     background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
     color: var(--white);
-    padding: 1rem 0;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     position: sticky;
     top: 0;
     z-index: 1000;
     animation: slideDown 0.5s ease-out;
+    transition: all 0.3s ease;
+}
+
+.header-content {
+    padding: 1rem 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+    max-height: 500px;
+    opacity: 1;
+    overflow: hidden;
+}
+
+header.collapsed .header-content {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+}
+
+.header-toggle {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: var(--primary-orange);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.header-toggle:hover {
+    background: var(--dark-orange);
+    transform: scale(1.1);
+}
+
+.header-toggle .toggle-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 1rem;
+}
+
+header.collapsed .header-toggle .toggle-icon {
+    transform: rotate(-180deg);
 }
 
 @keyframes slideDown {
@@ -950,6 +997,15 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .header-toggle {
+        display: block;
+    }
+
+    header {
+        padding-top: 50px;
+        position: relative;
+    }
+
     header h1 {
         font-size: 1.5rem;
     }
@@ -1042,5 +1098,217 @@ footer p {
     select {
         -webkit-appearance: none;
         border-radius: 4px;
+    }
+}
+
+/* Carta de Servicios Styles */
+.carta-section {
+    margin-bottom: 1.5rem;
+}
+
+.carta-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.carta-section h3 {
+    color: var(--primary-green);
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+    margin-bottom: 0.6rem;
+}
+
+.carta-section p {
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+}
+
+.service-list {
+    margin-top: 1.5rem;
+}
+
+.service-item {
+    background: var(--light-gray);
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-green);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.service-item h3 {
+    margin-top: 0;
+    color: var(--dark-green);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.contact-item {
+    background: var(--light-gray);
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.info-note {
+    background: #e8f5e9;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--primary-green);
+}
+
+.rights-obligations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.rights-box,
+.obligations-box {
+    background: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.rights-box {
+    border-top: 4px solid var(--primary-green);
+}
+
+.obligations-box {
+    border-top: 4px solid var(--primary-orange);
+}
+
+.rights-box h3,
+.obligations-box h3 {
+    margin-top: 0;
+}
+
+.rights-box ul,
+.obligations-box ul {
+    margin-left: 1.2rem;
+}
+
+.rights-box li,
+.obligations-box li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.normativa-list {
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.normativa-list li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.commitments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.commitment-card {
+    background: linear-gradient(145deg, var(--white) 0%, var(--light-gray) 100%);
+    padding: 1.2rem;
+    border-radius: 8px;
+    text-align: center;
+    border-top: 3px solid var(--primary-green);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.commitment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.2);
+}
+
+.commitment-card h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    color: var(--dark-green);
+}
+
+.commitment-card p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+.communication-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.communication-box {
+    background: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-orange);
+}
+
+.communication-box h3 {
+    margin-top: 0;
+    color: var(--dark-green);
+}
+
+.communication-box ul {
+    margin-left: 1.2rem;
+}
+
+.communication-box li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.carta-footer {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem;
+}
+
+.carta-footer h2 {
+    color: var(--white);
+    border: none;
+    margin-bottom: 0.5rem;
+}
+
+.carta-footer h2::after {
+    display: none;
+}
+
+.carta-footer .motto {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .carta-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .rights-obligations,
+    .communication-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .commitments-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 }

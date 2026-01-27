@@ -11,6 +11,26 @@ window.addEventListener('load', function() {
     }
 });
 
+// Header toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const headerToggle = document.getElementById('headerToggle');
+    const header = document.getElementById('main-header');
+    
+    if (headerToggle && header) {
+        // Check if user preference exists
+        const headerCollapsed = localStorage.getItem('headerCollapsed') === 'true';
+        if (headerCollapsed) {
+            header.classList.add('collapsed');
+        }
+
+        headerToggle.addEventListener('click', function() {
+            header.classList.toggle('collapsed');
+            // Save user preference
+            localStorage.setItem('headerCollapsed', header.classList.contains('collapsed'));
+        });
+    }
+});
+
 // Scroll animations
 const observerOptions = {
     threshold: 0.1,
