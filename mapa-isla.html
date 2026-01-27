@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de la Isla - Transporte La Esperanza</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>🚌 Transporte La Esperanza</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cuestionario.html">Cuestionario</a></li>
+                    <li><a href="contacto.html">Contáctenos</a></li>
+                    <li><a href="trabajar.html">Trabaja con Nosotros</a></li>
+                    <li><a href="mapa-servicio.html">Mapa de Servicio</a></li>
+                    <li><a href="mapa-isla.html" class="active">Mapa de la Isla</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="island-map">
+            <div class="container">
+                <h2>Mapa de la Isla con Paradas de Autobús</h2>
+                
+                <div class="warning-notice">
+                    <h3>⚠️ AVISO IMPORTANTE</h3>
+                    <p><strong>Este mapa interactivo aún no está operativo.</strong></p>
+                    <p>Estamos trabajando en implementar un sistema de mapas interactivo que mostrará todas las paradas de autobús en tiempo real. Por favor, consulte la información de rutas en la página de <a href="mapa-servicio.html">Mapa de Servicio</a> o comuníquese con nosotros para obtener información sobre paradas específicas.</p>
+                </div>
+
+                <div class="map-placeholder">
+                    <div class="map-container">
+                        <div class="coming-soon-overlay">
+                            <h3>🗺️ Mapa Interactivo</h3>
+                            <p>Próximamente Disponible</p>
+                            <div class="features-coming">
+                                <p>✓ Ubicación de todas las paradas</p>
+                                <p>✓ Rutas en tiempo real</p>
+                                <p>✓ Búsqueda de paradas cercanas</p>
+                                <p>✓ Horarios por parada</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Placeholder map visualization -->
+                        <svg viewBox="0 0 800 600" class="placeholder-svg">
+                            <!-- Island outline -->
+                            <ellipse cx="400" cy="300" rx="350" ry="250" fill="#e8f5e9" stroke="#4caf50" stroke-width="3"/>
+                            
+                            <!-- Central area -->
+                            <circle cx="400" cy="300" r="30" fill="#ff9800" opacity="0.5"/>
+                            <text x="400" y="305" text-anchor="middle" font-size="12" fill="#000">Centro</text>
+                            
+                            <!-- North stops -->
+                            <circle cx="400" cy="150" r="8" fill="#2196f3"/>
+                            <text x="400" y="140" text-anchor="middle" font-size="10">Parada Norte 1</text>
+                            <circle cx="350" cy="180" r="8" fill="#2196f3"/>
+                            <text x="350" y="170" text-anchor="middle" font-size="10">Parada Norte 2</text>
+                            <circle cx="450" cy="180" r="8" fill="#2196f3"/>
+                            <text x="450" y="170" text-anchor="middle" font-size="10">Parada Norte 3</text>
+                            
+                            <!-- South stops -->
+                            <circle cx="400" cy="450" r="8" fill="#f44336"/>
+                            <text x="400" y="470" text-anchor="middle" font-size="10">Parada Sur 1</text>
+                            <circle cx="350" cy="420" r="8" fill="#f44336"/>
+                            <text x="350" y="440" text-anchor="middle" font-size="10">Parada Sur 2</text>
+                            <circle cx="450" cy="420" r="8" fill="#f44336"/>
+                            <text x="450" y="440" text-anchor="middle" font-size="10">Parada Sur 3</text>
+                            
+                            <!-- East stops -->
+                            <circle cx="600" cy="300" r="8" fill="#4caf50"/>
+                            <text x="600" y="290" text-anchor="middle" font-size="10">Parada Este 1</text>
+                            <circle cx="550" cy="270" r="8" fill="#4caf50"/>
+                            <text x="550" y="260" text-anchor="middle" font-size="10">Parada Este 2</text>
+                            <circle cx="550" cy="330" r="8" fill="#4caf50"/>
+                            <text x="550" y="350" text-anchor="middle" font-size="10">Parada Este 3</text>
+                            
+                            <!-- West stops -->
+                            <circle cx="200" cy="300" r="8" fill="#ffeb3b"/>
+                            <text x="200" y="290" text-anchor="middle" font-size="10">Parada Oeste 1</text>
+                            <circle cx="250" cy="270" r="8" fill="#ffeb3b"/>
+                            <text x="250" y="260" text-anchor="middle" font-size="10">Parada Oeste 2</text>
+                            <circle cx="250" cy="330" r="8" fill="#ffeb3b"/>
+                            <text x="250" y="350" text-anchor="middle" font-size="10">Parada Oeste 3</text>
+                            
+                            <!-- Route lines (simplified) -->
+                            <line x1="400" y1="150" x2="400" y2="450" stroke="#2196f3" stroke-width="2" stroke-dasharray="5,5" opacity="0.5"/>
+                            <line x1="200" y1="300" x2="600" y2="300" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,5" opacity="0.5"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="stops-list">
+                    <h3>Principales Paradas de Autobús</h3>
+                    
+                    <div class="stops-section">
+                        <h4>🔵 Zona Norte</h4>
+                        <ul class="stops-grid">
+                            <li>Terminal Norte</li>
+                            <li>Universidad</li>
+                            <li>Hospital Regional</li>
+                            <li>Zona Industrial Norte</li>
+                            <li>Mercado Municipal</li>
+                        </ul>
+                    </div>
+
+                    <div class="stops-section">
+                        <h4>🔴 Zona Sur</h4>
+                        <ul class="stops-grid">
+                            <li>Terminal Sur</li>
+                            <li>Playa Principal</li>
+                            <li>Zona Turística</li>
+                            <li>Centro Comercial</li>
+                            <li>Parque Principal</li>
+                        </ul>
+                    </div>
+
+                    <div class="stops-section">
+                        <h4>🟢 Zona Este</h4>
+                        <ul class="stops-grid">
+                            <li>Aeropuerto</li>
+                            <li>Zona Comercial Este</li>
+                            <li>Zona Residencial Este</li>
+                            <li>Estadio Municipal</li>
+                        </ul>
+                    </div>
+
+                    <div class="stops-section">
+                        <h4>🟡 Zona Oeste</h4>
+                        <ul class="stops-grid">
+                            <li>Mirador Oeste</li>
+                            <li>Zona Rural Oeste</li>
+                            <li>Cementerio</li>
+                            <li>Iglesia Principal</li>
+                        </ul>
+                    </div>
+
+                    <div class="stops-section">
+                        <h4>🟠 Zona Centro</h4>
+                        <ul class="stops-grid">
+                            <li>Plaza Central</li>
+                            <li>Catedral</li>
+                            <li>Palacio Municipal</li>
+                            <li>Biblioteca Central</li>
+                            <li>Estación de Policía</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="map-info">
+                    <h3>Información Útil</h3>
+                    <div class="info-boxes">
+                        <div class="info-box">
+                            <h4>📍 Cómo Encontrar una Parada</h4>
+                            <p>Todas nuestras paradas están identificadas con señalización verde con nuestro logo. También puede preguntar a nuestros conductores sobre la parada más cercana a su destino.</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>🕐 Consultar Horarios</h4>
+                            <p>Visite nuestra página de <a href="mapa-servicio.html">Mapa de Servicio</a> para conocer los horarios de cada ruta, o llámenos al +123 456-7890.</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>📱 Aplicación Móvil (Próximamente)</h4>
+                            <p>Estamos desarrollando una aplicación móvil que le permitirá ver el mapa interactivo, consultar horarios y rastrear autobuses en tiempo real.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-cta">
+                    <h3>¿Necesita Más Información?</h3>
+                    <p>Si tiene preguntas sobre paradas, rutas u horarios, no dude en contactarnos.</p>
+                    <a href="contacto.html" class="btn-primary">Contáctenos</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Transporte La Esperanza. Todos los derechos reservados.</p>
+            <p>Conectando comunidades, construyendo futuro.</p>
+        </div>
+    </footer>
+</body>
+</html>

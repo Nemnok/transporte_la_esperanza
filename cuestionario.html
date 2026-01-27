@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario - Transporte La Esperanza</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>🚌 Transporte La Esperanza</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cuestionario.html" class="active">Cuestionario</a></li>
+                    <li><a href="contacto.html">Contáctenos</a></li>
+                    <li><a href="trabajar.html">Trabaja con Nosotros</a></li>
+                    <li><a href="mapa-servicio.html">Mapa de Servicio</a></li>
+                    <li><a href="mapa-isla.html">Mapa de la Isla</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="questionnaire">
+            <div class="container">
+                <h2>Encuesta de Satisfacción</h2>
+                <p class="subtitle">Transporte Ecológico La Esperanza - Carnaval de Tenerife</p>
+                <p class="intro-text">Tu opinión es muy importante para seguir mejorando el transporte sostenible durante el Carnaval.</p>
+
+                <form id="questionnaireForm" class="form-container">
+                    <div class="form-section">
+                        <h3>1. ¿Cómo te enteraste del servicio de Transporte Ecológico La Esperanza?</h3>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="enteraste" value="redes"> Redes sociales</label>
+                            <label><input type="checkbox" name="enteraste" value="recomendacion"> Recomendación de amigos/familia</label>
+                            <label><input type="checkbox" name="enteraste" value="hoteles"> Hoteles</label>
+                            <label><input type="checkbox" name="enteraste" value="publicidad"> Publicidad/carteles</label>
+                            <label><input type="checkbox" name="enteraste" value="web"> Web oficial</label>
+                            <label class="with-text">
+                                <input type="checkbox" name="enteraste" value="otro"> Otro:
+                                <input type="text" name="enteraste_otro" placeholder="Especifique">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>2. ¿Con qué frecuencia utilizaste el servicio durante el Carnaval?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="frecuencia" value="una" required> Una vez</label>
+                            <label><input type="radio" name="frecuencia" value="2-3"> 2–3 veces</label>
+                            <label><input type="radio" name="frecuencia" value="mas3"> Más de 3 veces</label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>3. Valora los siguientes aspectos del servicio</h3>
+                        <p class="scale-label">(1 = Muy malo / 5 = Excelente)</p>
+                        
+                        <div class="rating-table">
+                            <div class="rating-row">
+                                <div class="aspect-label">Puntualidad</div>
+                                <div class="rating-options">
+                                    <label><input type="radio" name="rating_puntualidad" value="1" required><span>1</span></label>
+                                    <label><input type="radio" name="rating_puntualidad" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="rating_puntualidad" value="3"><span>3</span></label>
+                                    <label><input type="radio" name="rating_puntualidad" value="4"><span>4</span></label>
+                                    <label><input type="radio" name="rating_puntualidad" value="5"><span>5</span></label>
+                                </div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="aspect-label">Comodidad del transporte</div>
+                                <div class="rating-options">
+                                    <label><input type="radio" name="rating_comodidad" value="1" required><span>1</span></label>
+                                    <label><input type="radio" name="rating_comodidad" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="rating_comodidad" value="3"><span>3</span></label>
+                                    <label><input type="radio" name="rating_comodidad" value="4"><span>4</span></label>
+                                    <label><input type="radio" name="rating_comodidad" value="5"><span>5</span></label>
+                                </div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="aspect-label">Limpieza</div>
+                                <div class="rating-options">
+                                    <label><input type="radio" name="rating_limpieza" value="1" required><span>1</span></label>
+                                    <label><input type="radio" name="rating_limpieza" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="rating_limpieza" value="3"><span>3</span></label>
+                                    <label><input type="radio" name="rating_limpieza" value="4"><span>4</span></label>
+                                    <label><input type="radio" name="rating_limpieza" value="5"><span>5</span></label>
+                                </div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="aspect-label">Trato del personal</div>
+                                <div class="rating-options">
+                                    <label><input type="radio" name="rating_trato" value="1" required><span>1</span></label>
+                                    <label><input type="radio" name="rating_trato" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="rating_trato" value="3"><span>3</span></label>
+                                    <label><input type="radio" name="rating_trato" value="4"><span>4</span></label>
+                                    <label><input type="radio" name="rating_trato" value="5"><span>5</span></label>
+                                </div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="aspect-label">Información y señalización</div>
+                                <div class="rating-options">
+                                    <label><input type="radio" name="rating_informacion" value="1" required><span>1</span></label>
+                                    <label><input type="radio" name="rating_informacion" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="rating_informacion" value="3"><span>3</span></label>
+                                    <label><input type="radio" name="rating_informacion" value="4"><span>4</span></label>
+                                    <label><input type="radio" name="rating_informacion" value="5"><span>5</span></label>
+                                </div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="aspect-label">Compromiso ecológico</div>
+                                <div class="rating-options">
+                                    <label><input type="radio" name="rating_ecologico" value="1" required><span>1</span></label>
+                                    <label><input type="radio" name="rating_ecologico" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="rating_ecologico" value="3"><span>3</span></label>
+                                    <label><input type="radio" name="rating_ecologico" value="4"><span>4</span></label>
+                                    <label><input type="radio" name="rating_ecologico" value="5"><span>5</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>4. ¿Te sentiste seguro/a durante el trayecto?</h3>
+                        <p class="scale-label">(1 = Inseguro / 5 = Muy seguro)</p>
+                        <div class="rating-scale">
+                            <label><input type="radio" name="seguridad" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="seguridad" value="2"><span>2</span></label>
+                            <label><input type="radio" name="seguridad" value="3"><span>3</span></label>
+                            <label><input type="radio" name="seguridad" value="4"><span>4</span></label>
+                            <label><input type="radio" name="seguridad" value="5"><span>5</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>5. En general, ¿qué tan satisfecho/a estás con el servicio?</h3>
+                        <p class="scale-label">(1 = Insatisfecho / 5 = Muy satisfecho)</p>
+                        <div class="rating-scale">
+                            <label><input type="radio" name="satisfaccion" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="satisfaccion" value="2"><span>2</span></label>
+                            <label><input type="radio" name="satisfaccion" value="3"><span>3</span></label>
+                            <label><input type="radio" name="satisfaccion" value="4"><span>4</span></label>
+                            <label><input type="radio" name="satisfaccion" value="5"><span>5</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>6. ¿Cómo valorarías la accesibilidad?</h3>
+                        <p class="scale-label">(1 = Difícil accesibilidad / 5 = Muy accesible)</p>
+                        <div class="rating-scale">
+                            <label><input type="radio" name="accesibilidad" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="accesibilidad" value="2"><span>2</span></label>
+                            <label><input type="radio" name="accesibilidad" value="3"><span>3</span></label>
+                            <label><input type="radio" name="accesibilidad" value="4"><span>4</span></label>
+                            <label><input type="radio" name="accesibilidad" value="5"><span>5</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>7. ¿Recomendarías este servicio a otras personas?</h3>
+                        <p class="scale-label">(1 = No lo recomendaría / 5 = Lo recomendaría)</p>
+                        <div class="rating-scale">
+                            <label><input type="radio" name="recomendaria" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="recomendaria" value="2"><span>2</span></label>
+                            <label><input type="radio" name="recomendaria" value="3"><span>3</span></label>
+                            <label><input type="radio" name="recomendaria" value="4"><span>4</span></label>
+                            <label><input type="radio" name="recomendaria" value="5"><span>5</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>8. ¿Cómo valoras el precio?</h3>
+                        <p class="scale-label">(1 = Excesivo / 5 = Se ajusta a la calidad)</p>
+                        <div class="rating-scale">
+                            <label><input type="radio" name="precio" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="precio" value="2"><span>2</span></label>
+                            <label><input type="radio" name="precio" value="3"><span>3</span></label>
+                            <label><input type="radio" name="precio" value="4"><span>4</span></label>
+                            <label><input type="radio" name="precio" value="5"><span>5</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>9. ¿Volverías a utilizar este servicio en futuros eventos?</h3>
+                        <p class="scale-label">(1 = Nunca / 5 = Seguramente)</p>
+                        <div class="rating-scale">
+                            <label><input type="radio" name="volveria" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="volveria" value="2"><span>2</span></label>
+                            <label><input type="radio" name="volveria" value="3"><span>3</span></label>
+                            <label><input type="radio" name="volveria" value="4"><span>4</span></label>
+                            <label><input type="radio" name="volveria" value="5"><span>5</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>10. ¿El servicio transmite una imagen de empresa comprometida con la calidad y la imagen ecológica?</h3>
+                        <div class="rating-scale">
+                            <label><input type="radio" name="imagen" value="1" required><span>1</span></label>
+                            <label><input type="radio" name="imagen" value="2"><span>2</span></label>
+                            <label><input type="radio" name="imagen" value="3"><span>3</span></label>
+                            <label><input type="radio" name="imagen" value="4"><span>4</span></label>
+                            <label><input type="radio" name="imagen" value="5"><span>5</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>11. ¿Qué es lo que más te gustó del servicio?</h3>
+                        <div class="form-group">
+                            <textarea name="mas_gusto" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>12. ¿Qué aspectos crees que podríamos mejorar?</h3>
+                        <div class="form-group">
+                            <textarea name="mejorar" rows="5" placeholder="Escribe tu respuesta aquí..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>13. ¿Alguna sugerencia?</h3>
+                        <div class="form-group">
+                            <textarea name="sugerencias" rows="6" placeholder="Escribe tu respuesta aquí..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary"><span>Enviar Encuesta</span></button>
+                        <button type="reset" class="btn-secondary">Limpiar Formulario</button>
+                    </div>
+                </form>
+
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <h3>¡Gracias por utilizar nuestro servicio!</h3>
+                    <p>Tu opinión es muy importante para seguir mejorando el transporte sostenible durante el Carnaval.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Transporte La Esperanza. Todos los derechos reservados.</p>
+            <p>Conectando comunidades, construyendo futuro.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
