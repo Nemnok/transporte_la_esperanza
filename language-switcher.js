@@ -208,12 +208,10 @@ class LanguageSwitcher {
 
 // Initialize language switcher when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Small delay to ensure translations.js is loaded
-    setTimeout(() => {
-        if (typeof translations !== 'undefined') {
-            window.languageSwitcher = new LanguageSwitcher();
-        } else {
-            console.error('Translations not loaded');
-        }
-    }, 100);
+    // Check if translations are loaded
+    if (typeof translations !== 'undefined') {
+        window.languageSwitcher = new LanguageSwitcher();
+    } else {
+        console.error('Translations not loaded. Please ensure translations.js is loaded before language-switcher.js');
+    }
 });

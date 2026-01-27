@@ -56,9 +56,9 @@ const translations = {
         contact_phone_title: "📞 Teléfono",
         contact_email_title: "✉️ Email",
         contact_hours_title: "🕐 Horario de Atención",
-        contact_hours_weekdays: "Lunes a Viernes: 8:00 AM - 6:00 PM",
-        contact_hours_saturday: "Sábado: 9:00 AM - 2:00 PM",
-        contact_hours_sunday: "Domingo: Cerrado",
+        contact_hours_weekdays: "Lunes a Viernes: 6:00 AM - 8:00 PM",
+        contact_hours_saturday: "Sábados: 7:00 AM - 6:00 PM",
+        contact_hours_sunday: "Domingos: 8:00 AM - 2:00 PM",
         contact_form_title: "Formulario de Contacto",
         contact_form_name: "Nombre completo",
         contact_form_email: "Correo electrónico",
@@ -82,7 +82,7 @@ const translations = {
         service_map_subtitle: "Conozca nuestras rutas, horarios y tarifas.",
         
         // Island map page
-        island_map_title: "Mapa de la Isla",
+        island_map_title: "Mapa de la Isla con Paradas de Autobús",
         island_map_subtitle: "Explore nuestra red de cobertura en toda la isla.",
         
         // Service Charter page
@@ -146,9 +146,9 @@ const translations = {
         contact_phone_title: "📞 Phone",
         contact_email_title: "✉️ Email",
         contact_hours_title: "🕐 Business Hours",
-        contact_hours_weekdays: "Monday to Friday: 8:00 AM - 6:00 PM",
-        contact_hours_saturday: "Saturday: 9:00 AM - 2:00 PM",
-        contact_hours_sunday: "Sunday: Closed",
+        contact_hours_weekdays: "Monday to Friday: 6:00 AM - 8:00 PM",
+        contact_hours_saturday: "Saturdays: 7:00 AM - 6:00 PM",
+        contact_hours_sunday: "Sundays: 8:00 AM - 2:00 PM",
         contact_form_title: "Contact Form",
         contact_form_name: "Full name",
         contact_form_email: "Email address",
@@ -172,7 +172,7 @@ const translations = {
         service_map_subtitle: "Learn about our routes, schedules and fares.",
         
         // Island map page
-        island_map_title: "Island Map",
+        island_map_title: "Island Map with Bus Stops",
         island_map_subtitle: "Explore our coverage network across the island.",
         
         // Service Charter page
@@ -236,9 +236,9 @@ const translations = {
         contact_phone_title: "📞 Telefon",
         contact_email_title: "✉️ E-Mail",
         contact_hours_title: "🕐 Geschäftszeiten",
-        contact_hours_weekdays: "Montag bis Freitag: 8:00 - 18:00 Uhr",
-        contact_hours_saturday: "Samstag: 9:00 - 14:00 Uhr",
-        contact_hours_sunday: "Sonntag: Geschlossen",
+        contact_hours_weekdays: "Montag bis Freitag: 6:00 - 20:00 Uhr",
+        contact_hours_saturday: "Samstags: 7:00 - 18:00 Uhr",
+        contact_hours_sunday: "Sonntags: 8:00 - 14:00 Uhr",
         contact_form_title: "Kontaktformular",
         contact_form_name: "Vollständiger Name",
         contact_form_email: "E-Mail-Adresse",
@@ -262,7 +262,7 @@ const translations = {
         service_map_subtitle: "Erfahren Sie mehr über unsere Routen, Fahrpläne und Tarife.",
         
         // Island map page
-        island_map_title: "Inselkarte",
+        island_map_title: "Inselkarte mit Bushaltestellen",
         island_map_subtitle: "Erkunden Sie unser Abdeckungsnetzwerk auf der gesamten Insel.",
         
         // Service Charter page
@@ -326,9 +326,9 @@ const translations = {
         contact_phone_title: "📞 Téléphone",
         contact_email_title: "✉️ Email",
         contact_hours_title: "🕐 Heures d'Ouverture",
-        contact_hours_weekdays: "Lundi au Vendredi: 8h00 - 18h00",
-        contact_hours_saturday: "Samedi: 9h00 - 14h00",
-        contact_hours_sunday: "Dimanche: Fermé",
+        contact_hours_weekdays: "Lundi au Vendredi: 6h00 - 20h00",
+        contact_hours_saturday: "Samedis: 7h00 - 18h00",
+        contact_hours_sunday: "Dimanches: 8h00 - 14h00",
         contact_form_title: "Formulaire de Contact",
         contact_form_name: "Nom complet",
         contact_form_email: "Adresse email",
@@ -352,7 +352,7 @@ const translations = {
         service_map_subtitle: "Découvrez nos itinéraires, horaires et tarifs.",
         
         // Island map page
-        island_map_title: "Carte de l'Île",
+        island_map_title: "Carte de l'Île avec Arrêts de Bus",
         island_map_subtitle: "Explorez notre réseau de couverture sur toute l'île.",
         
         // Service Charter page
@@ -416,9 +416,9 @@ const translations = {
         contact_phone_title: "📞 Телефон",
         contact_email_title: "✉️ Email",
         contact_hours_title: "🕐 Часы Работы",
-        contact_hours_weekdays: "Понедельник - Пятница: 8:00 - 18:00",
-        contact_hours_saturday: "Суббота: 9:00 - 14:00",
-        contact_hours_sunday: "Воскресенье: Закрыто",
+        contact_hours_weekdays: "Понедельник - Пятница: 6:00 - 20:00",
+        contact_hours_saturday: "Субботы: 7:00 - 18:00",
+        contact_hours_sunday: "Воскресенья: 8:00 - 14:00",
         contact_form_title: "Контактная Форма",
         contact_form_name: "Полное имя",
         contact_form_email: "Адрес электронной почты",
@@ -442,7 +442,7 @@ const translations = {
         service_map_subtitle: "Узнайте о наших маршрутах, расписаниях и тарифах.",
         
         // Island map page
-        island_map_title: "Карта Острова",
+        island_map_title: "Карта Острова с Остановками",
         island_map_subtitle: "Изучите нашу сеть покрытия по всему острову.",
         
         // Service Charter page
