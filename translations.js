@@ -75,7 +75,6 @@ const translations = {
         // Questionnaire page
         page_title_questionnaire: "Cuestionario - Transporte La Esperanza",
         site_title: "🚌 Transporte La Esperanza",
-        nav_jobs: "Trabaja con Nosotros",
         questionnaire_title: "Encuesta de Satisfacción",
         questionnaire_subtitle: "Transporte Ecológico La Esperanza - Carnaval de Tenerife",
         questionnaire_intro: "Tu opinión es muy importante para seguir mejorando el transporte sostenible durante el Carnaval.",
@@ -438,7 +437,6 @@ const translations = {
         // Questionnaire page
         page_title_questionnaire: "Questionnaire - Transporte La Esperanza",
         site_title: "🚌 Transporte La Esperanza",
-        nav_jobs: "Work With Us",
         questionnaire_title: "Satisfaction Survey",
         questionnaire_subtitle: "Transporte Ecológico La Esperanza - Tenerife Carnival",
         questionnaire_intro: "Your opinion is very important to continue improving sustainable transportation during Carnival.",
@@ -801,7 +799,6 @@ const translations = {
         // Questionnaire page
         page_title_questionnaire: "Fragebogen - Transporte La Esperanza",
         site_title: "🚌 Transporte La Esperanza",
-        nav_jobs: "Arbeiten Sie mit uns",
         questionnaire_title: "Zufriedenheitsumfrage",
         questionnaire_subtitle: "Transporte Ecológico La Esperanza - Karneval von Teneriffa",
         questionnaire_intro: "Ihre Meinung ist sehr wichtig, um den nachhaltigen Transport während des Karnevals weiter zu verbessern.",
@@ -1164,7 +1161,6 @@ const translations = {
         // Questionnaire page
         page_title_questionnaire: "Questionnaire - Transporte La Esperanza",
         site_title: "🚌 Transporte La Esperanza",
-        nav_jobs: "Travaillez avec nous",
         questionnaire_title: "Enquête de Satisfaction",
         questionnaire_subtitle: "Transporte Ecológico La Esperanza - Carnaval de Tenerife",
         questionnaire_intro: "Votre opinion est très importante pour continuer à améliorer le transport durable pendant le Carnaval.",
@@ -1527,7 +1523,6 @@ const translations = {
         // Questionnaire page
         page_title_questionnaire: "Анкета - Transporte La Esperanza",
         site_title: "🚌 Transporte La Esperanza",
-        nav_jobs: "Работайте с нами",
         questionnaire_title: "Опрос Удовлетворённости",
         questionnaire_subtitle: "Transporte Ecológico La Esperanza - Карнавал Тенерифе",
         questionnaire_intro: "Ваше мнение очень важно для продолжения улучшения устойчивого транспорта во время Карнавала.",
