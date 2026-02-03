@@ -17,6 +17,34 @@
  * - OpenStreetMap: https://www.openstreetmap.org (las coordenadas aparecen en la URL)
  * 
  * ============================================================================
+ * 
+ * CÓMO AGREGAR UNA NUEVA LÍNEA:
+ * 
+ * 1. Copie la plantilla de abajo y péguela en la sección ROUTES_DATA
+ * 2. Cambie el ID del número (ej: 9, 10, 11...)
+ * 3. Configure los datos de la línea
+ * 4. Añada el color en ROUTE_COLORS
+ * 5. Guarde el archivo y recargue la página
+ * 
+ * PLANTILLA PARA NUEVA LÍNEA:
+ * 
+ * 9: {
+ *     id: 9,
+ *     name: 'Línea 9: Nombre de la Línea',
+ *     shortName: 'NombreCorto',
+ *     description: 'Origen → Destino',
+ *     buses: '1 guagua grande',
+ *     busIcon: '🚌',  // Use 🚌 para grande, 🚐 para mini
+ *     objective: 'Descripción del objetivo de la línea',
+ *     stops: [
+ *         { name: 'Primera Parada', coords: [28.XXXX, -16.XXXX] },
+ *         { name: 'Segunda Parada', coords: [28.XXXX, -16.XXXX] },
+ *         // ... más paradas
+ *     ],
+ *     returnStops: 'Santa Cruz → Parada2 → Parada1 → La Esperanza'
+ * },
+ * 
+ * ============================================================================
  */
 
 // Configuración del mapa
@@ -399,6 +427,98 @@ function getStopsWithIntercambiador(routeId) {
     return stops;
 }
 
+/**
+ * ============================================================================
+ * FUNCIONES PARA AGREGAR NUEVAS LÍNEAS DINÁMICAMENTE
+ * ============================================================================
+ * 
+ * Estas funciones permiten agregar nuevas líneas sin modificar el código
+ * existente. Simplemente llame a addNewRoute() con los datos de la línea.
+ * 
+ * Ejemplo de uso:
+ * 
+ * addNewRoute({
+ *     id: 9,
+ *     name: 'Línea 9: Costa Este',
+ *     shortName: 'Costa Este',
+ *     description: 'El Médano → Costa del Silencio → Santa Cruz',
+ *     buses: '2 guaguas grandes',
+ *     busIcon: '🚌',
+ *     color: '#607d8b',  // Color gris azulado
+ *     stops: [
+ *         { name: 'El Médano – Plaza', coords: [28.0445, -16.5400] },
+ *         { name: 'Costa del Silencio', coords: [28.0050, -16.6300] },
+ *         // El intercambiador se añade automáticamente
+ *     ],
+ *     returnStops: 'Santa Cruz → Costa del Silencio → El Médano → La Esperanza'
+ * });
+ * 
+ * ============================================================================
+ */
+
+/**
+ * Agregar una nueva ruta al sistema
+ * @param {Object} routeConfig - Configuración de la ruta
+ * @param {number} routeConfig.id - ID único de la ruta
+ * @param {string} routeConfig.name - Nombre completo de la línea
+ * @param {string} routeConfig.shortName - Nombre corto para la leyenda
+ * @param {string} routeConfig.description - Descripción de la ruta
+ * @param {string} routeConfig.buses - Descripción de los buses asignados
+ * @param {string} routeConfig.busIcon - Emoji del bus (🚌 o 🚐)
+ * @param {string} routeConfig.color - Color hexadecimal para la línea
+ * @param {Array} routeConfig.stops - Array de paradas [{name, coords: [lat, lng]}]
+ * @param {string} routeConfig.returnStops - Descripción de las paradas de vuelta
+ * @param {boolean} [routeConfig.isExpress=false] - Si es línea exprés (punteada)
+ */
+function addNewRoute(routeConfig) {
+    const { id, color, ...routeData } = routeConfig;
+    
+    // Validar que el ID no existe
+    if (ROUTES_DATA[id]) {
+        console.error(`Error: La línea ${id} ya existe. Use un ID diferente.`);
+        return false;
+    }
+    
+    // Agregar color si se proporciona
+    if (color) {
+        ROUTE_COLORS[id] = color;
+    }
+    
+    // Agregar la ruta
+    ROUTES_DATA[id] = {
+        id,
+        ...routeData
+    };
+    
+    console.log(`✅ Línea ${id}: "${routeConfig.name}" agregada correctamente`);
+    return true;
+}
+
+/**
+ * Obtener el próximo ID disponible para una nueva línea
+ * @returns {number} - Próximo ID disponible
+ */
+function getNextRouteId() {
+    const existingIds = Object.keys(ROUTES_DATA).map(id => parseInt(id));
+    if (existingIds.length === 0) {
+        return 1; // Start with ID 1 if no routes exist
+    }
+    return Math.max(...existingIds) + 1;
+}
+
+/**
+ * Listar todas las líneas configuradas
+ * @returns {Array} - Array con información resumida de cada línea
+ */
+function listAllRoutes() {
+    return Object.values(ROUTES_DATA).map(route => ({
+        id: route.id,
+        name: route.name,
+        stops: route.stops.length,
+        buses: route.buses
+    }));
+}
+
 // Exportar para uso en otros archivos (si se usa como módulo)
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
@@ -411,6 +531,9 @@ if (typeof module !== 'undefined' && module.exports) {
         getRouteColor,
         getMapConfig,
         getSpecialPoints,
-        getStopsWithIntercambiador
+        getStopsWithIntercambiador,
+        addNewRoute,
+        getNextRouteId,
+        listAllRoutes
     };
 }
