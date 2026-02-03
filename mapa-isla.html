@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa de la Isla - Transporte La Esperanza</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!-- MapLibre GL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
     <style>
         #tenerife-map {
             width: 100%;
@@ -94,8 +94,10 @@
             background: var(--dark-green);
             transform: translateY(-2px);
         }
-        .leaflet-popup-content {
+        .maplibregl-popup-content {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 1rem;
+            border-radius: 8px;
         }
         .popup-stop-name {
             font-weight: bold;
@@ -284,12 +286,12 @@
     <script src="script.js"></script>
     <!-- Routes Configuration File - EDITAR ESTE ARCHIVO PARA CAMBIAR RUTAS -->
     <script src="routes-data.js"></script>
-    <!-- Leaflet JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjLQoIwMNhCnDv6+NA===" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- MapLibre GL JS -->
+    <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
     <script>
         /**
          * ====================================================================
-         * MAPA INTERACTIVO DE TENERIFE
+         * MAPA INTERACTIVO DE TENERIFE - MapLibre GL JS
          * ====================================================================
          * 
          * Este script lee la configuración de rutas desde routes-data.js
@@ -304,107 +306,208 @@
         const routesData = getRoutesData();
         const routeColors = ROUTE_COLORS;
 
-        // Initialize the map centered on Tenerife
-        const map = L.map('tenerife-map').setView(mapConfig.center, mapConfig.defaultZoom);
+        // Initialize the map centered on Tenerife using MapLibre GL
+        const map = new maplibregl.Map({
+            container: 'tenerife-map',
+            style: {
+                version: 8,
+                sources: {
+                    osm: {
+                        type: 'raster',
+                        tiles: [
+                            'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                            'https://b.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                            'https://c.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                        ],
+                        tileSize: 256,
+                        attribution: '© OpenStreetMap contributors'
+                    }
+                },
+                layers: [
+                    {
+                        id: 'osm-tiles',
+                        type: 'raster',
+                        source: 'osm',
+                        minzoom: 0,
+                        maxzoom: 19
+                    }
+                ]
+            },
+            center: [mapConfig.center[1], mapConfig.center[0]], // MapLibre uses [lng, lat]
+            zoom: mapConfig.defaultZoom,
+            maxZoom: mapConfig.maxZoom
+        });
 
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: mapConfig.maxZoom,
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
+        // Add navigation controls
+        map.addControl(new maplibregl.NavigationControl(), 'top-right');
 
-        // Store polylines and markers for each route
+        // Store route layers and markers for toggling
         const routeLayers = {};
+        const routeMarkers = {};
 
-        // Create custom bus stop icon
-        function createStopIcon(color) {
-            return L.divIcon({
-                className: 'custom-stop-icon',
-                html: `<div style="background-color: ${color}; width: 14px; height: 14px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);"></div>`,
-                iconSize: [20, 20],
-                iconAnchor: [10, 10]
-            });
+        // Create marker element for stops
+        function createStopMarker(color) {
+            const el = document.createElement('div');
+            el.style.width = '14px';
+            el.style.height = '14px';
+            el.style.borderRadius = '50%';
+            el.style.backgroundColor = color;
+            el.style.border = '3px solid white';
+            el.style.boxShadow = '0 2px 6px rgba(0,0,0,0.3)';
+            return el;
         }
 
-        // Create special icon for Santa Cruz Intercambiador
-        const santaCruzIcon = L.divIcon({
-            className: 'custom-santa-cruz-icon',
-            html: `<div style="background-color: #ff5722; width: 24px; height: 24px; border-radius: 50%; border: 4px solid white; box-shadow: 0 3px 10px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; font-size: 12px;">${specialPoints.santaCruzIntercambiador.icon}</div>`,
-            iconSize: [32, 32],
-            iconAnchor: [16, 16]
+        // Create special marker for Santa Cruz Intercambiador
+        function createSantaCruzMarker() {
+            const el = document.createElement('div');
+            el.style.width = '24px';
+            el.style.height = '24px';
+            el.style.borderRadius = '50%';
+            el.style.backgroundColor = '#ff5722';
+            el.style.border = '4px solid white';
+            el.style.boxShadow = '0 3px 10px rgba(0,0,0,0.4)';
+            el.style.display = 'flex';
+            el.style.alignItems = 'center';
+            el.style.justifyContent = 'center';
+            el.style.fontSize = '12px';
+            el.innerHTML = specialPoints.santaCruzIntercambiador.icon;
+            return el;
+        }
+
+        // Create La Esperanza marker
+        function createLaEsperanzaMarker() {
+            const el = document.createElement('div');
+            el.style.width = '20px';
+            el.style.height = '20px';
+            el.style.borderRadius = '50%';
+            el.style.backgroundColor = '#4caf50';
+            el.style.border = '3px solid white';
+            el.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+            el.style.display = 'flex';
+            el.style.alignItems = 'center';
+            el.style.justifyContent = 'center';
+            el.style.fontSize = '10px';
+            el.innerHTML = specialPoints.laEsperanza.icon;
+            return el;
+        }
+
+        // Wait for map to load before adding sources and layers
+        map.on('load', function() {
+            // Add Santa Cruz marker (common destination)
+            const santaCruzPopup = new maplibregl.Popup({ offset: 25 })
+                .setHTML(`
+                    <div class="popup-stop-name">${specialPoints.santaCruzIntercambiador.icon} ${specialPoints.santaCruzIntercambiador.name}</div>
+                    <div class="popup-route-info">Punto de llegada de todas las líneas</div>
+                    <div class="buses-info">${specialPoints.santaCruzIntercambiador.description}</div>
+                `);
+
+            new maplibregl.Marker({ element: createSantaCruzMarker() })
+                .setLngLat([specialPoints.santaCruzIntercambiador.coords[1], specialPoints.santaCruzIntercambiador.coords[0]])
+                .setPopup(santaCruzPopup)
+                .addTo(map);
+
+            // Add La Esperanza marker (return destination)
+            const laEsperanzaPopup = new maplibregl.Popup({ offset: 25 })
+                .setHTML(`
+                    <div class="popup-stop-name">${specialPoints.laEsperanza.icon} ${specialPoints.laEsperanza.name}</div>
+                    <div class="popup-route-info">Destino final de rutas de vuelta</div>
+                    <div class="buses-info">${specialPoints.laEsperanza.description}</div>
+                `);
+
+            new maplibregl.Marker({ element: createLaEsperanzaMarker() })
+                .setLngLat([specialPoints.laEsperanza.coords[1], specialPoints.laEsperanza.coords[0]])
+                .setPopup(laEsperanzaPopup)
+                .addTo(map);
+
+            // Initialize routes from configuration file
+            initializeRoutes();
         });
-
-        // Add Santa Cruz marker (common destination)
-        const santaCruzMarker = L.marker(specialPoints.santaCruzIntercambiador.coords, { icon: santaCruzIcon })
-            .addTo(map)
-            .bindPopup(`
-                <div class="popup-stop-name">${specialPoints.santaCruzIntercambiador.icon} ${specialPoints.santaCruzIntercambiador.name}</div>
-                <div class="popup-route-info">Punto de llegada de todas las líneas</div>
-                <div class="buses-info">${specialPoints.santaCruzIntercambiador.description}</div>
-            `);
-
-        // Add La Esperanza marker (return destination)
-        const laEsperanzaIcon = L.divIcon({
-            className: 'custom-esperanza-icon',
-            html: `<div style="background-color: #4caf50; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-size: 10px;">${specialPoints.laEsperanza.icon}</div>`,
-            iconSize: [26, 26],
-            iconAnchor: [13, 13]
-        });
-
-        const laEsperanzaMarker = L.marker(specialPoints.laEsperanza.coords, { icon: laEsperanzaIcon })
-            .addTo(map)
-            .bindPopup(`
-                <div class="popup-stop-name">${specialPoints.laEsperanza.icon} ${specialPoints.laEsperanza.name}</div>
-                <div class="popup-route-info">Destino final de rutas de vuelta</div>
-                <div class="buses-info">${specialPoints.laEsperanza.description}</div>
-            `);
 
         // Initialize routes from configuration file
         function initializeRoutes() {
             for (const [routeId, routeData] of Object.entries(routesData)) {
                 const color = getRouteColor(routeId);
-                const layerGroup = L.layerGroup();
-
+                const markers = [];
+                
                 // Get stops including the Intercambiador
                 const stops = getStopsWithIntercambiador(routeId);
                 
-                // Create polyline for the route
-                const coordinates = stops.map(stop => stop.coords);
-                const polyline = L.polyline(coordinates, {
-                    color: color,
-                    weight: 4,
-                    opacity: 0.8,
-                    dashArray: routeData.isExpress ? '10, 10' : null // Dashed for express line
-                }).addTo(layerGroup);
+                // Create coordinates array for the polyline (MapLibre uses [lng, lat])
+                const coordinates = stops.map(stop => [stop.coords[1], stop.coords[0]]);
+                
+                // Add source for the route line
+                map.addSource(`route-${routeId}`, {
+                    type: 'geojson',
+                    data: {
+                        type: 'Feature',
+                        properties: {},
+                        geometry: {
+                            type: 'LineString',
+                            coordinates: coordinates
+                        }
+                    }
+                });
+
+                // Add line layer for the route
+                const lineLayer = {
+                    id: `route-line-${routeId}`,
+                    type: 'line',
+                    source: `route-${routeId}`,
+                    layout: {
+                        'line-join': 'round',
+                        'line-cap': 'round'
+                    },
+                    paint: {
+                        'line-color': color,
+                        'line-width': 4,
+                        'line-opacity': 0.8
+                    }
+                };
+
+                // Add dashed pattern for express line
+                if (routeData.isExpress) {
+                    lineLayer.paint['line-dasharray'] = [2, 2];
+                }
+
+                map.addLayer(lineLayer);
+                routeLayers[routeId] = `route-line-${routeId}`;
 
                 // Add markers for each stop (except Santa Cruz which is already added)
                 stops.forEach((stop, index) => {
                     if (!stop.name.includes('Intercambiador')) {
-                        const marker = L.marker(stop.coords, { icon: createStopIcon(color) })
-                            .bindPopup(`
+                        const popup = new maplibregl.Popup({ offset: 25 })
+                            .setHTML(`
                                 <div class="popup-stop-name">${stop.name}</div>
                                 <div class="popup-route-info">${routeData.name}</div>
                                 <div class="buses-info">${routeData.busIcon || '🚌'} ${routeData.buses}</div>
                             `);
-                        marker.addTo(layerGroup);
+
+                        const marker = new maplibregl.Marker({ element: createStopMarker(color) })
+                            .setLngLat([stop.coords[1], stop.coords[0]])
+                            .setPopup(popup)
+                            .addTo(map);
+                        
+                        markers.push(marker);
                     }
                 });
 
-                routeLayers[routeId] = layerGroup;
-                layerGroup.addTo(map);
+                routeMarkers[routeId] = markers;
             }
         }
 
         // Toggle route visibility
         function toggleRoute(routeId, visible) {
-            const layer = routeLayers[routeId];
+            const layerId = routeLayers[routeId];
+            const markers = routeMarkers[routeId];
             const toggleElement = document.querySelector(`[data-route="${routeId}"]`);
             
             if (visible) {
-                layer.addTo(map);
+                map.setLayoutProperty(layerId, 'visibility', 'visible');
+                markers.forEach(marker => marker.addTo(map));
                 toggleElement.classList.add('active');
             } else {
-                map.removeLayer(layer);
+                map.setLayoutProperty(layerId, 'visibility', 'none');
+                markers.forEach(marker => marker.remove());
                 toggleElement.classList.remove('active');
             }
         }
@@ -429,11 +532,12 @@
 
         // Center map on Tenerife
         function centerMap() {
-            map.setView(mapConfig.center, mapConfig.defaultZoom);
+            map.flyTo({
+                center: [mapConfig.center[1], mapConfig.center[0]],
+                zoom: mapConfig.defaultZoom,
+                essential: true
+            });
         }
-
-        // Initialize routes when page loads
-        initializeRoutes();
     </script>
 </body>
 </html>
