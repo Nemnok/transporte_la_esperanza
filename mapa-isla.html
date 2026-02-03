@@ -5,81 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa de la Isla - Transporte La Esperanza</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- MapLibre GL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
     <style>
-        .map-container {
+        #tenerife-map {
             width: 100%;
-            background: white;
+            height: 600px;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
+            z-index: 1;
         }
-        
-        .tenerife-svg-map {
-            width: 100%;
-            height: auto;
-            min-height: 550px;
-            max-height: 700px;
-            border-radius: 8px;
-            background: #a8d8ea;
-        }
-        
-        .route-line {
-            transition: opacity 0.3s ease, stroke-width 0.3s ease;
-            cursor: pointer;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-        
-        .route-line.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .route-line:hover {
-            stroke-width: 6 !important;
-            filter: drop-shadow(0 0 4px currentColor);
-        }
-        
-        .stop-marker {
-            transition: opacity 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .stop-marker.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .stop-marker:hover {
-            filter: drop-shadow(0 0 6px currentColor);
-        }
-        
-        .loading-indicator {
-            text-align: center;
-            padding: 2rem;
-            color: #666;
-        }
-        
-        .loading-indicator .spinner {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #4caf50;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
         .route-legend {
             background: white;
             padding: 1.5rem;
@@ -159,44 +94,45 @@
             background: var(--dark-green);
             transform: translateY(-2px);
         }
+        .maplibregl-popup-content {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .popup-stop-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+        }
+        .popup-route-info {
+            font-size: 0.9rem;
+            color: #666;
+        }
         .buses-info {
             margin-top: 0.25rem;
             font-size: 0.85rem;
             color: #888;
         }
-        
-        .svg-tooltip {
-            position: fixed;
-            background: white;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            pointer-events: none;
+        .loading-routes {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.95);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             z-index: 1000;
-            max-width: 250px;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            display: none;
         }
-        
-        .svg-tooltip.visible {
-            opacity: 1;
+        .loading-routes.active {
+            display: block;
         }
-        
-        .svg-tooltip .stop-name {
-            font-weight: bold;
-            color: #2e7d32;
-            margin-bottom: 0.25rem;
-        }
-        
-        .svg-tooltip .route-name {
-            font-size: 0.85rem;
-            color: #666;
-        }
-        
         @media (max-width: 768px) {
-            .tenerife-svg-map {
-                min-height: 400px;
+            #tenerife-map {
+                height: 400px;
             }
             .route-toggles {
                 grid-template-columns: 1fr;
@@ -205,6 +141,7 @@
     </style>
 </head>
 <body>
+    <!-- Page Loader -->
     <div class="page-loader">
         <div class="loader-spinner"></div>
     </div>
@@ -236,27 +173,24 @@
             <div class="container">
                 <h2 data-i18n="island_map_title">Mapa Interactivo de Tenerife - Rutas de Carnaval</h2>
                 
-                <p class="subtitle">Rutas calculadas automáticamente por carreteras reales. Seleccione las líneas que desea visualizar.</p>
+                <p class="subtitle">Rutas calculadas por carreteras reales usando OSRM. Seleccione las líneas que desea visualizar.</p>
 
                 <div class="map-controls">
                     <button onclick="showAllRoutes()">🗺️ Mostrar Todas</button>
                     <button onclick="hideAllRoutes()">🚫 Ocultar Todas</button>
-                    <button onclick="reloadRoutes()">🔄 Recargar Rutas</button>
+                    <button onclick="centerMap()">🎯 Centrar Mapa</button>
                 </div>
 
-                <div class="map-container">
-                    <div id="loading-indicator" class="loading-indicator">
-                        <span class="spinner"></span>
-                        Calculando rutas por carretera...
-                    </div>
-                    <svg id="tenerife-svg" class="tenerife-svg-map" viewBox="0 0 1000 750" preserveAspectRatio="xMidYMid meet" style="display: none;">
-                    </svg>
+                <!-- Interactive Map -->
+                <div style="position: relative;">
+                    <div id="loading-indicator" class="loading-routes">🔄 Calculando rutas por carretera...</div>
+                    <div id="tenerife-map"></div>
                 </div>
 
                 <!-- Route Legend with Toggles -->
                 <div class="route-legend">
                     <h3>🚌 Líneas de Transporte - Carnaval de Tenerife</h3>
-                    <p style="margin-bottom: 1rem; color: #666;">Las rutas se calculan automáticamente siguiendo las carreteras reales desde las coordenadas de paradas definidas en routes-data.js</p>
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Las rutas se calculan automáticamente siguiendo las carreteras reales desde las coordenadas definidas en routes-data.js</p>
                     <div class="route-toggles">
                         <label class="route-toggle active" data-route="1">
                             <input type="checkbox" checked onchange="toggleRoute(1, this.checked)">
@@ -342,7 +276,7 @@
                         </div>
                         <div class="info-box">
                             <h4>⚙️ Configuración</h4>
-                            <p>Las coordenadas de paradas se definen en <strong>routes-data.js</strong>. Las rutas se calculan automáticamente por carreteras reales.</p>
+                            <p>Las coordenadas de paradas se definen en <strong>routes-data.js</strong>. Las rutas se calculan automáticamente por OSRM.</p>
                         </div>
                         <div class="info-box">
                             <h4>🎭 Servicio Especial Carnaval</h4>
@@ -366,91 +300,40 @@
             <p data-i18n="footer_slogan">Conectando comunidades, construyendo futuro.</p>
         </div>
     </footer>
-    
-    <div id="svg-tooltip" class="svg-tooltip">
-        <div class="stop-name"></div>
-        <div class="route-name"></div>
-    </div>
 
     <script src="translations.js"></script>
     <script src="language-switcher.js"></script>
     <script src="script.js"></script>
+    <!-- Routes Configuration File - EDITAR ESTE ARCHIVO PARA CAMBIAR RUTAS -->
     <script src="routes-data.js"></script>
-    
+    <!-- MapLibre GL JS -->
+    <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
     <script>
         /**
          * ====================================================================
-         * MAPA CON RUTAS REALES POR CARRETERA
+         * MAPA INTERACTIVO DE TENERIFE - MapLibre GL JS + OSRM
          * ====================================================================
          * 
-         * Este mapa lee las coordenadas de paradas desde routes-data.js
-         * y utiliza OSRM (OpenStreetMap Routing Machine) para calcular
-         * las rutas reales por carretera entre cada parada.
+         * Este script lee la configuración de rutas desde routes-data.js
+         * y usa OSRM para calcular rutas reales por carretera.
          * 
-         * Para modificar las paradas: edite routes-data.js
-         * Las rutas se recalcularán automáticamente.
+         * Para modificar las rutas, edite el archivo routes-data.js
          * 
          * ====================================================================
          */
 
-        // SVG Configuration
-        const SVG_WIDTH = 1000;
-        const SVG_HEIGHT = 750;
-        const PADDING = 60;
+        // Obtener configuración desde routes-data.js
+        const mapConfig = getMapConfig();
+        const specialPoints = getSpecialPoints();
+        const routesData = getRoutesData();
+        const routeColors = ROUTE_COLORS;
 
-        // Tenerife coordinate bounds
-        const BOUNDS = {
-            minLat: 27.98,
-            maxLat: 28.60,
-            minLon: -17.05,
-            maxLon: -16.05
-        };
+        // Store route layers and markers for toggling
+        const routeLayers = {};
+        const routeMarkers = {};
+        let map;
 
-        // Pre-computed values
-        const LON_RANGE = BOUNDS.maxLon - BOUNDS.minLon;
-        const LAT_RANGE = BOUNDS.maxLat - BOUNDS.minLat;
-        const DRAW_WIDTH = SVG_WIDTH - 2 * PADDING;
-        const DRAW_HEIGHT = SVG_HEIGHT - 2 * PADDING;
-
-        // Store calculated routes
-        const calculatedRoutes = {};
-        
-        // Convert geo to SVG coordinates
-        function geoToSvg(lat, lon) {
-            const x = PADDING + ((lon - BOUNDS.minLon) / LON_RANGE) * DRAW_WIDTH;
-            const y = PADDING + ((BOUNDS.maxLat - lat) / LAT_RANGE) * DRAW_HEIGHT;
-            return { x, y };
-        }
-
-        // HTML encode for safety (including single quotes for SVG attributes)
-        function htmlEncode(str) {
-            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-        }
-
-        // Tenerife coastline (simplified real coordinates)
-        const TENERIFE_COASTLINE = [
-            [28.52, -16.18], [28.55, -16.25], [28.57, -16.32], 
-            [28.54, -16.38], [28.50, -16.42], [28.47, -16.50],
-            [28.42, -16.55], [28.40, -16.62], [28.38, -16.70],
-            [28.37, -16.78], [28.35, -16.84], [28.32, -16.88],
-            [28.28, -16.92], [28.22, -16.92], [28.18, -16.88],
-            [28.12, -16.82], [28.08, -16.78], [28.05, -16.72],
-            [28.03, -16.65], [28.05, -16.58], [28.08, -16.52],
-            [28.12, -16.46], [28.18, -16.40], [28.25, -16.35],
-            [28.32, -16.28], [28.38, -16.22], [28.42, -16.16],
-            [28.48, -16.14], [28.52, -16.18]
-        ];
-
-        // Generate island path
-        function generateIslandPath() {
-            return TENERIFE_COASTLINE.map((coord, i) => {
-                const point = geoToSvg(coord[0], coord[1]);
-                return (i === 0 ? 'M ' : 'L ') + point.x.toFixed(1) + ' ' + point.y.toFixed(1);
-            }).join(' ') + ' Z';
-        }
-
-        // Fetch route from OSRM
+        // Fetch route from OSRM (returns coordinates following real roads)
         async function fetchOSRMRoute(stops) {
             // Build coordinates string for OSRM (lon,lat format)
             const coords = stops.map(s => `${s.coords[1]},${s.coords[0]}`).join(';');
@@ -459,218 +342,235 @@
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    throw new Error(`HTTP ${response.status}`);
                 }
                 const data = await response.json();
                 
                 if (data.code === 'Ok' && data.routes && data.routes[0]) {
-                    return data.routes[0].geometry.coordinates; // Array of [lon, lat]
+                    // Return GeoJSON coordinates [lon, lat] - already in MapLibre format
+                    return data.routes[0].geometry.coordinates;
                 }
             } catch (error) {
-                console.warn('OSRM routing unavailable, using direct lines. Check network connectivity or try again later:', error.message);
+                console.warn('OSRM routing unavailable, using direct lines:', error.message);
             }
             
-            // Fallback to straight lines
+            // Fallback to straight lines (convert to [lon, lat] for MapLibre)
             return stops.map(s => [s.coords[1], s.coords[0]]);
         }
 
-        // Convert route coordinates to SVG path
-        function routeToSvgPath(routeCoords) {
-            return routeCoords.map((coord, i) => {
-                const point = geoToSvg(coord[1], coord[0]); // coord is [lon, lat]
-                return (i === 0 ? 'M ' : 'L ') + point.x.toFixed(1) + ' ' + point.y.toFixed(1);
-            }).join(' ');
+        // Initialize the map
+        function initMap() {
+            map = new maplibregl.Map({
+                container: 'tenerife-map',
+                style: {
+                    version: 8,
+                    sources: {
+                        osm: {
+                            type: 'raster',
+                            tiles: [
+                                'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                                'https://b.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                                'https://c.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                            ],
+                            tileSize: 256,
+                            attribution: '© OpenStreetMap contributors'
+                        }
+                    },
+                    layers: [
+                        {
+                            id: 'osm-tiles',
+                            type: 'raster',
+                            source: 'osm',
+                            minzoom: 0,
+                            maxzoom: 19
+                        }
+                    ]
+                },
+                center: [mapConfig.center[1], mapConfig.center[0]], // MapLibre uses [lng, lat]
+                zoom: mapConfig.defaultZoom,
+                maxZoom: mapConfig.maxZoom
+            });
+
+            // Add navigation controls
+            map.addControl(new maplibregl.NavigationControl(), 'top-right');
+
+            // Wait for map to load before adding routes
+            map.on('load', initializeRoutes);
         }
 
-        // Initialize the map
-        async function initMap() {
-            const svg = document.getElementById('tenerife-svg');
-            const loading = document.getElementById('loading-indicator');
-            const routesData = getRoutesData();
-            const specialPoints = getSpecialPoints();
-            
-            let svgContent = '';
-            
-            // Ocean background
-            svgContent += '<rect width="100%" height="100%" fill="#a8d8ea"/>';
-            
-            // Grid lines
-            svgContent += '<g class="grid-lines" opacity="0.12">';
-            for (let lat = 28.0; lat <= 28.6; lat += 0.1) {
-                const y = geoToSvg(lat, BOUNDS.minLon).y;
-                svgContent += `<line x1="${PADDING}" y1="${y}" x2="${SVG_WIDTH - PADDING}" y2="${y}" stroke="#333" stroke-width="0.5"/>`;
-                svgContent += `<text x="${PADDING - 5}" y="${y + 3}" font-size="9" text-anchor="end" fill="#555">${lat.toFixed(1)}°N</text>`;
-            }
-            for (let lon = -17.0; lon <= -16.1; lon += 0.2) {
-                const x = geoToSvg(BOUNDS.maxLat, lon).x;
-                svgContent += `<line x1="${x}" y1="${PADDING}" x2="${x}" y2="${SVG_HEIGHT - PADDING}" stroke="#333" stroke-width="0.5"/>`;
-                svgContent += `<text x="${x}" y="${SVG_HEIGHT - PADDING + 15}" font-size="9" text-anchor="middle" fill="#555">${lon.toFixed(1)}°W</text>`;
-            }
-            svgContent += '</g>';
-            
-            // Island shape
-            svgContent += `<path d="${generateIslandPath()}" fill="#8bc34a" stroke="#5d8a3e" stroke-width="2"/>`;
-            
-            // Mount Teide
-            const teide = geoToSvg(28.2723, -16.6421);
-            svgContent += `<ellipse cx="${teide.x}" cy="${teide.y}" rx="40" ry="28" fill="#b8a076"/>`;
-            svgContent += `<ellipse cx="${teide.x}" cy="${teide.y - 10}" rx="20" ry="14" fill="#f5f5f5"/>`;
-            svgContent += `<text x="${teide.x}" y="${teide.y + 45}" text-anchor="middle" font-size="11" fill="#666">Teide 🌋</text>`;
-            
-            // Routes placeholder - will be filled with real routes
-            svgContent += '<g id="routes-layer"></g>';
-            
-            // Stops placeholder
-            svgContent += '<g id="stops-layer"></g>';
-            
-            // Special markers placeholder
-            svgContent += '<g id="special-markers"></g>';
-            
-            // Title
-            svgContent += `<text x="${SVG_WIDTH/2}" y="35" text-anchor="middle" font-size="20" fill="#333" font-weight="bold">Rutas de Carnaval - Tenerife</text>`;
-            svgContent += `<text x="${SVG_WIDTH/2}" y="55" text-anchor="middle" font-size="12" fill="#666">Rutas calculadas por carreteras reales (OSRM)</text>`;
-            
-            // Scale
-            svgContent += `<g transform="translate(${SVG_WIDTH - 150}, ${SVG_HEIGHT - 35})">
-                <line x1="0" y1="0" x2="80" y2="0" stroke="#333" stroke-width="2"/>
-                <line x1="0" y1="-5" x2="0" y2="5" stroke="#333" stroke-width="2"/>
-                <line x1="80" y1="-5" x2="80" y2="5" stroke="#333" stroke-width="2"/>
-                <text x="40" y="15" text-anchor="middle" font-size="10" fill="#666">≈ 20 km</text>
-            </g>`;
-            
-            svg.innerHTML = svgContent;
-            
-            // Now fetch and draw real routes
-            const routesLayer = document.getElementById('routes-layer');
-            const stopsLayer = document.getElementById('stops-layer');
-            const specialMarkersLayer = document.getElementById('special-markers');
-            
-            // Prepare route data for parallel fetching
+        // Create marker element for stops
+        function createStopMarker(color) {
+            const el = document.createElement('div');
+            el.style.width = '14px';
+            el.style.height = '14px';
+            el.style.borderRadius = '50%';
+            el.style.backgroundColor = color;
+            el.style.border = '3px solid white';
+            el.style.boxShadow = '0 2px 6px rgba(0,0,0,0.3)';
+            el.style.cursor = 'pointer';
+            return el;
+        }
+
+        // Create special marker for Santa Cruz Intercambiador
+        function createSantaCruzMarker() {
+            const el = document.createElement('div');
+            el.style.width = '28px';
+            el.style.height = '28px';
+            el.style.borderRadius = '50%';
+            el.style.backgroundColor = '#ff5722';
+            el.style.border = '4px solid white';
+            el.style.boxShadow = '0 3px 10px rgba(0,0,0,0.4)';
+            el.style.display = 'flex';
+            el.style.alignItems = 'center';
+            el.style.justifyContent = 'center';
+            el.style.fontSize = '14px';
+            el.style.cursor = 'pointer';
+            el.innerHTML = specialPoints.santaCruzIntercambiador.icon;
+            return el;
+        }
+
+        // Create La Esperanza marker
+        function createLaEsperanzaMarker() {
+            const el = document.createElement('div');
+            el.style.width = '22px';
+            el.style.height = '22px';
+            el.style.borderRadius = '50%';
+            el.style.backgroundColor = '#4caf50';
+            el.style.border = '3px solid white';
+            el.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+            el.style.display = 'flex';
+            el.style.alignItems = 'center';
+            el.style.justifyContent = 'center';
+            el.style.fontSize = '11px';
+            el.style.cursor = 'pointer';
+            el.innerHTML = specialPoints.laEsperanza.icon;
+            return el;
+        }
+
+        // Initialize routes with OSRM
+        async function initializeRoutes() {
+            const loadingIndicator = document.getElementById('loading-indicator');
+            loadingIndicator.classList.add('active');
+
+            // Add Santa Cruz marker (common destination)
+            const santaCruzPopup = new maplibregl.Popup({ offset: 25 })
+                .setHTML(`
+                    <div class="popup-stop-name">${specialPoints.santaCruzIntercambiador.icon} ${specialPoints.santaCruzIntercambiador.name}</div>
+                    <div class="popup-route-info">Punto de llegada de todas las líneas</div>
+                    <div class="buses-info">${specialPoints.santaCruzIntercambiador.description}</div>
+                `);
+
+            new maplibregl.Marker({ element: createSantaCruzMarker() })
+                .setLngLat([specialPoints.santaCruzIntercambiador.coords[1], specialPoints.santaCruzIntercambiador.coords[0]])
+                .setPopup(santaCruzPopup)
+                .addTo(map);
+
+            // Add La Esperanza marker (return destination)
+            const laEsperanzaPopup = new maplibregl.Popup({ offset: 25 })
+                .setHTML(`
+                    <div class="popup-stop-name">${specialPoints.laEsperanza.icon} ${specialPoints.laEsperanza.name}</div>
+                    <div class="popup-route-info">Destino final de rutas de vuelta</div>
+                    <div class="buses-info">${specialPoints.laEsperanza.description}</div>
+                `);
+
+            new maplibregl.Marker({ element: createLaEsperanzaMarker() })
+                .setLngLat([specialPoints.laEsperanza.coords[1], specialPoints.laEsperanza.coords[0]])
+                .setPopup(laEsperanzaPopup)
+                .addTo(map);
+
+            // Fetch all routes in parallel using OSRM
             const routeEntries = Object.entries(routesData);
             const routePromises = routeEntries.map(async ([routeId, routeData]) => {
                 const stops = getStopsWithIntercambiador(routeId);
-                const routeCoords = await fetchOSRMRoute(stops);
-                return { routeId, routeData, stops, routeCoords };
+                const routeCoordinates = await fetchOSRMRoute(stops);
+                return { routeId, routeData, stops, routeCoordinates };
             });
-            
-            // Fetch all routes in parallel
-            const resolvedRoutes = await Promise.all(routePromises);
-            
-            // Process each route
-            for (const { routeId, routeData, stops, routeCoords } of resolvedRoutes) {
-                const color = getRouteColor(routeId);
-                calculatedRoutes[routeId] = routeCoords;
-                
-                // Draw route path
-                const pathD = routeToSvgPath(routeCoords);
-                
-                const routePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                routePath.setAttribute('class', `route-line route-${routeId}`);
-                routePath.setAttribute('d', pathD);
-                routePath.setAttribute('stroke', color);
-                routePath.setAttribute('stroke-width', '4');
-                routePath.setAttribute('fill', 'none');
-                routePath.setAttribute('data-route', routeId);
-                if (routeData.isExpress) {
-                    routePath.setAttribute('stroke-dasharray', '12,6');
-                }
-                routesLayer.appendChild(routePath);
-                
-                // Draw stop markers
-                stops.forEach((stop, idx) => {
-                    if (stop.name.includes('Intercambiador')) return;
-                    
-                    const point = geoToSvg(stop.coords[0], stop.coords[1]);
-                    
-                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                    circle.setAttribute('class', `stop-marker route-${routeId}-marker`);
-                    circle.setAttribute('cx', point.x.toFixed(1));
-                    circle.setAttribute('cy', point.y.toFixed(1));
-                    circle.setAttribute('r', '7');
-                    circle.setAttribute('fill', color);
-                    circle.setAttribute('stroke', 'white');
-                    circle.setAttribute('stroke-width', '2');
-                    circle.setAttribute('data-route', routeId);
-                    circle.setAttribute('data-name', htmlEncode(stop.name));
-                    circle.setAttribute('data-route-name', htmlEncode(routeData.name));
-                    circle.setAttribute('data-buses', htmlEncode((routeData.busIcon || '🚌') + ' ' + routeData.buses));
-                    
-                    stopsLayer.appendChild(circle);
-                });
-            }
-            
-            // Add Santa Cruz marker
-            const scPoint = geoToSvg(specialPoints.santaCruzIntercambiador.coords[0], specialPoints.santaCruzIntercambiador.coords[1]);
-            specialMarkersLayer.innerHTML = `
-                <circle cx="${scPoint.x}" cy="${scPoint.y}" r="16" fill="#ff5722" stroke="white" stroke-width="3" 
-                    data-name="${htmlEncode(specialPoints.santaCruzIntercambiador.name)}" data-route-name="Destino de todas las líneas"/>
-                <text x="${scPoint.x}" y="${scPoint.y + 5}" text-anchor="middle" font-size="12" fill="white" font-weight="bold">🎭</text>
-                <text x="${scPoint.x}" y="${scPoint.y - 22}" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">Santa Cruz</text>
-                <text x="${scPoint.x}" y="${scPoint.y - 10}" text-anchor="middle" font-size="10" fill="#666">Intercambiador</text>
-            `;
-            
-            // Add La Esperanza marker
-            const lePoint = geoToSvg(specialPoints.laEsperanza.coords[0], specialPoints.laEsperanza.coords[1]);
-            specialMarkersLayer.innerHTML += `
-                <circle cx="${lePoint.x}" cy="${lePoint.y}" r="12" fill="#4caf50" stroke="white" stroke-width="2"
-                    data-name="${htmlEncode(specialPoints.laEsperanza.name)}" data-route-name="Base de operaciones"/>
-                <text x="${lePoint.x}" y="${lePoint.y + 4}" text-anchor="middle" font-size="10" fill="white" font-weight="bold">🏠</text>
-                <text x="${lePoint.x}" y="${lePoint.y - 18}" text-anchor="middle" font-size="11" fill="#333" font-weight="bold">La Esperanza</text>
-            `;
-            
-            // Hide loading, show map
-            loading.style.display = 'none';
-            svg.style.display = 'block';
-            
-            // Add tooltip interactions
-            addTooltipInteractions();
-        }
 
-        // Add tooltip interactions
-        function addTooltipInteractions() {
-            const tooltip = document.getElementById('svg-tooltip');
-            const markers = document.querySelectorAll('.stop-marker, circle[data-name]');
-            
-            markers.forEach(marker => {
-                marker.addEventListener('mouseenter', (e) => {
-                    const name = marker.getAttribute('data-name');
-                    const routeName = marker.getAttribute('data-route-name') || '';
-                    const buses = marker.getAttribute('data-buses') || '';
-                    
-                    if (name) {
-                        tooltip.querySelector('.stop-name').textContent = name;
-                        tooltip.querySelector('.route-name').textContent = routeName + (buses ? ' • ' + buses : '');
-                        tooltip.classList.add('visible');
+            const resolvedRoutes = await Promise.all(routePromises);
+
+            // Add routes to map
+            for (const { routeId, routeData, stops, routeCoordinates } of resolvedRoutes) {
+                const color = getRouteColor(routeId);
+                const markers = [];
+
+                // Add source for the route line with OSRM coordinates
+                map.addSource(`route-${routeId}`, {
+                    type: 'geojson',
+                    data: {
+                        type: 'Feature',
+                        properties: {},
+                        geometry: {
+                            type: 'LineString',
+                            coordinates: routeCoordinates
+                        }
                     }
                 });
-                
-                marker.addEventListener('mousemove', (e) => {
-                    tooltip.style.left = (e.clientX + 15) + 'px';
-                    tooltip.style.top = (e.clientY - 10) + 'px';
+
+                // Add line layer for the route
+                const lineLayerConfig = {
+                    id: `route-line-${routeId}`,
+                    type: 'line',
+                    source: `route-${routeId}`,
+                    layout: {
+                        'line-join': 'round',
+                        'line-cap': 'round'
+                    },
+                    paint: {
+                        'line-color': color,
+                        'line-width': 5,
+                        'line-opacity': 0.85
+                    }
+                };
+
+                // Add dashed pattern for express line
+                if (routeData.isExpress) {
+                    lineLayerConfig.paint['line-dasharray'] = [2, 2];
+                }
+
+                map.addLayer(lineLayerConfig);
+                routeLayers[routeId] = `route-line-${routeId}`;
+
+                // Add markers for each stop (except Santa Cruz which is already added)
+                stops.forEach((stop, index) => {
+                    if (!stop.name.includes('Intercambiador')) {
+                        const popup = new maplibregl.Popup({ offset: 25 })
+                            .setHTML(`
+                                <div class="popup-stop-name">${stop.name}</div>
+                                <div class="popup-route-info">${routeData.name}</div>
+                                <div class="buses-info">${routeData.busIcon || '🚌'} ${routeData.buses}</div>
+                            `);
+
+                        const marker = new maplibregl.Marker({ element: createStopMarker(color) })
+                            .setLngLat([stop.coords[1], stop.coords[0]])
+                            .setPopup(popup)
+                            .addTo(map);
+                        
+                        markers.push(marker);
+                    }
                 });
-                
-                marker.addEventListener('mouseleave', () => {
-                    tooltip.classList.remove('visible');
-                });
-            });
+
+                routeMarkers[routeId] = markers;
+            }
+
+            loadingIndicator.classList.remove('active');
         }
 
         // Toggle route visibility
         function toggleRoute(routeId, visible) {
-            const routeLine = document.querySelector(`.route-line.route-${routeId}`);
-            const routeMarkers = document.querySelectorAll(`.route-${routeId}-marker`);
+            const layerId = routeLayers[routeId];
+            const markers = routeMarkers[routeId];
             const toggleElement = document.querySelector(`[data-route="${routeId}"]`);
             
-            if (routeLine) {
-                routeLine.classList.toggle('hidden', !visible);
-            }
-            
-            routeMarkers.forEach(marker => {
-                marker.classList.toggle('hidden', !visible);
-            });
-            
-            if (toggleElement) {
-                toggleElement.classList.toggle('active', visible);
+            if (!layerId || !map) return;
+
+            if (visible) {
+                map.setLayoutProperty(layerId, 'visibility', 'visible');
+                if (markers) markers.forEach(marker => marker.addTo(map));
+                if (toggleElement) toggleElement.classList.add('active');
+            } else {
+                map.setLayoutProperty(layerId, 'visibility', 'none');
+                if (markers) markers.forEach(marker => marker.remove());
+                if (toggleElement) toggleElement.classList.remove('active');
             }
         }
 
@@ -692,16 +592,17 @@
             });
         }
 
-        // Reload routes (recalculate from OSRM)
-        function reloadRoutes() {
-            // Clear cached routes to avoid stale data
-            Object.keys(calculatedRoutes).forEach(k => delete calculatedRoutes[k]);
-            document.getElementById('loading-indicator').style.display = 'block';
-            document.getElementById('tenerife-svg').style.display = 'none';
-            initMap();
+        // Center map on Tenerife
+        function centerMap() {
+            if (!map) return;
+            map.flyTo({
+                center: [mapConfig.center[1], mapConfig.center[0]],
+                zoom: mapConfig.defaultZoom,
+                essential: true
+            });
         }
 
-        // Initialize when DOM is ready
+        // Initialize map when DOM is ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initMap);
         } else {
