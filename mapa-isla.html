@@ -422,10 +422,10 @@
             return { x, y };
         }
 
-        // HTML encode for safety
+        // HTML encode for safety (including single quotes for SVG attributes)
         function htmlEncode(str) {
             return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+                .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
         }
 
         // Tenerife coastline (simplified real coordinates)
@@ -458,13 +458,16 @@
             
             try {
                 const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
                 const data = await response.json();
                 
                 if (data.code === 'Ok' && data.routes && data.routes[0]) {
                     return data.routes[0].geometry.coordinates; // Array of [lon, lat]
                 }
             } catch (error) {
-                console.warn('OSRM request failed, using straight lines:', error);
+                console.warn('OSRM routing unavailable, using direct lines. Check network connectivity or try again later:', error.message);
             }
             
             // Fallback to straight lines
@@ -542,18 +545,24 @@
             const stopsLayer = document.getElementById('stops-layer');
             const specialMarkersLayer = document.getElementById('special-markers');
             
-            // Process each route
-            for (const [routeId, routeData] of Object.entries(routesData)) {
-                const color = getRouteColor(routeId);
+            // Prepare route data for parallel fetching
+            const routeEntries = Object.entries(routesData);
+            const routePromises = routeEntries.map(async ([routeId, routeData]) => {
                 const stops = getStopsWithIntercambiador(routeId);
-                
-                // Fetch real route from OSRM
                 const routeCoords = await fetchOSRMRoute(stops);
+                return { routeId, routeData, stops, routeCoords };
+            });
+            
+            // Fetch all routes in parallel
+            const resolvedRoutes = await Promise.all(routePromises);
+            
+            // Process each route
+            for (const { routeId, routeData, stops, routeCoords } of resolvedRoutes) {
+                const color = getRouteColor(routeId);
                 calculatedRoutes[routeId] = routeCoords;
                 
                 // Draw route path
                 const pathD = routeToSvgPath(routeCoords);
-                const dashArray = routeData.isExpress ? 'stroke-dasharray="12,6"' : '';
                 
                 const routePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                 routePath.setAttribute('class', `route-line route-${routeId}`);
@@ -685,6 +694,8 @@
 
         // Reload routes (recalculate from OSRM)
         function reloadRoutes() {
+            // Clear cached routes to avoid stale data
+            Object.keys(calculatedRoutes).forEach(k => delete calculatedRoutes[k]);
             document.getElementById('loading-indicator').style.display = 'block';
             document.getElementById('tenerife-svg').style.display = 'none';
             initMap();
