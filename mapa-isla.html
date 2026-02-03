@@ -21,13 +21,13 @@
                 <h1>🚌 Transporte La Esperanza</h1>
                 <nav>
                     <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="cuestionario.html">Cuestionario</a></li>
-                        <li><a href="contacto.html">Contáctenos</a></li>
-                        <li><a href="trabajar.html">Trabaja con Nosotros</a></li>
-                        <li><a href="mapa-servicio.html">Mapa de Servicio</a></li>
-                        <li><a href="mapa-isla.html" class="active">Mapa de la Isla</a></li>
-                        <li><a href="carta-servicios.html">Carta de Servicios</a></li>
+                        <li><a href="index.html" data-i18n="nav_home">Inicio</a></li>
+                        <li><a href="cuestionario.html" data-i18n="nav_questionnaire">Cuestionario</a></li>
+                        <li><a href="contacto.html" data-i18n="nav_contact">Contáctenos</a></li>
+                        <li><a href="trabajar.html" data-i18n="nav_work">Trabaja con Nosotros</a></li>
+                        <li><a href="mapa-servicio.html" data-i18n="nav_service_map">Mapa de Servicio</a></li>
+                        <li><a href="mapa-isla.html" class="active" data-i18n="nav_island_map">Mapa de la Isla</a></li>
+                        <li><a href="carta-servicios.html" data-i18n="nav_service_charter">Carta de Servicios</a></li>
                     </ul>
                 </nav>
             </div>
@@ -40,21 +40,21 @@
                 <h2 data-i18n="island_map_title">Mapa de la Isla con Paradas de Autobús</h2>
                 
                 <div class="warning-notice">
-                    <h3>⚠️ AVISO IMPORTANTE</h3>
-                    <p><strong>Este mapa interactivo aún no está operativo.</strong></p>
-                    <p>Estamos trabajando en implementar un sistema de mapas interactivo que mostrará todas las paradas de autobús en tiempo real. Por favor, consulte la información de rutas en la página de <a href="mapa-servicio.html">Mapa de Servicio</a> o comuníquese con nosotros para obtener información sobre paradas específicas.</p>
+                    <h3 data-i18n="island_map_warning_title">⚠️ AVISO IMPORTANTE</h3>
+                    <p><strong data-i18n="island_map_warning_text1">Este mapa interactivo aún no está operativo.</strong></p>
+                    <p data-i18n="island_map_warning_text2">Estamos trabajando en implementar un sistema de mapas interactivo que mostrará todas las paradas de autobús en tiempo real. Por favor, consulte la información de rutas en la página de <a href="mapa-servicio.html">Mapa de Servicio</a> o comuníquese con nosotros para obtener información sobre paradas específicas.</p>
                 </div>
 
                 <div class="map-placeholder">
                     <div class="map-container">
                         <div class="coming-soon-overlay">
-                            <h3>🗺️ Mapa Interactivo</h3>
-                            <p>Próximamente Disponible</p>
+                            <h3 data-i18n="island_map_interactive_title">🗺️ Mapa Interactivo</h3>
+                            <p data-i18n="island_map_coming_soon">Próximamente Disponible</p>
                             <div class="features-coming">
-                                <p>✓ Ubicación de todas las paradas</p>
-                                <p>✓ Rutas en tiempo real</p>
-                                <p>✓ Búsqueda de paradas cercanas</p>
-                                <p>✓ Horarios por parada</p>
+                                <p data-i18n="island_map_feature1">✓ Ubicación de todas las paradas</p>
+                                <p data-i18n="island_map_feature2">✓ Rutas en tiempo real</p>
+                                <p data-i18n="island_map_feature3">✓ Búsqueda de paradas cercanas</p>
+                                <p data-i18n="island_map_feature4">✓ Horarios por parada</p>
                             </div>
                         </div>
                         
@@ -65,7 +65,7 @@
                             
                             <!-- Central area -->
                             <circle cx="400" cy="300" r="30" fill="#ff9800" opacity="0.5"/>
-                            <text x="400" y="305" text-anchor="middle" font-size="12" fill="#000">Centro</text>
+                            <text x="400" y="305" text-anchor="middle" font-size="12" fill="#000" data-i18n="island_map_center">Centro</text>
                             
                             <!-- North stops -->
                             <circle cx="400" cy="150" r="8" fill="#2196f3"/>
@@ -107,84 +107,84 @@
                 </div>
 
                 <div class="stops-list">
-                    <h3>Principales Paradas de Autobús</h3>
+                    <h3 data-i18n="island_map_stops_title">Principales Paradas de Autobús</h3>
                     
                     <div class="stops-section">
-                        <h4>🔵 Zona Norte</h4>
+                        <h4 data-i18n="island_map_zone_north">🔵 Zona Norte</h4>
                         <ul class="stops-grid">
-                            <li>Terminal Norte</li>
-                            <li>Universidad</li>
-                            <li>Hospital Regional</li>
-                            <li>Zona Industrial Norte</li>
-                            <li>Mercado Municipal</li>
+                            <li data-i18n="island_map_stop_terminal_north">Terminal Norte</li>
+                            <li data-i18n="island_map_stop_university">Universidad</li>
+                            <li data-i18n="island_map_stop_hospital">Hospital Regional</li>
+                            <li data-i18n="island_map_stop_industrial_north">Zona Industrial Norte</li>
+                            <li data-i18n="island_map_stop_market">Mercado Municipal</li>
                         </ul>
                     </div>
 
                     <div class="stops-section">
-                        <h4>🔴 Zona Sur</h4>
+                        <h4 data-i18n="island_map_zone_south">🔴 Zona Sur</h4>
                         <ul class="stops-grid">
-                            <li>Terminal Sur</li>
-                            <li>Playa Principal</li>
-                            <li>Zona Turística</li>
-                            <li>Centro Comercial</li>
-                            <li>Parque Principal</li>
+                            <li data-i18n="island_map_stop_terminal_south">Terminal Sur</li>
+                            <li data-i18n="island_map_stop_beach">Playa Principal</li>
+                            <li data-i18n="island_map_stop_tourist">Zona Turística</li>
+                            <li data-i18n="island_map_stop_mall">Centro Comercial</li>
+                            <li data-i18n="island_map_stop_park">Parque Principal</li>
                         </ul>
                     </div>
 
                     <div class="stops-section">
-                        <h4>🟢 Zona Este</h4>
+                        <h4 data-i18n="island_map_zone_east">🟢 Zona Este</h4>
                         <ul class="stops-grid">
-                            <li>Aeropuerto</li>
-                            <li>Zona Comercial Este</li>
-                            <li>Zona Residencial Este</li>
-                            <li>Estadio Municipal</li>
+                            <li data-i18n="island_map_stop_airport">Aeropuerto</li>
+                            <li data-i18n="island_map_stop_commercial_east">Zona Comercial Este</li>
+                            <li data-i18n="island_map_stop_residential_east">Zona Residencial Este</li>
+                            <li data-i18n="island_map_stop_stadium">Estadio Municipal</li>
                         </ul>
                     </div>
 
                     <div class="stops-section">
-                        <h4>🟡 Zona Oeste</h4>
+                        <h4 data-i18n="island_map_zone_west">🟡 Zona Oeste</h4>
                         <ul class="stops-grid">
-                            <li>Mirador Oeste</li>
-                            <li>Zona Rural Oeste</li>
-                            <li>Cementerio</li>
-                            <li>Iglesia Principal</li>
+                            <li data-i18n="island_map_stop_viewpoint">Mirador Oeste</li>
+                            <li data-i18n="island_map_stop_rural_west">Zona Rural Oeste</li>
+                            <li data-i18n="island_map_stop_cemetery">Cementerio</li>
+                            <li data-i18n="island_map_stop_church">Iglesia Principal</li>
                         </ul>
                     </div>
 
                     <div class="stops-section">
-                        <h4>🟠 Zona Centro</h4>
+                        <h4 data-i18n="island_map_zone_center">🟠 Zona Centro</h4>
                         <ul class="stops-grid">
-                            <li>Plaza Central</li>
-                            <li>Catedral</li>
-                            <li>Palacio Municipal</li>
-                            <li>Biblioteca Central</li>
-                            <li>Estación de Policía</li>
+                            <li data-i18n="island_map_stop_central_plaza">Plaza Central</li>
+                            <li data-i18n="island_map_stop_cathedral">Catedral</li>
+                            <li data-i18n="island_map_stop_city_hall">Palacio Municipal</li>
+                            <li data-i18n="island_map_stop_library">Biblioteca Central</li>
+                            <li data-i18n="island_map_stop_police">Estación de Policía</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="map-info">
-                    <h3>Información Útil</h3>
+                    <h3 data-i18n="island_map_info_title">Información Útil</h3>
                     <div class="info-boxes">
                         <div class="info-box">
-                            <h4>📍 Cómo Encontrar una Parada</h4>
-                            <p>Todas nuestras paradas están identificadas con señalización verde con nuestro logo. También puede preguntar a nuestros conductores sobre la parada más cercana a su destino.</p>
+                            <h4 data-i18n="island_map_info_find_title">📍 Cómo Encontrar una Parada</h4>
+                            <p data-i18n="island_map_info_find_text">Todas nuestras paradas están identificadas con señalización verde con nuestro logo. También puede preguntar a nuestros conductores sobre la parada más cercana a su destino.</p>
                         </div>
                         <div class="info-box">
-                            <h4>🕐 Consultar Horarios</h4>
-                            <p>Visite nuestra página de <a href="mapa-servicio.html">Mapa de Servicio</a> para conocer los horarios de cada ruta, o llámenos al +123 456-7890.</p>
+                            <h4 data-i18n="island_map_info_schedule_title">🕐 Consultar Horarios</h4>
+                            <p data-i18n="island_map_info_schedule_text">Visite nuestra página de <a href="mapa-servicio.html">Mapa de Servicio</a> para conocer los horarios de cada ruta, o llámenos al +123 456-7890.</p>
                         </div>
                         <div class="info-box">
-                            <h4>📱 Aplicación Móvil (Próximamente)</h4>
-                            <p>Estamos desarrollando una aplicación móvil que le permitirá ver el mapa interactivo, consultar horarios y rastrear autobuses en tiempo real.</p>
+                            <h4 data-i18n="island_map_info_app_title">📱 Aplicación Móvil (Próximamente)</h4>
+                            <p data-i18n="island_map_info_app_text">Estamos desarrollando una aplicación móvil que le permitirá ver el mapa interactivo, consultar horarios y rastrear autobuses en tiempo real.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="contact-cta">
-                    <h3>¿Necesita Más Información?</h3>
-                    <p>Si tiene preguntas sobre paradas, rutas u horarios, no dude en contactarnos.</p>
-                    <a href="contacto.html" class="btn-primary">Contáctenos</a>
+                    <h3 data-i18n="island_map_cta_title">¿Necesita Más Información?</h3>
+                    <p data-i18n="island_map_cta_text">Si tiene preguntas sobre paradas, rutas u horarios, no dude en contactarnos.</p>
+                    <a href="contacto.html" class="btn-primary" data-i18n="island_map_cta_button">Contáctenos</a>
                 </div>
             </div>
         </section>
