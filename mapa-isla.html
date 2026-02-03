@@ -246,8 +246,22 @@
          * ====================================================================
          */
 
-        // OSRM server URL (using public demo server - for production use your own server)
+        /**
+         * OSRM Configuration
+         * ------------------
+         * This uses the public OSRM demo server which has rate limits.
+         * For production use, set up your own OSRM server:
+         * - Docker: https://hub.docker.com/r/osrm/osrm-backend
+         * - Guide: https://github.com/Project-OSRM/osrm-backend/wiki/Running-OSRM
+         * 
+         * To use a custom server, simply change the URL below:
+         * const OSRM_SERVER = 'https://your-osrm-server.com';
+         */
         const OSRM_SERVER = 'https://router.project-osrm.org';
+
+        // Configuration constants
+        const MIN_STOPS_FOR_OSRM_ROUTING = 2;  // Minimum stops required to use OSRM
+        const STATUS_MESSAGE_DISPLAY_DURATION = 2000;  // ms to show success message
 
         // Obtener configuración desde routes-data.js
         const mapConfig = getMapConfig();
@@ -307,9 +321,10 @@
         /**
          * Get route from OSRM between multiple waypoints
          * @param {Array} coordinates - Array of [lat, lng] coordinates
+         * @param {string} routeId - Route ID for error logging
          * @returns {Promise<Array>} - Array of [lng, lat] coordinates for the route
          */
-        async function getOSRMRoute(coordinates) {
+        async function getOSRMRoute(coordinates, routeId) {
             // Convert [lat, lng] to [lng, lat] for OSRM and join as string
             const waypointsString = coordinates
                 .map(coord => `${coord[1]},${coord[0]}`)
@@ -325,11 +340,11 @@
                     // Return the route geometry coordinates (already in [lng, lat] format)
                     return data.routes[0].geometry.coordinates;
                 } else {
-                    console.warn('OSRM returned no route, falling back to straight lines');
+                    console.warn(`OSRM returned no route for route ${routeId}, falling back to straight lines`);
                     return null;
                 }
             } catch (error) {
-                console.error('Error fetching OSRM route:', error);
+                console.error(`Error fetching OSRM route for route ${routeId}:`, error);
                 return null;
             }
         }
@@ -445,7 +460,7 @@
             setTimeout(() => {
                 const statusEl = document.getElementById('loading-status');
                 if (statusEl) statusEl.style.display = 'none';
-            }, 2000);
+            }, STATUS_MESSAGE_DISPLAY_DURATION);
         }
 
         /**
@@ -465,10 +480,10 @@
             let routeCoordinates;
             
             // For express routes or if there are too few stops, use straight lines
-            if (routeData.isExpress || stops.length < 2) {
+            if (routeData.isExpress || stops.length < MIN_STOPS_FOR_OSRM_ROUTING) {
                 routeCoordinates = getStraightLineCoordinates(stops);
             } else {
-                const osrmRoute = await getOSRMRoute(stopCoordinates);
+                const osrmRoute = await getOSRMRoute(stopCoordinates, routeId);
                 routeCoordinates = osrmRoute || getStraightLineCoordinates(stops);
             }
             
