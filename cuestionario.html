@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuestionario - Transporte La Esperanza</title>
+    <title data-i18n="page_title_questionnaire">Cuestionario - Transporte La Esperanza</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,21 +13,21 @@
     </div>
 
     <header id="main-header">
-        <button class="header-toggle" id="headerToggle" aria-label="Mostrar/Ocultar menú">
+        <button class="header-toggle" id="headerToggle" aria-label="Mostrar/Ocultar menú" data-i18n-aria-label="header_toggle_aria">
             <span class="toggle-icon">▼</span>
         </button>
         <div class="header-content">
             <div class="container">
-                <h1>🚌 Transporte La Esperanza</h1>
+                <h1 data-i18n="site_title">🚌 Transporte La Esperanza</h1>
                 <nav>
                     <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="cuestionario.html" class="active">Cuestionario</a></li>
-                        <li><a href="contacto.html">Contáctenos</a></li>
-                        <li><a href="trabajar.html">Trabaja con Nosotros</a></li>
-                        <li><a href="mapa-servicio.html">Mapa de Servicio</a></li>
-                        <li><a href="mapa-isla.html">Mapa de la Isla</a></li>
-                        <li><a href="carta-servicios.html">Carta de Servicios</a></li>
+                        <li><a href="index.html" data-i18n="nav_home">Inicio</a></li>
+                        <li><a href="cuestionario.html" class="active" data-i18n="nav_questionnaire">Cuestionario</a></li>
+                        <li><a href="contacto.html" data-i18n="nav_contact">Contáctenos</a></li>
+                        <li><a href="trabajar.html" data-i18n="nav_work">Trabaja con Nosotros</a></li>
+                        <li><a href="mapa-servicio.html" data-i18n="nav_service_map">Mapa de Servicio</a></li>
+                        <li><a href="mapa-isla.html" data-i18n="nav_island_map">Mapa de la Isla</a></li>
+                        <li><a href="carta-servicios.html" data-i18n="nav_service_charter">Carta de Servicios</a></li>
                     </ul>
                 </nav>
             </div>
@@ -43,36 +43,36 @@
 
                 <form id="questionnaireForm" class="form-container">
                     <div class="form-section">
-                        <h3>1. ¿Cómo te enteraste del servicio de Transporte Ecológico La Esperanza?</h3>
+                        <h3 data-i18n="questionnaire_q1_title">1. ¿Cómo te enteraste del servicio de Transporte Ecológico La Esperanza?</h3>
                         <div class="checkbox-group">
-                            <label><input type="checkbox" name="enteraste" value="redes"> Redes sociales</label>
-                            <label><input type="checkbox" name="enteraste" value="recomendacion"> Recomendación de amigos/familia</label>
-                            <label><input type="checkbox" name="enteraste" value="hoteles"> Hoteles</label>
-                            <label><input type="checkbox" name="enteraste" value="publicidad"> Publicidad/carteles</label>
-                            <label><input type="checkbox" name="enteraste" value="web"> Web oficial</label>
+                            <label><input type="checkbox" name="enteraste" value="redes"><span data-i18n="questionnaire_q1_option1"> Redes sociales</span></label>
+                            <label><input type="checkbox" name="enteraste" value="recomendacion"><span data-i18n="questionnaire_q1_option2"> Recomendación de amigos/familia</span></label>
+                            <label><input type="checkbox" name="enteraste" value="hoteles"><span data-i18n="questionnaire_q1_option3"> Hoteles</span></label>
+                            <label><input type="checkbox" name="enteraste" value="publicidad"><span data-i18n="questionnaire_q1_option4"> Publicidad/carteles</span></label>
+                            <label><input type="checkbox" name="enteraste" value="web"><span data-i18n="questionnaire_q1_option5"> Web oficial</span></label>
                             <label class="with-text">
-                                <input type="checkbox" name="enteraste" value="otro"> Otro:
-                                <input type="text" name="enteraste_otro" placeholder="Especifique">
+                                <input type="checkbox" name="enteraste" value="otro"><span data-i18n="questionnaire_q1_option6"> Otro:</span>
+                                <input type="text" name="enteraste_otro" placeholder="Especifique" data-i18n-placeholder="questionnaire_q1_other_placeholder">
                             </label>
                         </div>
                     </div>
 
                     <div class="form-section">
-                        <h3>2. ¿Con qué frecuencia utilizaste el servicio durante el Carnaval?</h3>
+                        <h3 data-i18n="questionnaire_q2_title">2. ¿Con qué frecuencia utilizaste el servicio durante el Carnaval?</h3>
                         <div class="radio-group">
-                            <label><input type="radio" name="frecuencia" value="una" required> Una vez</label>
-                            <label><input type="radio" name="frecuencia" value="2-3"> 2–3 veces</label>
-                            <label><input type="radio" name="frecuencia" value="mas3"> Más de 3 veces</label>
+                            <label><input type="radio" name="frecuencia" value="una" required><span data-i18n="questionnaire_q2_option1"> Una vez</span></label>
+                            <label><input type="radio" name="frecuencia" value="2-3"><span data-i18n="questionnaire_q2_option2"> 2–3 veces</span></label>
+                            <label><input type="radio" name="frecuencia" value="mas3"><span data-i18n="questionnaire_q2_option3"> Más de 3 veces</span></label>
                         </div>
                     </div>
 
                     <div class="form-section">
-                        <h3>3. Valora los siguientes aspectos del servicio</h3>
-                        <p class="scale-label">(1 = Muy malo / 5 = Excelente)</p>
+                        <h3 data-i18n="questionnaire_q3_title">3. Valora los siguientes aspectos del servicio</h3>
+                        <p class="scale-label" data-i18n="questionnaire_q3_scale">(1 = Muy malo / 5 = Excelente)</p>
                         
                         <div class="rating-table">
                             <div class="rating-row">
-                                <div class="aspect-label">Puntualidad</div>
+                                <div class="aspect-label" data-i18n="questionnaire_q3_aspect1">Puntualidad</div>
                                 <div class="rating-options">
                                     <label><input type="radio" name="rating_puntualidad" value="1" required><span>1</span></label>
                                     <label><input type="radio" name="rating_puntualidad" value="2"><span>2</span></label>
@@ -83,7 +83,7 @@
                             </div>
 
                             <div class="rating-row">
-                                <div class="aspect-label">Comodidad del transporte</div>
+                                <div class="aspect-label" data-i18n="questionnaire_q3_aspect2">Comodidad del transporte</div>
                                 <div class="rating-options">
                                     <label><input type="radio" name="rating_comodidad" value="1" required><span>1</span></label>
                                     <label><input type="radio" name="rating_comodidad" value="2"><span>2</span></label>
@@ -94,7 +94,7 @@
                             </div>
 
                             <div class="rating-row">
-                                <div class="aspect-label">Limpieza</div>
+                                <div class="aspect-label" data-i18n="questionnaire_q3_aspect3">Limpieza</div>
                                 <div class="rating-options">
                                     <label><input type="radio" name="rating_limpieza" value="1" required><span>1</span></label>
                                     <label><input type="radio" name="rating_limpieza" value="2"><span>2</span></label>
@@ -105,7 +105,7 @@
                             </div>
 
                             <div class="rating-row">
-                                <div class="aspect-label">Trato del personal</div>
+                                <div class="aspect-label" data-i18n="questionnaire_q3_aspect4">Trato del personal</div>
                                 <div class="rating-options">
                                     <label><input type="radio" name="rating_trato" value="1" required><span>1</span></label>
                                     <label><input type="radio" name="rating_trato" value="2"><span>2</span></label>
@@ -116,7 +116,7 @@
                             </div>
 
                             <div class="rating-row">
-                                <div class="aspect-label">Información y señalización</div>
+                                <div class="aspect-label" data-i18n="questionnaire_q3_aspect5">Información y señalización</div>
                                 <div class="rating-options">
                                     <label><input type="radio" name="rating_informacion" value="1" required><span>1</span></label>
                                     <label><input type="radio" name="rating_informacion" value="2"><span>2</span></label>
@@ -127,7 +127,7 @@
                             </div>
 
                             <div class="rating-row">
-                                <div class="aspect-label">Compromiso ecológico</div>
+                                <div class="aspect-label" data-i18n="questionnaire_q3_aspect6">Compromiso ecológico</div>
                                 <div class="rating-options">
                                     <label><input type="radio" name="rating_ecologico" value="1" required><span>1</span></label>
                                     <label><input type="radio" name="rating_ecologico" value="2"><span>2</span></label>
@@ -140,8 +140,8 @@
                     </div>
 
                     <div class="form-section">
-                        <h3>4. ¿Te sentiste seguro/a durante el trayecto?</h3>
-                        <p class="scale-label">(1 = Inseguro / 5 = Muy seguro)</p>
+                        <h3 data-i18n="questionnaire_q4_title">4. ¿Te sentiste seguro/a durante el trayecto?</h3>
+                        <p class="scale-label" data-i18n="questionnaire_q4_scale">(1 = Inseguro / 5 = Muy seguro)</p>
                         <div class="rating-scale">
                             <label><input type="radio" name="seguridad" value="1" required><span>1</span></label>
                             <label><input type="radio" name="seguridad" value="2"><span>2</span></label>
@@ -152,8 +152,8 @@
                     </div>
 
                     <div class="form-section">
-                        <h3>5. En general, ¿qué tan satisfecho/a estás con el servicio?</h3>
-                        <p class="scale-label">(1 = Insatisfecho / 5 = Muy satisfecho)</p>
+                        <h3 data-i18n="questionnaire_q5_title">5. En general, ¿qué tan satisfecho/a estás con el servicio?</h3>
+                        <p class="scale-label" data-i18n="questionnaire_q5_scale">(1 = Insatisfecho / 5 = Muy satisfecho)</p>
                         <div class="rating-scale">
                             <label><input type="radio" name="satisfaccion" value="1" required><span>1</span></label>
                             <label><input type="radio" name="satisfaccion" value="2"><span>2</span></label>
@@ -164,8 +164,8 @@
                     </div>
 
                     <div class="form-section">
-                        <h3>6. ¿Cómo valorarías la accesibilidad?</h3>
-                        <p class="scale-label">(1 = Difícil accesibilidad / 5 = Muy accesible)</p>
+                        <h3 data-i18n="questionnaire_q6_title">6. ¿Cómo valorarías la accesibilidad?</h3>
+                        <p class="scale-label" data-i18n="questionnaire_q6_scale">(1 = Difícil accesibilidad / 5 = Muy accesible)</p>
                         <div class="rating-scale">
                             <label><input type="radio" name="accesibilidad" value="1" required><span>1</span></label>
                             <label><input type="radio" name="accesibilidad" value="2"><span>2</span></label>
@@ -176,8 +176,8 @@
                     </div>
 
                     <div class="form-section">
-                        <h3>7. ¿Recomendarías este servicio a otras personas?</h3>
-                        <p class="scale-label">(1 = No lo recomendaría / 5 = Lo recomendaría)</p>
+                        <h3 data-i18n="questionnaire_q7_title">7. ¿Recomendarías este servicio a otras personas?</h3>
+                        <p class="scale-label" data-i18n="questionnaire_q7_scale">(1 = No lo recomendaría / 5 = Lo recomendaría)</p>
                         <div class="rating-scale">
                             <label><input type="radio" name="recomendaria" value="1" required><span>1</span></label>
                             <label><input type="radio" name="recomendaria" value="2"><span>2</span></label>
@@ -188,8 +188,8 @@
                     </div>
 
                     <div class="form-section">
-                        <h3>8. ¿Cómo valoras el precio?</h3>
-                        <p class="scale-label">(1 = Excesivo / 5 = Se ajusta a la calidad)</p>
+                        <h3 data-i18n="questionnaire_q8_title">8. ¿Cómo valoras el precio?</h3>
+                        <p class="scale-label" data-i18n="questionnaire_q8_scale">(1 = Excesivo / 5 = Se ajusta a la calidad)</p>
                         <div class="rating-scale">
                             <label><input type="radio" name="precio" value="1" required><span>1</span></label>
                             <label><input type="radio" name="precio" value="2"><span>2</span></label>
@@ -200,8 +200,8 @@
                     </div>
 
                     <div class="form-section">
-                        <h3>9. ¿Volverías a utilizar este servicio en futuros eventos?</h3>
-                        <p class="scale-label">(1 = Nunca / 5 = Seguramente)</p>
+                        <h3 data-i18n="questionnaire_q9_title">9. ¿Volverías a utilizar este servicio en futuros eventos?</h3>
+                        <p class="scale-label" data-i18n="questionnaire_q9_scale">(1 = Nunca / 5 = Seguramente)</p>
                         <div class="rating-scale">
                             <label><input type="radio" name="volveria" value="1" required><span>1</span></label>
                             <label><input type="radio" name="volveria" value="2"><span>2</span></label>
@@ -212,7 +212,7 @@
                     </div>
 
                     <div class="form-section">
-                        <h3>10. ¿El servicio transmite una imagen de empresa comprometida con la calidad y la imagen ecológica?</h3>
+                        <h3 data-i18n="questionnaire_q10_title">10. ¿El servicio transmite una imagen de empresa comprometida con la calidad y la imagen ecológica?</h3>
                         <div class="rating-scale">
                             <label><input type="radio" name="imagen" value="1" required><span>1</span></label>
                             <label><input type="radio" name="imagen" value="2"><span>2</span></label>
@@ -223,35 +223,35 @@
                     </div>
 
                     <div class="form-section">
-                        <h3>11. ¿Qué es lo que más te gustó del servicio?</h3>
+                        <h3 data-i18n="questionnaire_q11_title">11. ¿Qué es lo que más te gustó del servicio?</h3>
                         <div class="form-group">
-                            <textarea name="mas_gusto" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
+                            <textarea name="mas_gusto" rows="4" placeholder="Escribe tu respuesta aquí..." data-i18n-placeholder="questionnaire_textarea_placeholder"></textarea>
                         </div>
                     </div>
 
                     <div class="form-section">
-                        <h3>12. ¿Qué aspectos crees que podríamos mejorar?</h3>
+                        <h3 data-i18n="questionnaire_q12_title">12. ¿Qué aspectos crees que podríamos mejorar?</h3>
                         <div class="form-group">
-                            <textarea name="mejorar" rows="5" placeholder="Escribe tu respuesta aquí..."></textarea>
+                            <textarea name="mejorar" rows="5" placeholder="Escribe tu respuesta aquí..." data-i18n-placeholder="questionnaire_textarea_placeholder"></textarea>
                         </div>
                     </div>
 
                     <div class="form-section">
-                        <h3>13. ¿Alguna sugerencia?</h3>
+                        <h3 data-i18n="questionnaire_q13_title">13. ¿Alguna sugerencia?</h3>
                         <div class="form-group">
-                            <textarea name="sugerencias" rows="6" placeholder="Escribe tu respuesta aquí..."></textarea>
+                            <textarea name="sugerencias" rows="6" placeholder="Escribe tu respuesta aquí..." data-i18n-placeholder="questionnaire_textarea_placeholder"></textarea>
                         </div>
                     </div>
 
                     <div class="form-actions">
-                        <button type="submit" class="btn-primary"><span>Enviar Encuesta</span></button>
-                        <button type="reset" class="btn-secondary">Limpiar Formulario</button>
+                        <button type="submit" class="btn-primary"><span data-i18n="questionnaire_submit_btn">Enviar Encuesta</span></button>
+                        <button type="reset" class="btn-secondary" data-i18n="questionnaire_reset_btn">Limpiar Formulario</button>
                     </div>
                 </form>
 
                 <div id="successMessage" class="success-message" style="display: none;">
-                    <h3>¡Gracias por utilizar nuestro servicio!</h3>
-                    <p>Tu opinión es muy importante para seguir mejorando el transporte sostenible durante el Carnaval.</p>
+                    <h3 data-i18n="questionnaire_success_title">¡Gracias por utilizar nuestro servicio!</h3>
+                    <p data-i18n="questionnaire_success_message">Tu opinión es muy importante para seguir mejorando el transporte sostenible durante el Carnaval.</p>
                 </div>
             </div>
         </section>
