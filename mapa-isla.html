@@ -94,6 +94,19 @@
             background: var(--dark-green);
             transform: translateY(-2px);
         }
+        .loading-status {
+            background: #fff3cd;
+            color: #856404;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .loading-status::before {
+            content: '⏳';
+        }
         .maplibregl-popup-content {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 1rem;
@@ -163,87 +176,17 @@
                     <button onclick="showAllRoutes()">🗺️ Mostrar Todas</button>
                     <button onclick="hideAllRoutes()">🚫 Ocultar Todas</button>
                     <button onclick="centerMap()">🎯 Centrar Mapa</button>
+                    <span id="loading-status" class="loading-status">Cargando rutas...</span>
                 </div>
 
                 <!-- Interactive Map -->
                 <div id="tenerife-map"></div>
 
-                <!-- Route Legend with Toggles -->
+                <!-- Route Legend with Toggles - Generated dynamically from routes-data.js -->
                 <div class="route-legend">
                     <h3>🚌 Líneas de Transporte - Carnaval de Tenerife</h3>
-                    <div class="route-toggles">
-                        <label class="route-toggle active" data-route="1">
-                            <input type="checkbox" checked onchange="toggleRoute(1, this.checked)">
-                            <span class="route-color" style="background: #2196f3;"></span>
-                            <span class="route-info">
-                                <strong>Línea 1: Sur</strong>
-                                <small>Costa Adeje → Playa de las Américas → Los Cristianos</small>
-                                <span class="buses-info">🚌 3 guaguas grandes</span>
-                            </span>
-                        </label>
-                        <label class="route-toggle active" data-route="2">
-                            <input type="checkbox" checked onchange="toggleRoute(2, this.checked)">
-                            <span class="route-color" style="background: #f44336;"></span>
-                            <span class="route-info">
-                                <strong>Línea 2: Sur-Oeste</strong>
-                                <small>Callao Salvaje → Los Gigantes → Masca</small>
-                                <span class="buses-info">🚌 2 grandes + 1 mini</span>
-                            </span>
-                        </label>
-                        <label class="route-toggle active" data-route="3">
-                            <input type="checkbox" checked onchange="toggleRoute(3, this.checked)">
-                            <span class="route-color" style="background: #4caf50;"></span>
-                            <span class="route-info">
-                                <strong>Línea 3: Norte</strong>
-                                <small>Puerto de la Cruz → La Orotava → Icod → Garachico</small>
-                                <span class="buses-info">🚌 2 guaguas grandes</span>
-                            </span>
-                        </label>
-                        <label class="route-toggle active" data-route="4">
-                            <input type="checkbox" checked onchange="toggleRoute(4, this.checked)">
-                            <span class="route-color" style="background: #ff9800;"></span>
-                            <span class="route-info">
-                                <strong>Línea 4: Metropolitana</strong>
-                                <small>La Laguna → Taco → Tabaiba</small>
-                                <span class="buses-info">🚐 2 mini guaguas</span>
-                            </span>
-                        </label>
-                        <label class="route-toggle active" data-route="5">
-                            <input type="checkbox" checked onchange="toggleRoute(5, this.checked)">
-                            <span class="route-color" style="background: #9c27b0;"></span>
-                            <span class="route-info">
-                                <strong>Línea 5: Sur-Interior</strong>
-                                <small>Arona → Chayofa → Adeje</small>
-                                <span class="buses-info">🚐 1 mini guagua</span>
-                            </span>
-                        </label>
-                        <label class="route-toggle active" data-route="6">
-                            <input type="checkbox" checked onchange="toggleRoute(6, this.checked)">
-                            <span class="route-color" style="background: #00bcd4;"></span>
-                            <span class="route-info">
-                                <strong>Línea 6: Norte-Interior</strong>
-                                <small>Buenavista → La Guancha → Icod</small>
-                                <span class="buses-info">🚐 1 mini guagua</span>
-                            </span>
-                        </label>
-                        <label class="route-toggle active" data-route="7">
-                            <input type="checkbox" checked onchange="toggleRoute(7, this.checked)">
-                            <span class="route-color" style="background: #e91e63;"></span>
-                            <span class="route-info">
-                                <strong>Línea 7: Este</strong>
-                                <small>Candelaria → Güímar → Fasnia</small>
-                                <span class="buses-info">🚐 1 mini guagua</span>
-                            </span>
-                        </label>
-                        <label class="route-toggle active" data-route="8">
-                            <input type="checkbox" checked onchange="toggleRoute(8, this.checked)">
-                            <span class="route-color" style="background: #795548;"></span>
-                            <span class="route-info">
-                                <strong>Línea 8: Exprés y Apoyo</strong>
-                                <small>Rutas flexibles según demanda</small>
-                                <span class="buses-info">🚐 2 mini guaguas</span>
-                            </span>
-                        </label>
+                    <div class="route-toggles" id="route-toggles-container">
+                        <!-- Route toggles will be generated dynamically from routes-data.js -->
                     </div>
                 </div>
 
@@ -291,20 +234,30 @@
     <script>
         /**
          * ====================================================================
-         * MAPA INTERACTIVO DE TENERIFE - MapLibre GL JS
+         * MAPA INTERACTIVO DE TENERIFE - MapLibre GL JS + OSRM Routing
          * ====================================================================
          * 
          * Este script lee la configuración de rutas desde routes-data.js
          * Para modificar las rutas, edite el archivo routes-data.js
          * 
+         * OSRM (Open Source Routing Machine) se utiliza para calcular rutas
+         * que siguen las carreteras reales en lugar de líneas rectas.
+         * 
          * ====================================================================
          */
+
+        // OSRM server URL (using public demo server - for production use your own server)
+        const OSRM_SERVER = 'https://router.project-osrm.org';
 
         // Obtener configuración desde routes-data.js
         const mapConfig = getMapConfig();
         const specialPoints = getSpecialPoints();
         const routesData = getRoutesData();
         const routeColors = ROUTE_COLORS;
+
+        // Status indicator for route loading
+        let routesLoaded = 0;
+        let totalRoutes = Object.keys(routesData).length;
 
         // Initialize the map centered on Tenerife using MapLibre GL
         const map = new maplibregl.Map({
@@ -320,7 +273,7 @@
                             'https://c.tile.openstreetmap.org/{z}/{x}/{y}.png'
                         ],
                         tileSize: 256,
-                        attribution: '© OpenStreetMap contributors'
+                        attribution: '© OpenStreetMap contributors | Routing © OSRM'
                     }
                 },
                 layers: [
@@ -344,6 +297,51 @@
         // Store route layers and markers for toggling
         const routeLayers = {};
         const routeMarkers = {};
+
+        /**
+         * ====================================================================
+         * OSRM ROUTING FUNCTIONS
+         * ====================================================================
+         */
+
+        /**
+         * Get route from OSRM between multiple waypoints
+         * @param {Array} coordinates - Array of [lat, lng] coordinates
+         * @returns {Promise<Array>} - Array of [lng, lat] coordinates for the route
+         */
+        async function getOSRMRoute(coordinates) {
+            // Convert [lat, lng] to [lng, lat] for OSRM and join as string
+            const waypointsString = coordinates
+                .map(coord => `${coord[1]},${coord[0]}`)
+                .join(';');
+            
+            const url = `${OSRM_SERVER}/route/v1/driving/${waypointsString}?overview=full&geometries=geojson`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.code === 'Ok' && data.routes && data.routes.length > 0) {
+                    // Return the route geometry coordinates (already in [lng, lat] format)
+                    return data.routes[0].geometry.coordinates;
+                } else {
+                    console.warn('OSRM returned no route, falling back to straight lines');
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error fetching OSRM route:', error);
+                return null;
+            }
+        }
+
+        /**
+         * Get straight line coordinates as fallback
+         * @param {Array} stops - Array of stop objects with coords [lat, lng]
+         * @returns {Array} - Array of [lng, lat] coordinates
+         */
+        function getStraightLineCoordinates(stops) {
+            return stops.map(stop => [stop.coords[1], stop.coords[0]]);
+        }
 
         // Create marker element for stops
         function createStopMarker(color) {
@@ -391,6 +389,14 @@
             return el;
         }
 
+        // Update loading status in UI
+        function updateLoadingStatus(message) {
+            const statusEl = document.getElementById('loading-status');
+            if (statusEl) {
+                statusEl.textContent = message;
+            }
+        }
+
         // Wait for map to load before adding sources and layers
         map.on('load', function() {
             // Add Santa Cruz marker (common destination)
@@ -419,80 +425,110 @@
                 .setPopup(laEsperanzaPopup)
                 .addTo(map);
 
-            // Initialize routes from configuration file
-            initializeRoutes();
+            // Initialize routes from configuration file with OSRM
+            initializeRoutesWithOSRM();
         });
 
-        // Initialize routes from configuration file
-        function initializeRoutes() {
+        /**
+         * Initialize all routes using OSRM for real road routing
+         */
+        async function initializeRoutesWithOSRM() {
+            updateLoadingStatus('Cargando rutas...');
+            
             for (const [routeId, routeData] of Object.entries(routesData)) {
-                const color = getRouteColor(routeId);
-                const markers = [];
-                
-                // Get stops including the Intercambiador
-                const stops = getStopsWithIntercambiador(routeId);
-                
-                // Create coordinates array for the polyline (MapLibre uses [lng, lat])
-                const coordinates = stops.map(stop => [stop.coords[1], stop.coords[0]]);
-                
-                // Add source for the route line
-                map.addSource(`route-${routeId}`, {
-                    type: 'geojson',
-                    data: {
-                        type: 'Feature',
-                        properties: {},
-                        geometry: {
-                            type: 'LineString',
-                            coordinates: coordinates
-                        }
-                    }
-                });
-
-                // Add line layer for the route
-                const lineLayer = {
-                    id: `route-line-${routeId}`,
-                    type: 'line',
-                    source: `route-${routeId}`,
-                    layout: {
-                        'line-join': 'round',
-                        'line-cap': 'round'
-                    },
-                    paint: {
-                        'line-color': color,
-                        'line-width': 4,
-                        'line-opacity': 0.8
-                    }
-                };
-
-                // Add dashed pattern for express line
-                if (routeData.isExpress) {
-                    lineLayer.paint['line-dasharray'] = [2, 2];
-                }
-
-                map.addLayer(lineLayer);
-                routeLayers[routeId] = `route-line-${routeId}`;
-
-                // Add markers for each stop (except Santa Cruz which is already added)
-                stops.forEach((stop, index) => {
-                    if (!stop.name.includes('Intercambiador')) {
-                        const popup = new maplibregl.Popup({ offset: 25 })
-                            .setHTML(`
-                                <div class="popup-stop-name">${stop.name}</div>
-                                <div class="popup-route-info">${routeData.name}</div>
-                                <div class="buses-info">${routeData.busIcon || '🚌'} ${routeData.buses}</div>
-                            `);
-
-                        const marker = new maplibregl.Marker({ element: createStopMarker(color) })
-                            .setLngLat([stop.coords[1], stop.coords[0]])
-                            .setPopup(popup)
-                            .addTo(map);
-                        
-                        markers.push(marker);
-                    }
-                });
-
-                routeMarkers[routeId] = markers;
+                await initializeSingleRoute(routeId, routeData);
+                routesLoaded++;
+                updateLoadingStatus(`Cargando rutas... (${routesLoaded}/${totalRoutes})`);
             }
+            
+            updateLoadingStatus('Todas las rutas cargadas ✓');
+            setTimeout(() => {
+                const statusEl = document.getElementById('loading-status');
+                if (statusEl) statusEl.style.display = 'none';
+            }, 2000);
+        }
+
+        /**
+         * Initialize a single route with OSRM routing
+         */
+        async function initializeSingleRoute(routeId, routeData) {
+            const color = getRouteColor(routeId);
+            const markers = [];
+            
+            // Get stops including the Intercambiador
+            const stops = getStopsWithIntercambiador(routeId);
+            
+            // Extract coordinates for OSRM query
+            const stopCoordinates = stops.map(stop => stop.coords);
+            
+            // Try to get OSRM route, fall back to straight lines if it fails
+            let routeCoordinates;
+            
+            // For express routes or if there are too few stops, use straight lines
+            if (routeData.isExpress || stops.length < 2) {
+                routeCoordinates = getStraightLineCoordinates(stops);
+            } else {
+                const osrmRoute = await getOSRMRoute(stopCoordinates);
+                routeCoordinates = osrmRoute || getStraightLineCoordinates(stops);
+            }
+            
+            // Add source for the route line
+            map.addSource(`route-${routeId}`, {
+                type: 'geojson',
+                data: {
+                    type: 'Feature',
+                    properties: {},
+                    geometry: {
+                        type: 'LineString',
+                        coordinates: routeCoordinates
+                    }
+                }
+            });
+
+            // Add line layer for the route
+            const lineLayer = {
+                id: `route-line-${routeId}`,
+                type: 'line',
+                source: `route-${routeId}`,
+                layout: {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                paint: {
+                    'line-color': color,
+                    'line-width': 4,
+                    'line-opacity': 0.8
+                }
+            };
+
+            // Add dashed pattern for express line
+            if (routeData.isExpress) {
+                lineLayer.paint['line-dasharray'] = [2, 2];
+            }
+
+            map.addLayer(lineLayer);
+            routeLayers[routeId] = `route-line-${routeId}`;
+
+            // Add markers for each stop (except Santa Cruz which is already added)
+            stops.forEach((stop, index) => {
+                if (!stop.name.includes('Intercambiador')) {
+                    const popup = new maplibregl.Popup({ offset: 25 })
+                        .setHTML(`
+                            <div class="popup-stop-name">${stop.name}</div>
+                            <div class="popup-route-info">${routeData.name}</div>
+                            <div class="buses-info">${routeData.busIcon || '🚌'} ${routeData.buses}</div>
+                        `);
+
+                    const marker = new maplibregl.Marker({ element: createStopMarker(color) })
+                        .setLngLat([stop.coords[1], stop.coords[0]])
+                        .setPopup(popup)
+                        .addTo(map);
+                    
+                    markers.push(marker);
+                }
+            });
+
+            routeMarkers[routeId] = markers;
         }
 
         // Toggle route visibility
@@ -538,6 +574,50 @@
                 essential: true
             });
         }
+
+        /**
+         * ====================================================================
+         * DYNAMIC ROUTE LEGEND GENERATION
+         * ====================================================================
+         * 
+         * This function generates the route toggles from routes-data.js
+         * New routes added to ROUTES_DATA will automatically appear in the legend
+         * 
+         * ====================================================================
+         */
+        function generateRouteToggles() {
+            const container = document.getElementById('route-toggles-container');
+            if (!container) return;
+            
+            container.innerHTML = ''; // Clear existing content
+            
+            // Sort routes by ID
+            const sortedRouteIds = Object.keys(routesData).sort((a, b) => parseInt(a) - parseInt(b));
+            
+            for (const routeId of sortedRouteIds) {
+                const routeData = routesData[routeId];
+                const color = getRouteColor(routeId);
+                
+                const label = document.createElement('label');
+                label.className = 'route-toggle active';
+                label.dataset.route = routeId;
+                
+                label.innerHTML = `
+                    <input type="checkbox" checked onchange="toggleRoute(${routeId}, this.checked)">
+                    <span class="route-color" style="background: ${color};"></span>
+                    <span class="route-info">
+                        <strong>${routeData.name}</strong>
+                        <small>${routeData.description}</small>
+                        <span class="buses-info">${routeData.busIcon || '🚌'} ${routeData.buses}</span>
+                    </span>
+                `;
+                
+                container.appendChild(label);
+            }
+        }
+
+        // Generate route toggles on page load
+        document.addEventListener('DOMContentLoaded', generateRouteToggles);
     </script>
 </body>
 </html>
