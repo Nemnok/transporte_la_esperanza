@@ -363,7 +363,7 @@
      * Remove advertising cookies
      */
     function removeAdvertisingCookies() {
-        const adCookies = ['_fbp', 'IDE', 'Conversión'];
+        const adCookies = ['_fbp', 'IDE', 'CONVERSION'];
         adCookies.forEach(cookieName => {
             deleteCookie(cookieName);
             deleteCookie(cookieName, window.location.hostname);

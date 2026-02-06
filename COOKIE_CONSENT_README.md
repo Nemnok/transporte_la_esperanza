@@ -186,7 +186,7 @@ Para integrar el sistema de cookies en cualquier página HTML, siga estos pasos:
                 <div id="advertising-details" class="cookie-details" hidden>
                     <ul>
                         <li><strong>_fbp</strong> - Facebook Pixel (3 meses)</li>
-                        <li><strong>Conversión</strong> - Google Ads (persistente)</li>
+                        <li><strong>CONVERSION</strong> - Google Ads (persistente)</li>
                         <li><strong>IDE</strong> - Google DoubleClick (1 año)</li>
                     </ul>
                 </div>
