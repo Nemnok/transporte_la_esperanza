@@ -1,7 +1,7 @@
 # Cookie Consent Integration Guide
 
 ## Resumen
-Sistema completo de consentimiento de cookies compatible con GDPR de la UE para Transporte La Esperanza.
+Sistema completo de consentimiento de cookies compatible con GDPR de la UE para Transporte Compás.
 
 ## Archivos Creados
 
@@ -300,5 +300,5 @@ Abrir `test-cookie-consent.html` en un navegador para:
 ## Soporte
 
 Para preguntas o problemas:
-- Email: info@transportelaesperanza.com
+- Email: info@transportecompas.com
 - Documentación: Ver archivos de políticas en `/politicas/`

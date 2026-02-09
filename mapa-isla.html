@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa de la Isla - Transporte La Esperanza</title>
+    <title>Mapa de la Isla - Transporte Compás</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/cookie-consent.css">
     <!-- MapLibre GL CSS -->
@@ -150,7 +150,7 @@
         </button>
         <div class="header-content">
             <div class="container">
-                <h1>🚌 Transporte La Esperanza</h1>
+                <h1>🧭 Transporte Compás</h1>
                 <nav>
                     <ul>
                         <li><a href="index.html" data-i18n="nav_home">Inicio</a></li>
@@ -185,7 +185,7 @@
 
                 <!-- Route Legend with Toggles - Generated dynamically from routes-data.js -->
                 <div class="route-legend">
-                    <h3>🚌 Líneas de Transporte - Carnaval de Tenerife</h3>
+                    <h3>🧭 Líneas de Transporte - Carnaval de Tenerife</h3>
                     <div class="route-toggles" id="route-toggles-container">
                         <!-- Route toggles will be generated dynamically from routes-data.js -->
                     </div>
@@ -220,7 +220,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Transporte La Esperanza. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
+            <p>&copy; 2026 Transporte Compás. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
             <p data-i18n="footer_slogan">Conectando comunidades, construyendo futuro.</p>
         </div>
     </footer>
@@ -388,8 +388,8 @@
             return el;
         }
 
-        // Create La Esperanza marker
-        function createLaEsperanzaMarker() {
+        // Create Compás marker
+        function createCompasMarker() {
             const el = document.createElement('div');
             el.style.width = '20px';
             el.style.height = '20px';
@@ -428,17 +428,17 @@
                 .setPopup(santaCruzPopup)
                 .addTo(map);
 
-            // Add La Esperanza marker (return destination)
-            const laEsperanzaPopup = new maplibregl.Popup({ offset: 25 })
+            // Add Compás marker (return destination)
+            const compasPopup = new maplibregl.Popup({ offset: 25 })
                 .setHTML(`
                     <div class="popup-stop-name">${specialPoints.laEsperanza.icon} ${specialPoints.laEsperanza.name}</div>
                     <div class="popup-route-info">Destino final de rutas de vuelta</div>
                     <div class="buses-info">${specialPoints.laEsperanza.description}</div>
                 `);
 
-            new maplibregl.Marker({ element: createLaEsperanzaMarker() })
+            new maplibregl.Marker({ element: createCompasMarker() })
                 .setLngLat([specialPoints.laEsperanza.coords[1], specialPoints.laEsperanza.coords[0]])
-                .setPopup(laEsperanzaPopup)
+                .setPopup(compasPopup)
                 .addTo(map);
 
             // Initialize routes from configuration file with OSRM
@@ -532,7 +532,7 @@
                         .setHTML(`
                             <div class="popup-stop-name">${stop.name}</div>
                             <div class="popup-route-info">${routeData.name}</div>
-                            <div class="buses-info">${routeData.busIcon || '🚌'} ${routeData.buses}</div>
+                            <div class="buses-info">${routeData.busIcon || '🧭'} ${routeData.buses}</div>
                         `);
 
                     const marker = new maplibregl.Marker({ element: createStopMarker(color) })
@@ -624,7 +624,7 @@
                     <span class="route-info">
                         <strong>${routeData.name}</strong>
                         <small>${routeData.description}</small>
-                        <span class="buses-info">${routeData.busIcon || '🚌'} ${routeData.buses}</span>
+                        <span class="buses-info">${routeData.busIcon || '🧭'} ${routeData.buses}</span>
                     </span>
                 `;
                 

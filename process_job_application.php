@@ -1,7 +1,7 @@
 <?php
 /**
  * Process Job Application Form
- * Transporte Ecológico La Esperanza
+ * Transporte Ecológico Compás
  */
 
 header('Content-Type: application/json');
@@ -134,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         fclose($fp);
         
         // Send email notification to HR
-        $to = "rrhh@transportelaesperanza.com";
+        $to = "rrhh@transportecompas.com";
         $subject = "Nueva Solicitud de Empleo: " . $posicion;
         $email_message = "Nueva solicitud de empleo recibida:\n\n";
         $email_message .= "Nombre: " . $nombreCompleto . "\n";
@@ -150,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email_message .= "\nCV adjunto: " . $cv_filename;
         }
         
-        $headers = "From: noreply@transportelaesperanza.com\r\n";
+        $headers = "From: noreply@transportecompas.com\r\n";
         $headers .= "Reply-To: " . $email . "\r\n";
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
         
@@ -158,16 +158,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // mail($to, $subject, $email_message, $headers);
         
         // Send confirmation email to applicant
-        $user_subject = "Aplicación Recibida - Transporte La Esperanza";
+        $user_subject = "Aplicación Recibida - Transporte Compás";
         $user_message = "Estimado/a " . $nombreCompleto . ",\n\n";
-        $user_message .= "Gracias por su interés en formar parte de Transporte Ecológico La Esperanza.\n\n";
+        $user_message .= "Gracias por su interés en formar parte de Transporte Ecológico Compás.\n\n";
         $user_message .= "Hemos recibido su aplicación para la posición de " . $posicion . ".\n";
         $user_message .= "Nuestro equipo de recursos humanos la revisará y nos pondremos en contacto con usted pronto.\n\n";
         $user_message .= "Saludos cordiales,\n";
         $user_message .= "Equipo de RRHH\n";
-        $user_message .= "Transporte La Esperanza";
+        $user_message .= "Transporte Compás";
         
-        $user_headers = "From: rrhh@transportelaesperanza.com\r\n";
+        $user_headers = "From: rrhh@transportecompas.com\r\n";
         $user_headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
         
         // Uncomment to send confirmation email
