@@ -1,4 +1,4 @@
-// Modern JavaScript features for Transporte La Esperanza website
+// Modern JavaScript features for Transporte Compás website
 
 // Page loader
 window.addEventListener('load', function() {

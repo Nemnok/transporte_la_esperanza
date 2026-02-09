@@ -1,4 +1,4 @@
-// Translations for Transporte La Esperanza website
+// Translations for Transporte Compás website
 const translations = {
     es: {
         // Navigation
@@ -12,14 +12,14 @@ const translations = {
         
         // Header
         header_toggle_label: "Mostrar/Ocultar menú",
-        company_name: "🚌 Transporte La Esperanza",
+        company_name: "🧭 Transporte Compás",
         
         // Footer
         footer_rights: "Todos los derechos reservados.",
         footer_slogan: "Conectando comunidades, construyendo futuro.",
         
         // Home page
-        home_welcome: "Bienvenidos a Transporte La Esperanza",
+        home_welcome: "Bienvenidos a Transporte Compás",
         home_subtitle: "Su compañía de transporte de confianza",
         home_about_title: "Acerca de Nosotros",
         home_mission_title: "🎯 Nuestra Misión",
@@ -32,7 +32,7 @@ const translations = {
         home_values_respect: "Respeto y cortesía",
         home_values_environment: "Compromiso con el medio ambiente",
         home_services_title: "Nuestros Servicios",
-        home_service_routes_title: "🚍 Rutas Regulares",
+        home_service_routes_title: "🧭 Rutas Regulares",
         home_service_routes_text: "Servicio diario de transporte público con múltiples rutas que cubren toda la isla.",
         home_service_schedule_title: "🕐 Horarios Flexibles",
         home_service_schedule_text: "Ofrecemos horarios adaptados a las necesidades de nuestros pasajeros, desde temprano en la mañana hasta la noche.",
@@ -73,12 +73,12 @@ const translations = {
         scroll_top_label: "Volver arriba",
         
         // Questionnaire page
-        page_title_questionnaire: "Cuestionario - Transporte La Esperanza",
-        site_title: "🚌 Transporte La Esperanza",
+        page_title_questionnaire: "Cuestionario - Transporte Compás",
+        site_title: "🧭 Transporte Compás",
         questionnaire_title: "Encuesta de Satisfacción",
-        questionnaire_subtitle: "Transporte Ecológico La Esperanza - Carnaval de Tenerife",
+        questionnaire_subtitle: "Transporte Ecológico Compás - Carnaval de Tenerife",
         questionnaire_intro: "Tu opinión es muy importante para seguir mejorando el transporte sostenible durante el Carnaval.",
-        questionnaire_q1_title: "1. ¿Cómo te enteraste del servicio de Transporte Ecológico La Esperanza?",
+        questionnaire_q1_title: "1. ¿Cómo te enteraste del servicio de Transporte Ecológico Compás?",
         questionnaire_q1_option1: "Redes sociales",
         questionnaire_q1_option2: "Recomendación de amigos/familia",
         questionnaire_q1_option3: "Hoteles",
@@ -238,16 +238,16 @@ const translations = {
         
         // Service Charter page
         service_charter_title: "Carta de Servicios",
-        service_charter_subtitle: "Transporte Ecológico La Esperanza – Carnaval de Tenerife",
+        service_charter_subtitle: "Transporte Ecológico Compás – Carnaval de Tenerife",
         
         // Section 1
         charter_section1_title: "1. Objetivos y fines del servicio",
-        charter_section1_content: "Transporte Ecológico La Esperanza tiene como objetivo facilitar un transporte seguro, accesible y sostenible durante el Carnaval de Tenerife, especialmente para los desplazamientos desde el sur de la isla. Con esta Carta de Servicios se pretende informar a los clientes sobre los servicios ofrecidos y los compromisos de calidad asumidos por la empresa.",
+        charter_section1_content: "Transporte Ecológico Compás tiene como objetivo facilitar un transporte seguro, accesible y sostenible durante el Carnaval de Tenerife, especialmente para los desplazamientos desde el sur de la isla. Con esta Carta de Servicios se pretende informar a los clientes sobre los servicios ofrecidos y los compromisos de calidad asumidos por la empresa.",
         
         // Section 2
         charter_section2_title: "2. Datos identificativos de la organización",
         charter_section2_company_label: "Empresa",
-        charter_section2_company_value: "Transporte Ecológico La Esperanza S.L",
+        charter_section2_company_value: "Transporte Ecológico Compás S.L",
         charter_section2_service_label: "Servicio",
         charter_section2_service_value: "Transporte colectivo sostenible para eventos",
         charter_section2_scope_label: "Ámbito de actuación",
@@ -257,12 +257,12 @@ const translations = {
         charter_section2_social_address_label: "Sede social",
         charter_section2_social_address_value: "Calle del Medio, nº 128, 38290 – La Esperanza, El Rosario, Santa Cruz de Tenerife",
         charter_section2_physical_address_label: "Sede física",
-        charter_section2_physical_address_value: "Estación Base de Transporte Ecológico La Esperanza, Avenida de Bélgica s/n, 38007 – Santa Cruz de Tenerife",
+        charter_section2_physical_address_value: "Estación Base de Transporte Ecológico Compás, Avenida de Bélgica s/n, 38007 – Santa Cruz de Tenerife",
         
         // Section 3
         charter_section3_title: "3. Servicios prestados",
-        charter_section3_intro: "La empresa Transporte Ecológico La Esperanza asume los siguientes compromisos dentro del Servicio de Transporte Colectivo Sostenible para Eventos, especialmente en el Carnaval de Tenerife:",
-        charter_section3_service1_title: "🚌 Transporte de pasajeros y gestión del servicio",
+        charter_section3_intro: "La empresa Transporte Ecológico Compás asume los siguientes compromisos dentro del Servicio de Transporte Colectivo Sostenible para Eventos, especialmente en el Carnaval de Tenerife:",
+        charter_section3_service1_title: "🧭 Transporte de pasajeros y gestión del servicio",
         charter_section3_service1_content: "Mediante una flota de guaguas ecológicas de bajas emisiones que conectan los hoteles adheridos, zonas del Carnaval y puntos de interés turístico, asegurando puntualidad, eficiencia y seguridad.",
         charter_section3_service2_title: "ℹ️ Información y atención al usuario",
         charter_section3_service2_content: "Ofreciendo datos actualizados sobre horarios, rutas, tarifas y paradas a través de canales físicos y digitales (puntos informativos, web oficial y aplicación móvil), además de asistencia personalizada presencial, telefónica o en línea.",
@@ -280,7 +280,7 @@ const translations = {
         charter_section4_intro: "El servicio de transporte durante los días del Carnaval de Tenerife se ofrece en los horarios establecidos según la demanda y la programación del evento. Con el fin de facilitar la planificación de los asistentes, se pone a disposición información detallada sobre paradas, horarios, tarifas y medios de contacto a través de carteles informativos, la página web oficial y los puntos de información habilitados en las principales zonas del Carnaval.",
         charter_section4_contact_heading: "Datos de contacto de la empresa:",
         charter_section4_company_label: "Empresa:",
-        charter_section4_company_value: "Transporte Ecológico La Esperanza",
+        charter_section4_company_value: "Transporte Ecológico Compás",
         charter_section4_hours_label: "Horario de atención:",
         charter_section4_hours_value: "De lunes a viernes de 8:00 a 13:00 / 15:00 a 20:00",
         charter_section4_postal_label: "Dirección postal:",
@@ -292,7 +292,7 @@ const translations = {
         // Section 5
         charter_section5_title: "5. Derechos y obligaciones de los clientes",
         charter_section5_rights_title: "✓ Derechos de los usuarios",
-        charter_section5_rights_intro: "Los usuarios de la línea de transporte especial para el Carnaval de Tenerife de Transportes La Esperanza tienen derecho a:",
+        charter_section5_rights_intro: "Los usuarios de la línea de transporte especial para el Carnaval de Tenerife de Transportes Compás tienen derecho a:",
         charter_section5_right1: "Acceder al servicio de transporte de manera segura, puntual y adecuada, conforme a los itinerarios, horarios y tarifas establecidos.",
         charter_section5_right2: "Recibir información clara sobre rutas, horarios, precios, condiciones de uso y cualquier incidencia que afecte al servicio.",
         charter_section5_right3: "Disponer de vehículos en condiciones de limpieza, confort y seguridad, así como equipamiento adecuado para el transporte.",
@@ -300,7 +300,7 @@ const translations = {
         charter_section5_right5: "La confidencialidad de los datos personales proporcionados al contratar o utilizar los servicios, en cumplimiento de la normativa vigente de protección de datos.",
         charter_section5_right6: "Acceder a información sobre posibles interrupciones, retrasos u otras incidencias que afecten al servicio.",
         charter_section5_obligations_title: "⚠️ Obligaciones de los usuarios",
-        charter_section5_obligations_intro: "Los usuarios de la línea de transporte especial para el Carnaval de Tenerife de Transportes La Esperanza tienen la obligación de cumplir con:",
+        charter_section5_obligations_intro: "Los usuarios de la línea de transporte especial para el Carnaval de Tenerife de Transportes Compás tienen la obligación de cumplir con:",
         charter_section5_obligation1: "Cumplir con las normas de seguridad y convivencia dentro de los vehículos y estaciones de transporte.",
         charter_section5_obligation2: "Respetar los horarios y condiciones de uso del servicio, incluyendo la validez de billetes y abonos adquiridos.",
         charter_section5_obligation3: "No obstaculizar la operación del servicio ni dañar los vehículos, instalaciones o equipamiento proporcionado.",
@@ -358,7 +358,7 @@ const translations = {
         charter_section11_internal2: "Información al personal sobre los compromisos de calidad y los procedimientos de atención al cliente, con el fin de garantizar su correcta aplicación.",
         
         // Footer
-        charter_footer_title: "Transporte Ecológico La Esperanza",
+        charter_footer_title: "Transporte Ecológico Compás",
         charter_footer_motto: "Comprometidos con la calidad, la seguridad y la movilidad sostenible",
     },
     
@@ -374,14 +374,14 @@ const translations = {
         
         // Header
         header_toggle_label: "Show/Hide menu",
-        company_name: "🚌 Transporte La Esperanza",
+        company_name: "🧭 Transporte Compás",
         
         // Footer
         footer_rights: "All rights reserved.",
         footer_slogan: "Connecting communities, building the future.",
         
         // Home page
-        home_welcome: "Welcome to Transporte La Esperanza",
+        home_welcome: "Welcome to Transporte Compás",
         home_subtitle: "Your trusted transportation company",
         home_about_title: "About Us",
         home_mission_title: "🎯 Our Mission",
@@ -394,7 +394,7 @@ const translations = {
         home_values_respect: "Respect and courtesy",
         home_values_environment: "Commitment to the environment",
         home_services_title: "Our Services",
-        home_service_routes_title: "🚍 Regular Routes",
+        home_service_routes_title: "🧭 Regular Routes",
         home_service_routes_text: "Daily public transportation service with multiple routes covering the entire island.",
         home_service_schedule_title: "🕐 Flexible Schedules",
         home_service_schedule_text: "We offer schedules adapted to our passengers' needs, from early morning to night.",
@@ -435,12 +435,12 @@ const translations = {
         scroll_top_label: "Back to top",
         
         // Questionnaire page
-        page_title_questionnaire: "Questionnaire - Transporte La Esperanza",
-        site_title: "🚌 Transporte La Esperanza",
+        page_title_questionnaire: "Questionnaire - Transporte Compás",
+        site_title: "🧭 Transporte Compás",
         questionnaire_title: "Satisfaction Survey",
-        questionnaire_subtitle: "Transporte Ecológico La Esperanza - Tenerife Carnival",
+        questionnaire_subtitle: "Transporte Ecológico Compás - Tenerife Carnival",
         questionnaire_intro: "Your opinion is very important to continue improving sustainable transportation during Carnival.",
-        questionnaire_q1_title: "1. How did you hear about the Transporte Ecológico La Esperanza service?",
+        questionnaire_q1_title: "1. How did you hear about the Transporte Ecológico Compás service?",
         questionnaire_q1_option1: "Social media",
         questionnaire_q1_option2: "Friends/family recommendation",
         questionnaire_q1_option3: "Hotels",
@@ -600,16 +600,16 @@ const translations = {
         
         // Service Charter page
         service_charter_title: "Service Charter",
-        service_charter_subtitle: "Transporte Ecológico La Esperanza – Tenerife Carnival",
+        service_charter_subtitle: "Transporte Ecológico Compás – Tenerife Carnival",
         
         // Section 1
         charter_section1_title: "1. Service Objectives and Purposes",
-        charter_section1_content: "Transporte Ecológico La Esperanza aims to provide safe, accessible, and sustainable transportation during the Tenerife Carnival, especially for trips from the south of the island. This Service Charter is intended to inform customers about the services offered and the quality commitments assumed by the company.",
+        charter_section1_content: "Transporte Ecológico Compás aims to provide safe, accessible, and sustainable transportation during the Tenerife Carnival, especially for trips from the south of the island. This Service Charter is intended to inform customers about the services offered and the quality commitments assumed by the company.",
         
         // Section 2
         charter_section2_title: "2. Organization Identification Data",
         charter_section2_company_label: "Company",
-        charter_section2_company_value: "Transporte Ecológico La Esperanza S.L",
+        charter_section2_company_value: "Transporte Ecológico Compás S.L",
         charter_section2_service_label: "Service",
         charter_section2_service_value: "Sustainable collective transportation for events",
         charter_section2_scope_label: "Scope of action",
@@ -619,12 +619,12 @@ const translations = {
         charter_section2_social_address_label: "Registered office",
         charter_section2_social_address_value: "Calle del Medio, nº 128, 38290 – La Esperanza, El Rosario, Santa Cruz de Tenerife",
         charter_section2_physical_address_label: "Physical location",
-        charter_section2_physical_address_value: "Transporte Ecológico La Esperanza Base Station, Avenida de Bélgica s/n, 38007 – Santa Cruz de Tenerife",
+        charter_section2_physical_address_value: "Transporte Ecológico Compás Base Station, Avenida de Bélgica s/n, 38007 – Santa Cruz de Tenerife",
         
         // Section 3
         charter_section3_title: "3. Services Provided",
-        charter_section3_intro: "Transporte Ecológico La Esperanza company assumes the following commitments within the Sustainable Collective Transportation Service for Events, especially for the Tenerife Carnival:",
-        charter_section3_service1_title: "🚌 Passenger Transport and Service Management",
+        charter_section3_intro: "Transporte Ecológico Compás company assumes the following commitments within the Sustainable Collective Transportation Service for Events, especially for the Tenerife Carnival:",
+        charter_section3_service1_title: "🧭 Passenger Transport and Service Management",
         charter_section3_service1_content: "Through a fleet of low-emission ecological buses that connect affiliated hotels, Carnival areas and tourist points of interest, ensuring punctuality, efficiency and safety.",
         charter_section3_service2_title: "ℹ️ User Information and Assistance",
         charter_section3_service2_content: "Offering updated data on schedules, routes, fares and stops through physical and digital channels (information points, official website and mobile application), in addition to personalized face-to-face, telephone or online assistance.",
@@ -642,7 +642,7 @@ const translations = {
         charter_section4_intro: "The transportation service during the days of the Tenerife Carnival is offered at established schedules according to demand and event programming. In order to facilitate planning for attendees, detailed information about stops, schedules, fares and contact methods is made available through information posters, the official website and information points set up in the main Carnival areas.",
         charter_section4_contact_heading: "Company contact details:",
         charter_section4_company_label: "Company:",
-        charter_section4_company_value: "Transporte Ecológico La Esperanza",
+        charter_section4_company_value: "Transporte Ecológico Compás",
         charter_section4_hours_label: "Service hours:",
         charter_section4_hours_value: "Monday to Friday from 8:00 AM to 1:00 PM / 3:00 PM to 8:00 PM",
         charter_section4_postal_label: "Postal address:",
@@ -654,7 +654,7 @@ const translations = {
         // Section 5
         charter_section5_title: "5. Customer Rights and Obligations",
         charter_section5_rights_title: "✓ User Rights",
-        charter_section5_rights_intro: "Users of the special transport line for the Tenerife Carnival by Transportes La Esperanza have the right to:",
+        charter_section5_rights_intro: "Users of the special transport line for the Tenerife Carnival by Transportes Compás have the right to:",
         charter_section5_right1: "Access the transportation service safely, punctually and appropriately, in accordance with established routes, schedules and fares.",
         charter_section5_right2: "Receive clear information about routes, schedules, prices, usage conditions and any incidents affecting the service.",
         charter_section5_right3: "Have vehicles in conditions of cleanliness, comfort and safety, as well as adequate equipment for transportation.",
@@ -662,7 +662,7 @@ const translations = {
         charter_section5_right5: "Confidentiality of personal data provided when contracting or using the services, in compliance with current data protection regulations.",
         charter_section5_right6: "Access information about possible interruptions, delays or other incidents affecting the service.",
         charter_section5_obligations_title: "⚠️ User Obligations",
-        charter_section5_obligations_intro: "Users of the special transport line for the Tenerife Carnival by Transportes La Esperanza have the obligation to comply with:",
+        charter_section5_obligations_intro: "Users of the special transport line for the Tenerife Carnival by Transportes Compás have the obligation to comply with:",
         charter_section5_obligation1: "Comply with safety and coexistence rules within vehicles and transportation stations.",
         charter_section5_obligation2: "Respect the schedules and conditions of use of the service, including the validity of purchased tickets and passes.",
         charter_section5_obligation3: "Not obstruct service operation or damage vehicles, facilities or provided equipment.",
@@ -720,7 +720,7 @@ const translations = {
         charter_section11_internal2: "Informing staff about quality commitments and customer service procedures, in order to guarantee their correct application.",
         
         // Footer
-        charter_footer_title: "Transporte Ecológico La Esperanza",
+        charter_footer_title: "Transporte Ecológico Compás",
         charter_footer_motto: "Committed to quality, safety and sustainable mobility",
     },
     
@@ -736,14 +736,14 @@ const translations = {
         
         // Header
         header_toggle_label: "Menü anzeigen/ausblenden",
-        company_name: "🚌 Transporte La Esperanza",
+        company_name: "🧭 Transporte Compás",
         
         // Footer
         footer_rights: "Alle Rechte vorbehalten.",
         footer_slogan: "Gemeinschaften verbinden, Zukunft gestalten.",
         
         // Home page
-        home_welcome: "Willkommen bei Transporte La Esperanza",
+        home_welcome: "Willkommen bei Transporte Compás",
         home_subtitle: "Ihr vertrauenswürdiges Transportunternehmen",
         home_about_title: "Über uns",
         home_mission_title: "🎯 Unsere Mission",
@@ -756,7 +756,7 @@ const translations = {
         home_values_respect: "Respekt und Höflichkeit",
         home_values_environment: "Engagement für die Umwelt",
         home_services_title: "Unsere Dienstleistungen",
-        home_service_routes_title: "🚍 Reguläre Routen",
+        home_service_routes_title: "🧭 Reguläre Routen",
         home_service_routes_text: "Täglicher öffentlicher Verkehrsdienst mit mehreren Routen, die die gesamte Insel abdecken.",
         home_service_schedule_title: "🕐 Flexible Fahrpläne",
         home_service_schedule_text: "Wir bieten an die Bedürfnisse unserer Fahrgäste angepasste Fahrpläne, von früh morgens bis spät abends.",
@@ -797,12 +797,12 @@ const translations = {
         scroll_top_label: "Zurück nach oben",
         
         // Questionnaire page
-        page_title_questionnaire: "Fragebogen - Transporte La Esperanza",
-        site_title: "🚌 Transporte La Esperanza",
+        page_title_questionnaire: "Fragebogen - Transporte Compás",
+        site_title: "🧭 Transporte Compás",
         questionnaire_title: "Zufriedenheitsumfrage",
-        questionnaire_subtitle: "Transporte Ecológico La Esperanza - Karneval von Teneriffa",
+        questionnaire_subtitle: "Transporte Ecológico Compás - Karneval von Teneriffa",
         questionnaire_intro: "Ihre Meinung ist sehr wichtig, um den nachhaltigen Transport während des Karnevals weiter zu verbessern.",
-        questionnaire_q1_title: "1. Wie haben Sie vom Service Transporte Ecológico La Esperanza erfahren?",
+        questionnaire_q1_title: "1. Wie haben Sie vom Service Transporte Ecológico Compás erfahren?",
         questionnaire_q1_option1: "Soziale Medien",
         questionnaire_q1_option2: "Empfehlung von Freunden/Familie",
         questionnaire_q1_option3: "Hotels",
@@ -962,16 +962,16 @@ const translations = {
         
         // Service Charter page
         service_charter_title: "Servicecharta",
-        service_charter_subtitle: "Transporte Ecológico La Esperanza – Karneval von Teneriffa",
+        service_charter_subtitle: "Transporte Ecológico Compás – Karneval von Teneriffa",
         
         // Section 1
         charter_section1_title: "1. Ziele und Zwecke des Dienstes",
-        charter_section1_content: "Transporte Ecológico La Esperanza hat zum Ziel, einen sicheren, zugänglichen und nachhaltigen Transport während des Karnevals von Teneriffa bereitzustellen, insbesondere für Fahrten vom Süden der Insel. Mit dieser Servicecharta sollen die Kunden über die angebotenen Dienstleistungen und die vom Unternehmen übernommenen Qualitätsverpflichtungen informiert werden.",
+        charter_section1_content: "Transporte Ecológico Compás hat zum Ziel, einen sicheren, zugänglichen und nachhaltigen Transport während des Karnevals von Teneriffa bereitzustellen, insbesondere für Fahrten vom Süden der Insel. Mit dieser Servicecharta sollen die Kunden über die angebotenen Dienstleistungen und die vom Unternehmen übernommenen Qualitätsverpflichtungen informiert werden.",
         
         // Section 2
         charter_section2_title: "2. Identifikationsdaten der Organisation",
         charter_section2_company_label: "Unternehmen",
-        charter_section2_company_value: "Transporte Ecológico La Esperanza S.L",
+        charter_section2_company_value: "Transporte Ecológico Compás S.L",
         charter_section2_service_label: "Dienstleistung",
         charter_section2_service_value: "Nachhaltiger Kollektivtransport für Veranstaltungen",
         charter_section2_scope_label: "Tätigkeitsbereich",
@@ -981,12 +981,12 @@ const translations = {
         charter_section2_social_address_label: "Geschäftssitz",
         charter_section2_social_address_value: "Calle del Medio, nº 128, 38290 – La Esperanza, El Rosario, Santa Cruz de Tenerife",
         charter_section2_physical_address_label: "Physischer Standort",
-        charter_section2_physical_address_value: "Basisstation Transporte Ecológico La Esperanza, Avenida de Bélgica s/n, 38007 – Santa Cruz de Teneriffa",
+        charter_section2_physical_address_value: "Basisstation Transporte Ecológico Compás, Avenida de Bélgica s/n, 38007 – Santa Cruz de Teneriffa",
         
         // Section 3
         charter_section3_title: "3. Erbrachte Dienstleistungen",
-        charter_section3_intro: "Das Unternehmen Transporte Ecológico La Esperanza übernimmt folgende Verpflichtungen im Rahmen des nachhaltigen Kollektivtransportdienstes für Veranstaltungen, insbesondere für den Karneval von Teneriffa:",
-        charter_section3_service1_title: "🚌 Passagiertransport und Serviceverwaltung",
+        charter_section3_intro: "Das Unternehmen Transporte Ecológico Compás übernimmt folgende Verpflichtungen im Rahmen des nachhaltigen Kollektivtransportdienstes für Veranstaltungen, insbesondere für den Karneval von Teneriffa:",
+        charter_section3_service1_title: "🧭 Passagiertransport und Serviceverwaltung",
         charter_section3_service1_content: "Durch eine Flotte von emissionsarmen ökologischen Bussen, die angeschlossene Hotels, Karnevalsbereiche und touristische Sehenswürdigkeiten verbinden und dabei Pünktlichkeit, Effizienz und Sicherheit gewährleisten.",
         charter_section3_service2_title: "ℹ️ Benutzerinformation und -betreuung",
         charter_section3_service2_content: "Bereitstellung aktualisierter Daten zu Fahrplänen, Routen, Tarifen und Haltestellen über physische und digitale Kanäle (Informationspunkte, offizielle Website und mobile Anwendung), zusätzlich zu personalisierter persönlicher, telefonischer oder Online-Betreuung.",
@@ -1004,7 +1004,7 @@ const translations = {
         charter_section4_intro: "Der Transportdienst während der Tage des Karnevals von Teneriffa wird zu festgelegten Zeiten gemäß Nachfrage und Veranstaltungsprogrammierung angeboten. Um die Planung für Teilnehmer zu erleichtern, werden detaillierte Informationen zu Haltestellen, Fahrplänen, Tarifen und Kontaktmöglichkeiten über Informationsplakate, die offizielle Website und Informationspunkte in den Hauptbereichen des Karnevals bereitgestellt.",
         charter_section4_contact_heading: "Kontaktdaten des Unternehmens:",
         charter_section4_company_label: "Unternehmen:",
-        charter_section4_company_value: "Transporte Ecológico La Esperanza",
+        charter_section4_company_value: "Transporte Ecológico Compás",
         charter_section4_hours_label: "Servicezeiten:",
         charter_section4_hours_value: "Montag bis Freitag von 8:00 bis 13:00 / 15:00 bis 20:00 Uhr",
         charter_section4_postal_label: "Postanschrift:",
@@ -1016,7 +1016,7 @@ const translations = {
         // Section 5
         charter_section5_title: "5. Rechte und Pflichten der Kunden",
         charter_section5_rights_title: "✓ Benutzerrechte",
-        charter_section5_rights_intro: "Benutzer der speziellen Transportlinie für den Karneval von Teneriffa von Transportes La Esperanza haben das Recht auf:",
+        charter_section5_rights_intro: "Benutzer der speziellen Transportlinie für den Karneval von Teneriffa von Transportes Compás haben das Recht auf:",
         charter_section5_right1: "Sicheren, pünktlichen und angemessenen Zugang zum Transportdienst gemäß festgelegten Routen, Fahrplänen und Tarifen.",
         charter_section5_right2: "Klare Informationen über Routen, Fahrpläne, Preise, Nutzungsbedingungen und alle Vorfälle, die den Dienst betreffen.",
         charter_section5_right3: "Fahrzeuge in sauberem, komfortablem und sicherem Zustand sowie angemessene Ausrüstung für den Transport.",
@@ -1024,7 +1024,7 @@ const translations = {
         charter_section5_right5: "Vertraulichkeit der bei der Beauftragung oder Nutzung der Dienste bereitgestellten persönlichen Daten gemäß den geltenden Datenschutzbestimmungen.",
         charter_section5_right6: "Zugang zu Informationen über mögliche Unterbrechungen, Verzögerungen oder andere Vorfälle, die den Dienst betreffen.",
         charter_section5_obligations_title: "⚠️ Benutzerpflichten",
-        charter_section5_obligations_intro: "Benutzer der speziellen Transportlinie für den Karneval von Teneriffa von Transportes La Esperanza haben die Pflicht, Folgendes einzuhalten:",
+        charter_section5_obligations_intro: "Benutzer der speziellen Transportlinie für den Karneval von Teneriffa von Transportes Compás haben die Pflicht, Folgendes einzuhalten:",
         charter_section5_obligation1: "Einhaltung der Sicherheits- und Zusammenlebensregeln in Fahrzeugen und Transportstationen.",
         charter_section5_obligation2: "Respektierung der Fahrpläne und Nutzungsbedingungen des Dienstes, einschließlich der Gültigkeit gekaufter Tickets und Abonnements.",
         charter_section5_obligation3: "Keine Behinderung des Dienstbetriebs oder Beschädigung von Fahrzeugen, Einrichtungen oder bereitgestellter Ausrüstung.",
@@ -1082,7 +1082,7 @@ const translations = {
         charter_section11_internal2: "Information des Personals über Qualitätsverpflichtungen und Kundendienstverfahren, um deren korrekte Anwendung zu gewährleisten.",
         
         // Footer
-        charter_footer_title: "Transporte Ecológico La Esperanza",
+        charter_footer_title: "Transporte Ecológico Compás",
         charter_footer_motto: "Verpflichtet zu Qualität, Sicherheit und nachhaltiger Mobilität",
     },
     
@@ -1098,14 +1098,14 @@ const translations = {
         
         // Header
         header_toggle_label: "Afficher/Masquer le menu",
-        company_name: "🚌 Transporte La Esperanza",
+        company_name: "🧭 Transporte Compás",
         
         // Footer
         footer_rights: "Tous droits réservés.",
         footer_slogan: "Connecter les communautés, construire l'avenir.",
         
         // Home page
-        home_welcome: "Bienvenue à Transporte La Esperanza",
+        home_welcome: "Bienvenue à Transporte Compás",
         home_subtitle: "Votre compagnie de transport de confiance",
         home_about_title: "À propos de nous",
         home_mission_title: "🎯 Notre Mission",
@@ -1118,7 +1118,7 @@ const translations = {
         home_values_respect: "Respect et courtoisie",
         home_values_environment: "Engagement envers l'environnement",
         home_services_title: "Nos Services",
-        home_service_routes_title: "🚍 Itinéraires Réguliers",
+        home_service_routes_title: "🧭 Itinéraires Réguliers",
         home_service_routes_text: "Service quotidien de transport public avec plusieurs itinéraires couvrant toute l'île.",
         home_service_schedule_title: "🕐 Horaires Flexibles",
         home_service_schedule_text: "Nous offrons des horaires adaptés aux besoins de nos passagers, du petit matin jusqu'au soir.",
@@ -1159,12 +1159,12 @@ const translations = {
         scroll_top_label: "Retour en haut",
         
         // Questionnaire page
-        page_title_questionnaire: "Questionnaire - Transporte La Esperanza",
-        site_title: "🚌 Transporte La Esperanza",
+        page_title_questionnaire: "Questionnaire - Transporte Compás",
+        site_title: "🧭 Transporte Compás",
         questionnaire_title: "Enquête de Satisfaction",
-        questionnaire_subtitle: "Transporte Ecológico La Esperanza - Carnaval de Tenerife",
+        questionnaire_subtitle: "Transporte Ecológico Compás - Carnaval de Tenerife",
         questionnaire_intro: "Votre opinion est très importante pour continuer à améliorer le transport durable pendant le Carnaval.",
-        questionnaire_q1_title: "1. Comment avez-vous entendu parler du service Transporte Ecológico La Esperanza?",
+        questionnaire_q1_title: "1. Comment avez-vous entendu parler du service Transporte Ecológico Compás?",
         questionnaire_q1_option1: "Réseaux sociaux",
         questionnaire_q1_option2: "Recommandation d'amis/famille",
         questionnaire_q1_option3: "Hôtels",
@@ -1324,16 +1324,16 @@ const translations = {
         
         // Service Charter page
         service_charter_title: "Charte de Service",
-        service_charter_subtitle: "Transporte Ecológico La Esperanza – Carnaval de Tenerife",
+        service_charter_subtitle: "Transporte Ecológico Compás – Carnaval de Tenerife",
         
         // Section 1
         charter_section1_title: "1. Objectifs et finalités du service",
-        charter_section1_content: "Transporte Ecológico La Esperanza a pour objectif de faciliter un transport sûr, accessible et durable pendant le Carnaval de Tenerife, en particulier pour les déplacements depuis le sud de l'île. Cette Charte de Service vise à informer les clients des services offerts et des engagements de qualité assumés par l'entreprise.",
+        charter_section1_content: "Transporte Ecológico Compás a pour objectif de faciliter un transport sûr, accessible et durable pendant le Carnaval de Tenerife, en particulier pour les déplacements depuis le sud de l'île. Cette Charte de Service vise à informer les clients des services offerts et des engagements de qualité assumés par l'entreprise.",
         
         // Section 2
         charter_section2_title: "2. Données d'identification de l'organisation",
         charter_section2_company_label: "Entreprise",
-        charter_section2_company_value: "Transporte Ecológico La Esperanza S.L",
+        charter_section2_company_value: "Transporte Ecológico Compás S.L",
         charter_section2_service_label: "Service",
         charter_section2_service_value: "Transport collectif durable pour événements",
         charter_section2_scope_label: "Domaine d'activité",
@@ -1343,12 +1343,12 @@ const translations = {
         charter_section2_social_address_label: "Siège social",
         charter_section2_social_address_value: "Calle del Medio, nº 128, 38290 – La Esperanza, El Rosario, Santa Cruz de Tenerife",
         charter_section2_physical_address_label: "Adresse physique",
-        charter_section2_physical_address_value: "Station de Base Transporte Ecológico La Esperanza, Avenida de Bélgica s/n, 38007 – Santa Cruz de Tenerife",
+        charter_section2_physical_address_value: "Station de Base Transporte Ecológico Compás, Avenida de Bélgica s/n, 38007 – Santa Cruz de Tenerife",
         
         // Section 3
         charter_section3_title: "3. Services fournis",
-        charter_section3_intro: "L'entreprise Transporte Ecológico La Esperanza assume les engagements suivants dans le cadre du Service de Transport Collectif Durable pour Événements, en particulier pour le Carnaval de Tenerife:",
-        charter_section3_service1_title: "🚌 Transport de passagers et gestion du service",
+        charter_section3_intro: "L'entreprise Transporte Ecológico Compás assume les engagements suivants dans le cadre du Service de Transport Collectif Durable pour Événements, en particulier pour le Carnaval de Tenerife:",
+        charter_section3_service1_title: "🧭 Transport de passagers et gestion du service",
         charter_section3_service1_content: "Grâce à une flotte de bus écologiques à faibles émissions qui relient les hôtels affiliés, les zones du Carnaval et les points d'intérêt touristique, assurant ponctualité, efficacité et sécurité.",
         charter_section3_service2_title: "ℹ️ Information et assistance aux utilisateurs",
         charter_section3_service2_content: "Offrant des données actualisées sur les horaires, itinéraires, tarifs et arrêts via des canaux physiques et numériques (points d'information, site web officiel et application mobile), en plus d'une assistance personnalisée en personne, par téléphone ou en ligne.",
@@ -1366,7 +1366,7 @@ const translations = {
         charter_section4_intro: "Le service de transport pendant les jours du Carnaval de Tenerife est offert aux horaires établis selon la demande et la programmation de l'événement. Afin de faciliter la planification des participants, des informations détaillées sur les arrêts, horaires, tarifs et moyens de contact sont mises à disposition via des affiches informatives, le site web officiel et les points d'information installés dans les principales zones du Carnaval.",
         charter_section4_contact_heading: "Coordonnées de l'entreprise:",
         charter_section4_company_label: "Entreprise:",
-        charter_section4_company_value: "Transporte Ecológico La Esperanza",
+        charter_section4_company_value: "Transporte Ecológico Compás",
         charter_section4_hours_label: "Heures de service:",
         charter_section4_hours_value: "Du lundi au vendredi de 8h00 à 13h00 / 15h00 à 20h00",
         charter_section4_postal_label: "Adresse postale:",
@@ -1378,7 +1378,7 @@ const translations = {
         // Section 5
         charter_section5_title: "5. Droits et obligations des clients",
         charter_section5_rights_title: "✓ Droits des utilisateurs",
-        charter_section5_rights_intro: "Les utilisateurs de la ligne de transport spéciale pour le Carnaval de Tenerife de Transportes La Esperanza ont le droit de:",
+        charter_section5_rights_intro: "Les utilisateurs de la ligne de transport spéciale pour le Carnaval de Tenerife de Transportes Compás ont le droit de:",
         charter_section5_right1: "Accéder au service de transport de manière sûre, ponctuelle et adéquate, conformément aux itinéraires, horaires et tarifs établis.",
         charter_section5_right2: "Recevoir des informations claires sur les itinéraires, horaires, prix, conditions d'utilisation et tout incident affectant le service.",
         charter_section5_right3: "Disposer de véhicules dans des conditions de propreté, confort et sécurité, ainsi que d'un équipement adéquat pour le transport.",
@@ -1386,7 +1386,7 @@ const translations = {
         charter_section5_right5: "La confidentialité des données personnelles fournies lors de la contractualisation ou de l'utilisation des services, conformément à la réglementation en vigueur sur la protection des données.",
         charter_section5_right6: "Accéder aux informations sur les éventuelles interruptions, retards ou autres incidents affectant le service.",
         charter_section5_obligations_title: "⚠️ Obligations des utilisateurs",
-        charter_section5_obligations_intro: "Les utilisateurs de la ligne de transport spéciale pour le Carnaval de Tenerife de Transportes La Esperanza ont l'obligation de respecter:",
+        charter_section5_obligations_intro: "Les utilisateurs de la ligne de transport spéciale pour le Carnaval de Tenerife de Transportes Compás ont l'obligation de respecter:",
         charter_section5_obligation1: "Respecter les règles de sécurité et de cohabitation dans les véhicules et les stations de transport.",
         charter_section5_obligation2: "Respecter les horaires et conditions d'utilisation du service, y compris la validité des billets et abonnements achetés.",
         charter_section5_obligation3: "Ne pas entraver le fonctionnement du service ni endommager les véhicules, installations ou équipements fournis.",
@@ -1444,7 +1444,7 @@ const translations = {
         charter_section11_internal2: "Information du personnel sur les engagements de qualité et les procédures de service client, afin de garantir leur application correcte.",
         
         // Footer
-        charter_footer_title: "Transporte Ecológico La Esperanza",
+        charter_footer_title: "Transporte Ecológico Compás",
         charter_footer_motto: "Engagés envers la qualité, la sécurité et la mobilité durable",
     },
     
@@ -1460,14 +1460,14 @@ const translations = {
         
         // Header
         header_toggle_label: "Показать/Скрыть меню",
-        company_name: "🚌 Transporte La Esperanza",
+        company_name: "🧭 Transporte Compás",
         
         // Footer
         footer_rights: "Все права защищены.",
         footer_slogan: "Соединяем сообщества, строим будущее.",
         
         // Home page
-        home_welcome: "Добро пожаловать в Transporte La Esperanza",
+        home_welcome: "Добро пожаловать в Transporte Compás",
         home_subtitle: "Ваша надёжная транспортная компания",
         home_about_title: "О нас",
         home_mission_title: "🎯 Наша Миссия",
@@ -1480,7 +1480,7 @@ const translations = {
         home_values_respect: "Уважение и вежливость",
         home_values_environment: "Забота об окружающей среде",
         home_services_title: "Наши Услуги",
-        home_service_routes_title: "🚍 Регулярные Маршруты",
+        home_service_routes_title: "🧭 Регулярные Маршруты",
         home_service_routes_text: "Ежедневный общественный транспорт с множественными маршрутами, покрывающими весь остров.",
         home_service_schedule_title: "🕐 Гибкое Расписание",
         home_service_schedule_text: "Мы предлагаем расписание, адаптированное к потребностям наших пассажиров, с раннего утра до позднего вечера.",
@@ -1521,12 +1521,12 @@ const translations = {
         scroll_top_label: "Вернуться наверх",
         
         // Questionnaire page
-        page_title_questionnaire: "Анкета - Transporte La Esperanza",
-        site_title: "🚌 Transporte La Esperanza",
+        page_title_questionnaire: "Анкета - Transporte Compás",
+        site_title: "🧭 Transporte Compás",
         questionnaire_title: "Опрос Удовлетворённости",
-        questionnaire_subtitle: "Transporte Ecológico La Esperanza - Карнавал Тенерифе",
+        questionnaire_subtitle: "Transporte Ecológico Compás - Карнавал Тенерифе",
         questionnaire_intro: "Ваше мнение очень важно для продолжения улучшения устойчивого транспорта во время Карнавала.",
-        questionnaire_q1_title: "1. Как вы узнали о сервисе Transporte Ecológico La Esperanza?",
+        questionnaire_q1_title: "1. Как вы узнали о сервисе Transporte Ecológico Compás?",
         questionnaire_q1_option1: "Социальные сети",
         questionnaire_q1_option2: "Рекомендация друзей/семьи",
         questionnaire_q1_option3: "Отели",
@@ -1686,16 +1686,16 @@ const translations = {
         
         // Service Charter page
         service_charter_title: "Хартия Услуг",
-        service_charter_subtitle: "Transporte Ecológico La Esperanza – Карнавал Тенерифе",
+        service_charter_subtitle: "Transporte Ecológico Compás – Карнавал Тенерифе",
         
         // Section 1
         charter_section1_title: "1. Цели и задачи услуги",
-        charter_section1_content: "Transporte Ecológico La Esperanza ставит своей целью обеспечить безопасный, доступный и устойчивый транспорт во время Карнавала на Тенерифе, особенно для поездок с юга острова. Настоящая Хартия Услуг призвана проинформировать клиентов о предлагаемых услугах и обязательствах по качеству, взятых на себя компанией.",
+        charter_section1_content: "Transporte Ecológico Compás ставит своей целью обеспечить безопасный, доступный и устойчивый транспорт во время Карнавала на Тенерифе, особенно для поездок с юга острова. Настоящая Хартия Услуг призвана проинформировать клиентов о предлагаемых услугах и обязательствах по качеству, взятых на себя компанией.",
         
         // Section 2
         charter_section2_title: "2. Идентификационные данные организации",
         charter_section2_company_label: "Компания",
-        charter_section2_company_value: "Transporte Ecológico La Esperanza S.L",
+        charter_section2_company_value: "Transporte Ecológico Compás S.L",
         charter_section2_service_label: "Услуга",
         charter_section2_service_value: "Устойчивый коллективный транспорт для мероприятий",
         charter_section2_scope_label: "Область деятельности",
@@ -1705,12 +1705,12 @@ const translations = {
         charter_section2_social_address_label: "Юридический адрес",
         charter_section2_social_address_value: "Calle del Medio, nº 128, 38290 – La Esperanza, El Rosario, Santa Cruz de Tenerife",
         charter_section2_physical_address_label: "Физический адрес",
-        charter_section2_physical_address_value: "Базовая станция Transporte Ecológico La Esperanza, Avenida de Bélgica s/n, 38007 – Santa Cruz de Tenerife",
+        charter_section2_physical_address_value: "Базовая станция Transporte Ecológico Compás, Avenida de Bélgica s/n, 38007 – Santa Cruz de Tenerife",
         
         // Section 3
         charter_section3_title: "3. Предоставляемые услуги",
-        charter_section3_intro: "Компания Transporte Ecológico La Esperanza берет на себя следующие обязательства в рамках Услуги устойчивого коллективного транспорта для мероприятий, особенно для Карнавала Тенерифе:",
-        charter_section3_service1_title: "🚌 Перевозка пассажиров и управление услугой",
+        charter_section3_intro: "Компания Transporte Ecológico Compás берет на себя следующие обязательства в рамках Услуги устойчивого коллективного транспорта для мероприятий, особенно для Карнавала Тенерифе:",
+        charter_section3_service1_title: "🧭 Перевозка пассажиров и управление услугой",
         charter_section3_service1_content: "Посредством парка экологически чистых автобусов с низким уровнем выбросов, соединяющих партнерские отели, зоны Карнавала и туристические объекты, обеспечивая пунктуальность, эффективность и безопасность.",
         charter_section3_service2_title: "ℹ️ Информация и помощь пользователям",
         charter_section3_service2_content: "Предоставление актуальных данных о расписаниях, маршрутах, тарифах и остановках через физические и цифровые каналы (информационные пункты, официальный веб-сайт и мобильное приложение), а также персонализированная помощь лично, по телефону или онлайн.",
@@ -1728,7 +1728,7 @@ const translations = {
         charter_section4_intro: "Транспортная услуга в дни Карнавала на Тенерифе предоставляется по установленному расписанию в соответствии со спросом и программой мероприятия. Для облегчения планирования для участников, подробная информация об остановках, расписаниях, тарифах и способах связи доступна через информационные плакаты, официальный веб-сайт и информационные пункты в основных зонах Карнавала.",
         charter_section4_contact_heading: "Контактные данные компании:",
         charter_section4_company_label: "Компания:",
-        charter_section4_company_value: "Transporte Ecológico La Esperanza",
+        charter_section4_company_value: "Transporte Ecológico Compás",
         charter_section4_hours_label: "Часы обслуживания:",
         charter_section4_hours_value: "С понедельника по пятницу с 8:00 до 13:00 / с 15:00 до 20:00",
         charter_section4_postal_label: "Почтовый адрес:",
@@ -1740,7 +1740,7 @@ const translations = {
         // Section 5
         charter_section5_title: "5. Права и обязанности клиентов",
         charter_section5_rights_title: "✓ Права пользователей",
-        charter_section5_rights_intro: "Пользователи специальной транспортной линии для Карнавала Тенерифе от Transportes La Esperanza имеют право на:",
+        charter_section5_rights_intro: "Пользователи специальной транспортной линии для Карнавала Тенерифе от Transportes Compás имеют право на:",
         charter_section5_right1: "Безопасный, пунктуальный и надлежащий доступ к транспортной услуге в соответствии с установленными маршрутами, расписаниями и тарифами.",
         charter_section5_right2: "Получение четкой информации о маршрутах, расписаниях, ценах, условиях использования и любых инцидентах, влияющих на услугу.",
         charter_section5_right3: "Транспортные средства в условиях чистоты, комфорта и безопасности, а также надлежащее оборудование для перевозки.",
@@ -1748,7 +1748,7 @@ const translations = {
         charter_section5_right5: "Конфиденциальность личных данных, предоставленных при заключении договора или использовании услуг, в соответствии с действующими правилами защиты данных.",
         charter_section5_right6: "Доступ к информации о возможных перерывах, задержках или других инцидентах, влияющих на услугу.",
         charter_section5_obligations_title: "⚠️ Обязанности пользователей",
-        charter_section5_obligations_intro: "Пользователи специальной транспортной линии для Карнавала Тенерифе от Transportes La Esperanza обязаны соблюдать:",
+        charter_section5_obligations_intro: "Пользователи специальной транспортной линии для Карнавала Тенерифе от Transportes Compás обязаны соблюдать:",
         charter_section5_obligation1: "Соблюдение правил безопасности и сосуществования в транспортных средствах и на транспортных станциях.",
         charter_section5_obligation2: "Соблюдение расписаний и условий использования услуги, включая действительность приобретенных билетов и абонементов.",
         charter_section5_obligation3: "Не препятствовать работе услуги и не повреждать транспортные средства, помещения или предоставленное оборудование.",
@@ -1806,7 +1806,7 @@ const translations = {
         charter_section11_internal2: "Информирование персонала об обязательствах по качеству и процедурах обслуживания клиентов с целью обеспечения их правильного применения.",
         
         // Footer
-        charter_footer_title: "Transporte Ecológico La Esperanza",
+        charter_footer_title: "Transporte Ecológico Compás",
         charter_footer_motto: "Привержены качеству, безопасности и устойчивой мобильности",
     }
 };

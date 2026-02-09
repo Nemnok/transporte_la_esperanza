@@ -1,7 +1,7 @@
 <?php
 /**
  * Process Contact Form
- * Transporte Ecológico La Esperanza
+ * Transporte Ecológico Compás
  */
 
 header('Content-Type: application/json');
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         fclose($fp);
         
         // Send email notification
-        $to = "info@transportelaesperanza.com";
+        $to = "info@transportecompas.com";
         $subject = "Nuevo mensaje de contacto: " . $asunto;
         $email_message = "Nuevo mensaje de contacto recibido:\n\n";
         $email_message .= "Nombre: " . $nombre . "\n";
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email_message .= "Asunto: " . $asunto . "\n";
         $email_message .= "Mensaje:\n" . $mensaje . "\n";
         
-        $headers = "From: noreply@transportelaesperanza.com\r\n";
+        $headers = "From: noreply@transportecompas.com\r\n";
         $headers .= "Reply-To: " . $email . "\r\n";
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
         
@@ -93,14 +93,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // mail($to, $subject, $email_message, $headers);
         
         // Send confirmation email to user
-        $user_subject = "Gracias por contactarnos - Transporte La Esperanza";
+        $user_subject = "Gracias por contactarnos - Transporte Compás";
         $user_message = "Estimado/a " . $nombre . ",\n\n";
-        $user_message .= "Gracias por ponerse en contacto con Transporte Ecológico La Esperanza.\n\n";
+        $user_message .= "Gracias por ponerse en contacto con Transporte Ecológico Compás.\n\n";
         $user_message .= "Hemos recibido su mensaje y nos pondremos en contacto con usted a la brevedad posible.\n\n";
         $user_message .= "Saludos cordiales,\n";
-        $user_message .= "Equipo de Transporte La Esperanza";
+        $user_message .= "Equipo de Transporte Compás";
         
-        $user_headers = "From: info@transportelaesperanza.com\r\n";
+        $user_headers = "From: info@transportecompas.com\r\n";
         $user_headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
         
         // Uncomment to send confirmation email

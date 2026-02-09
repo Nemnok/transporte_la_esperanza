@@ -1,7 +1,7 @@
 <?php
 /**
  * Process Questionnaire Form
- * Transporte Ecológico La Esperanza
+ * Transporte Ecológico Compás
  */
 
 header('Content-Type: application/json');
@@ -94,13 +94,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         fclose($fp);
         
         // Send email notification (optional)
-        $to = "info@transportelaesperanza.com";
+        $to = "info@transportecompas.com";
         $subject = "Nueva Encuesta de Satisfacción";
         $message = "Se ha recibido una nueva encuesta de satisfacción.\n\n";
         $message .= "Satisfacción General: " . $data['satisfaccion'] . "/5\n";
         $message .= "Fecha: " . $data['timestamp'] . "\n";
         
-        $headers = "From: noreply@transportelaesperanza.com\r\n";
+        $headers = "From: noreply@transportecompas.com\r\n";
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
         
         // Uncomment to send email

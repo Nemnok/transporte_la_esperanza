@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * CONFIGURACIÓN DE RUTAS - TRANSPORTE LA ESPERANZA
+ * CONFIGURACIÓN DE RUTAS - TRANSPORTE COMPÁS
  * ============================================================================
  * 
  * Este archivo contiene toda la configuración de las rutas de autobús.
@@ -34,14 +34,14 @@
  *     shortName: 'NombreCorto',
  *     description: 'Origen → Destino',
  *     buses: '1 guagua grande',
- *     busIcon: '🚌',  // Use 🚌 para grande, 🚐 para mini
+ *     busIcon: '🧭',  // Use 🧭 para grande, 🚐 para mini
  *     objective: 'Descripción del objetivo de la línea',
  *     stops: [
  *         { name: 'Primera Parada', coords: [28.XXXX, -16.XXXX] },
  *         { name: 'Segunda Parada', coords: [28.XXXX, -16.XXXX] },
  *         // ... más paradas
  *     ],
- *     returnStops: 'Santa Cruz → Parada2 → Parada1 → La Esperanza'
+ *     returnStops: 'Santa Cruz → Parada2 → Parada1 → Compás'
  * },
  * 
  * ============================================================================
@@ -78,12 +78,12 @@ const SPECIAL_POINTS = {
         icon: '🎭',
         description: 'Punto de llegada de todas las líneas - Centro neurálgico del Carnaval'
     },
-    // La Esperanza - Destino final de rutas de vuelta
-    laEsperanza: {
-        name: 'La Esperanza',
+    // Compás - Destino final de rutas de vuelta
+    compas: {
+        name: 'Compás',
         coords: [28.4120, -16.3800],
         icon: '🏠',
-        description: 'Base de Transporte Ecológico La Esperanza - Destino final rutas de vuelta'
+        description: 'Base de Transporte Ecológico Compás - Destino final rutas de vuelta'
     }
 };
 
@@ -121,7 +121,7 @@ const ROUTES_DATA = {
         shortName: 'Sur',
         description: 'Costa Adeje → Playa de las Américas → Los Cristianos',
         buses: '3 guaguas grandes',
-        busIcon: '🚌',
+        busIcon: '🧭',
         objective: 'Recoger la mayor densidad de turistas del sur',
         stops: [
             { 
@@ -150,7 +150,7 @@ const ROUTES_DATA = {
             },
             // La última parada siempre es el Intercambiador (se añade automáticamente)
         ],
-        returnStops: 'Santa Cruz → Los Cristianos → Playa de las Américas → Costa Adeje → La Esperanza'
+        returnStops: 'Santa Cruz → Los Cristianos → Playa de las Américas → Costa Adeje → Compás'
     },
 
     // =========================================================================
@@ -162,7 +162,7 @@ const ROUTES_DATA = {
         shortName: 'Sur-Oeste',
         description: 'Callao Salvaje → Los Gigantes → Masca',
         buses: '2 grandes + 1 mini',
-        busIcon: '🚌',
+        busIcon: '🧭',
         stops: [
             { 
                 name: 'Callao Salvaje – Estación central', 
@@ -185,7 +185,7 @@ const ROUTES_DATA = {
                 coords: [28.2450, -16.8420] 
             },
         ],
-        returnStops: 'Santa Cruz → Los Gigantes → Masca → Santiago del Teide → Playa de la Arena → Callao Salvaje → La Esperanza'
+        returnStops: 'Santa Cruz → Los Gigantes → Masca → Santiago del Teide → Playa de la Arena → Callao Salvaje → Compás'
     },
 
     // =========================================================================
@@ -197,7 +197,7 @@ const ROUTES_DATA = {
         shortName: 'Norte',
         description: 'Puerto de la Cruz → La Orotava → Icod → Garachico',
         buses: '2 guaguas grandes',
-        busIcon: '🚌',
+        busIcon: '🧭',
         stops: [
             { 
                 name: 'Puerto de la Cruz – Lago Martiánez', 
@@ -220,7 +220,7 @@ const ROUTES_DATA = {
                 coords: [28.3720, -16.7640] 
             },
         ],
-        returnStops: 'Santa Cruz → Garachico → Icod → Santa Bárbara → La Orotava → Puerto de la Cruz → La Esperanza'
+        returnStops: 'Santa Cruz → Garachico → Icod → Santa Bárbara → La Orotava → Puerto de la Cruz → Compás'
     },
 
     // =========================================================================
@@ -247,7 +247,7 @@ const ROUTES_DATA = {
                 coords: [28.4350, -16.3450] 
             },
         ],
-        returnStops: 'Santa Cruz → Tabaiba → Taco → La Laguna → La Esperanza'
+        returnStops: 'Santa Cruz → Tabaiba → Taco → La Laguna → Compás'
     },
 
     // =========================================================================
@@ -274,7 +274,7 @@ const ROUTES_DATA = {
                 coords: [28.0850, -16.7380] 
             },
         ],
-        returnStops: 'Santa Cruz → Adeje → Chayofa → Arona → La Esperanza'
+        returnStops: 'Santa Cruz → Adeje → Chayofa → Arona → Compás'
     },
 
     // =========================================================================
@@ -301,7 +301,7 @@ const ROUTES_DATA = {
                 coords: [28.3670, -16.7180] 
             },
         ],
-        returnStops: 'Santa Cruz → Icod → La Guancha → Buenavista → La Esperanza'
+        returnStops: 'Santa Cruz → Icod → La Guancha → Buenavista → Compás'
     },
 
     // =========================================================================
@@ -328,7 +328,7 @@ const ROUTES_DATA = {
                 coords: [28.2350, -16.4350] 
             },
         ],
-        returnStops: 'Santa Cruz → Fasnia → Güímar → Candelaria → La Esperanza'
+        returnStops: 'Santa Cruz → Fasnia → Güímar → Candelaria → Compás'
     },
 
     // =========================================================================
@@ -443,14 +443,14 @@ function getStopsWithIntercambiador(routeId) {
  *     shortName: 'Costa Este',
  *     description: 'El Médano → Costa del Silencio → Santa Cruz',
  *     buses: '2 guaguas grandes',
- *     busIcon: '🚌',
+ *     busIcon: '🧭',
  *     color: '#607d8b',  // Color gris azulado
  *     stops: [
  *         { name: 'El Médano – Plaza', coords: [28.0445, -16.5400] },
  *         { name: 'Costa del Silencio', coords: [28.0050, -16.6300] },
  *         // El intercambiador se añade automáticamente
  *     ],
- *     returnStops: 'Santa Cruz → Costa del Silencio → El Médano → La Esperanza'
+ *     returnStops: 'Santa Cruz → Costa del Silencio → El Médano → Compás'
  * });
  * 
  * ============================================================================
@@ -464,7 +464,7 @@ function getStopsWithIntercambiador(routeId) {
  * @param {string} routeConfig.shortName - Nombre corto para la leyenda
  * @param {string} routeConfig.description - Descripción de la ruta
  * @param {string} routeConfig.buses - Descripción de los buses asignados
- * @param {string} routeConfig.busIcon - Emoji del bus (🚌 o 🚐)
+ * @param {string} routeConfig.busIcon - Emoji del bus (🧭 o 🚐)
  * @param {string} routeConfig.color - Color hexadecimal para la línea
  * @param {Array} routeConfig.stops - Array de paradas [{name, coords: [lat, lng]}]
  * @param {string} routeConfig.returnStops - Descripción de las paradas de vuelta
