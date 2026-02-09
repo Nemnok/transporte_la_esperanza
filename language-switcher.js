@@ -113,20 +113,25 @@ class LanguageSwitcher {
         });
     }
 
+    // Helper method to update text while preserving logo
+    updateTextWithLogo(element, text) {
+        const logo = element.querySelector('.header-logo');
+        if (logo) {
+            // Clear and rebuild with logo + text
+            element.innerHTML = '';
+            element.appendChild(logo);
+            element.appendChild(document.createTextNode(' ' + text));
+        } else {
+            element.textContent = text;
+        }
+    }
+
     translateByDataKey(key, text) {
         const elements = document.querySelectorAll(`[data-i18n="${key}"]`);
         elements.forEach(el => {
             // Special handling for site_title to preserve logo
             if (key === 'site_title') {
-                const logo = el.querySelector('.header-logo');
-                if (logo) {
-                    // Clear and rebuild with logo + text
-                    el.innerHTML = '';
-                    el.appendChild(logo);
-                    el.appendChild(document.createTextNode(' ' + text));
-                } else {
-                    el.textContent = text;
-                }
+                this.updateTextWithLogo(el, text);
             } else {
                 el.textContent = text;
             }
@@ -141,15 +146,7 @@ class LanguageSwitcher {
             if (trans[key]) {
                 // Special handling for site_title to preserve logo
                 if (key === 'site_title') {
-                    const logo = el.querySelector('.header-logo');
-                    if (logo) {
-                        // Clear and rebuild with logo + text
-                        el.innerHTML = '';
-                        el.appendChild(logo);
-                        el.appendChild(document.createTextNode(' ' + trans[key]));
-                    } else {
-                        el.textContent = trans[key];
-                    }
+                    this.updateTextWithLogo(el, trans[key]);
                 } else {
                     el.textContent = trans[key];
                 }

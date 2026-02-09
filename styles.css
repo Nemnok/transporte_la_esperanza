@@ -122,7 +122,6 @@ header h1 {
 .header-logo {
     height: 60px;
     width: auto;
-    animation: fadeIn 1s ease-out;
 }
 
 @keyframes fadeIn {
