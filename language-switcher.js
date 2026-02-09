@@ -120,7 +120,7 @@ class LanguageSwitcher {
             // Clear and rebuild with logo + text
             element.innerHTML = '';
             element.appendChild(logo);
-            element.appendChild(document.createTextNode(' ' + text));
+            element.appendChild(document.createTextNode(text));
         } else {
             element.textContent = text;
         }
