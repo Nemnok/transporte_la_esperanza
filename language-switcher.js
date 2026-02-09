@@ -113,10 +113,28 @@ class LanguageSwitcher {
         });
     }
 
+    // Helper method to update text while preserving logo
+    updateTextWithLogo(element, text) {
+        const logo = element.querySelector('.header-logo');
+        if (logo) {
+            // Clear and rebuild with logo + text
+            element.innerHTML = '';
+            element.appendChild(logo);
+            element.appendChild(document.createTextNode(text));
+        } else {
+            element.textContent = text;
+        }
+    }
+
     translateByDataKey(key, text) {
         const elements = document.querySelectorAll(`[data-i18n="${key}"]`);
         elements.forEach(el => {
-            el.textContent = text;
+            // Special handling for site_title to preserve logo
+            if (key === 'site_title') {
+                this.updateTextWithLogo(el, text);
+            } else {
+                el.textContent = text;
+            }
         });
     }
 
@@ -126,7 +144,12 @@ class LanguageSwitcher {
         elements.forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (trans[key]) {
-                el.textContent = trans[key];
+                // Special handling for site_title to preserve logo
+                if (key === 'site_title') {
+                    this.updateTextWithLogo(el, trans[key]);
+                } else {
+                    el.textContent = trans[key];
+                }
             }
         });
     }
