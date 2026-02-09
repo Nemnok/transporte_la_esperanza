@@ -401,7 +401,7 @@
             el.style.alignItems = 'center';
             el.style.justifyContent = 'center';
             el.style.fontSize = '10px';
-            el.innerHTML = specialPoints.laEsperanza.icon;
+            el.innerHTML = specialPoints.compas.icon;
             return el;
         }
 
@@ -431,13 +431,13 @@
             // Add Compás marker (return destination)
             const compasPopup = new maplibregl.Popup({ offset: 25 })
                 .setHTML(`
-                    <div class="popup-stop-name">${specialPoints.laEsperanza.icon} ${specialPoints.laEsperanza.name}</div>
+                    <div class="popup-stop-name">${specialPoints.compas.icon} ${specialPoints.compas.name}</div>
                     <div class="popup-route-info">Destino final de rutas de vuelta</div>
-                    <div class="buses-info">${specialPoints.laEsperanza.description}</div>
+                    <div class="buses-info">${specialPoints.compas.description}</div>
                 `);
 
             new maplibregl.Marker({ element: createCompasMarker() })
-                .setLngLat([specialPoints.laEsperanza.coords[1], specialPoints.laEsperanza.coords[0]])
+                .setLngLat([specialPoints.compas.coords[1], specialPoints.compas.coords[0]])
                 .setPopup(compasPopup)
                 .addTo(map);
 

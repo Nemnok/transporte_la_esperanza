@@ -79,7 +79,7 @@ const SPECIAL_POINTS = {
         description: 'Punto de llegada de todas las líneas - Centro neurálgico del Carnaval'
     },
     // Compás - Destino final de rutas de vuelta
-    laEsperanza: {
+    compas: {
         name: 'Compás',
         coords: [28.4120, -16.3800],
         icon: '🏠',
