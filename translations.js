@@ -12,7 +12,7 @@ const translations = {
         
         // Header
         header_toggle_label: "Mostrar/Ocultar menú",
-        company_name: "🧭 Transporte Compás",
+        company_name: "Transporte Compás",
         
         // Footer
         footer_rights: "Todos los derechos reservados.",
@@ -74,7 +74,7 @@ const translations = {
         
         // Questionnaire page
         page_title_questionnaire: "Cuestionario - Transporte Compás",
-        site_title: "🧭 Transporte Compás",
+        site_title: "Transporte Compás",
         questionnaire_title: "Encuesta de Satisfacción",
         questionnaire_subtitle: "Transporte Ecológico Compás - Carnaval de Tenerife",
         questionnaire_intro: "Tu opinión es muy importante para seguir mejorando el transporte sostenible durante el Carnaval.",
@@ -374,7 +374,7 @@ const translations = {
         
         // Header
         header_toggle_label: "Show/Hide menu",
-        company_name: "🧭 Transporte Compás",
+        company_name: "Transporte Compás",
         
         // Footer
         footer_rights: "All rights reserved.",
@@ -436,7 +436,7 @@ const translations = {
         
         // Questionnaire page
         page_title_questionnaire: "Questionnaire - Transporte Compás",
-        site_title: "🧭 Transporte Compás",
+        site_title: "Transporte Compás",
         questionnaire_title: "Satisfaction Survey",
         questionnaire_subtitle: "Transporte Ecológico Compás - Tenerife Carnival",
         questionnaire_intro: "Your opinion is very important to continue improving sustainable transportation during Carnival.",
@@ -736,7 +736,7 @@ const translations = {
         
         // Header
         header_toggle_label: "Menü anzeigen/ausblenden",
-        company_name: "🧭 Transporte Compás",
+        company_name: "Transporte Compás",
         
         // Footer
         footer_rights: "Alle Rechte vorbehalten.",
@@ -798,7 +798,7 @@ const translations = {
         
         // Questionnaire page
         page_title_questionnaire: "Fragebogen - Transporte Compás",
-        site_title: "🧭 Transporte Compás",
+        site_title: "Transporte Compás",
         questionnaire_title: "Zufriedenheitsumfrage",
         questionnaire_subtitle: "Transporte Ecológico Compás - Karneval von Teneriffa",
         questionnaire_intro: "Ihre Meinung ist sehr wichtig, um den nachhaltigen Transport während des Karnevals weiter zu verbessern.",
@@ -1098,7 +1098,7 @@ const translations = {
         
         // Header
         header_toggle_label: "Afficher/Masquer le menu",
-        company_name: "🧭 Transporte Compás",
+        company_name: "Transporte Compás",
         
         // Footer
         footer_rights: "Tous droits réservés.",
@@ -1160,7 +1160,7 @@ const translations = {
         
         // Questionnaire page
         page_title_questionnaire: "Questionnaire - Transporte Compás",
-        site_title: "🧭 Transporte Compás",
+        site_title: "Transporte Compás",
         questionnaire_title: "Enquête de Satisfaction",
         questionnaire_subtitle: "Transporte Ecológico Compás - Carnaval de Tenerife",
         questionnaire_intro: "Votre opinion est très importante pour continuer à améliorer le transport durable pendant le Carnaval.",
@@ -1460,7 +1460,7 @@ const translations = {
         
         // Header
         header_toggle_label: "Показать/Скрыть меню",
-        company_name: "🧭 Transporte Compás",
+        company_name: "Transporte Compás",
         
         // Footer
         footer_rights: "Все права защищены.",
@@ -1522,7 +1522,7 @@ const translations = {
         
         // Questionnaire page
         page_title_questionnaire: "Анкета - Transporte Compás",
-        site_title: "🧭 Transporte Compás",
+        site_title: "Transporte Compás",
         questionnaire_title: "Опрос Удовлетворённости",
         questionnaire_subtitle: "Transporte Ecológico Compás - Карнавал Тенерифе",
         questionnaire_intro: "Ваше мнение очень важно для продолжения улучшения устойчивого транспорта во время Карнавала.",
