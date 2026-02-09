@@ -116,7 +116,20 @@ class LanguageSwitcher {
     translateByDataKey(key, text) {
         const elements = document.querySelectorAll(`[data-i18n="${key}"]`);
         elements.forEach(el => {
-            el.textContent = text;
+            // Special handling for site_title to preserve logo
+            if (key === 'site_title') {
+                const logo = el.querySelector('.header-logo');
+                if (logo) {
+                    // Clear and rebuild with logo + text
+                    el.innerHTML = '';
+                    el.appendChild(logo);
+                    el.appendChild(document.createTextNode(' ' + text));
+                } else {
+                    el.textContent = text;
+                }
+            } else {
+                el.textContent = text;
+            }
         });
     }
 
@@ -126,7 +139,20 @@ class LanguageSwitcher {
         elements.forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (trans[key]) {
-                el.textContent = trans[key];
+                // Special handling for site_title to preserve logo
+                if (key === 'site_title') {
+                    const logo = el.querySelector('.header-logo');
+                    if (logo) {
+                        // Clear and rebuild with logo + text
+                        el.innerHTML = '';
+                        el.appendChild(logo);
+                        el.appendChild(document.createTextNode(' ' + trans[key]));
+                    } else {
+                        el.textContent = trans[key];
+                    }
+                } else {
+                    el.textContent = trans[key];
+                }
             }
         });
     }

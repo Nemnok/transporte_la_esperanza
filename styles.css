@@ -112,7 +112,6 @@ header.collapsed .header-toggle .toggle-icon {
 header h1 {
     margin-bottom: 1rem;
     font-size: 1.8rem;
-    text-align: center;
     animation: fadeIn 1s ease-out;
     display: flex;
     align-items: center;
